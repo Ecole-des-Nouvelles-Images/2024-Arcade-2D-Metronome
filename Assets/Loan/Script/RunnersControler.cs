@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RunnersControler : MonoBehaviour
@@ -13,20 +10,19 @@ public class RunnersControler : MonoBehaviour
     private int _currentPower = 0;
     private bool _canUsePower = false;
     private Renderer _characterRenderer;
-    
+
+    [SerializeField] private RunnerData _runnerData;
     [SerializeField]
     private Transform _groundCheck;
     [SerializeField]
     private LayerMask _groundMask;
     [SerializeField]
-    private float _speed;
-    [SerializeField]
-    private float _jumpForce;
-    [SerializeField] 
-    private int _maxPower;
-    [SerializeField]
     private float _chargeInterval = 1f;
 
+    private float Speed => _runnerData.Speed;
+    private float JumpForce => _runnerData.JumpForce;
+    private int MaxPower => _runnerData.MaxPower;
+    
     private void Awake()
     {
         _inputSysteme = GetComponent<InputSysteme>();
@@ -50,7 +46,7 @@ public class RunnersControler : MonoBehaviour
         
        float horizontal = _inputSysteme.Move.x;  
        Vector2 velocity = _rb.velocity;
-       velocity.x = horizontal * _speed;
+       velocity.x = horizontal * Speed;
        
        _rb.velocity = velocity;
        
@@ -59,7 +55,7 @@ public class RunnersControler : MonoBehaviour
 
        if (_isGrounded && _inputSysteme.Jump > 0)
        {
-           _rb.velocity = new Vector2(_rb.velocity.x, _jumpForce);
+           _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
        }
 
        if (_canUsePower && _inputSysteme.PowerUp == 1)
@@ -70,12 +66,12 @@ public class RunnersControler : MonoBehaviour
 
     private void ChargePowerUp()
     {
-        if (_currentPower < _maxPower)
+        if (_currentPower < MaxPower)
         {
             _currentPower++;
             Debug.Log("Charge actuelle : " + _currentPower);
 
-            if (_currentPower == _maxPower)
+            if (_currentPower == MaxPower)
             {
                 _canUsePower = true;
                 Debug.Log("Power Up prêt !");

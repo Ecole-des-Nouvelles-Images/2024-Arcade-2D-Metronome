@@ -166,6 +166,7 @@ MonoBehaviour:
   Move: {x: 0, y: 0}
   Jump: 0
   PowerUp: 0
+  Active: 0
 --- !u!114 &6813344237376779143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,13 +179,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cfc46ea904f80a4d8b2c82191904015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _runnerData: {fileID: 11400000, guid: 9b24caa1359e0a54a9126903895ca345, type: 2}
   _groundCheck: {fileID: 8142188939310551304}
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
-  _speed: 7
-  _jumpForce: 7
-  _maxPower: 5
   _chargeInterval: 1
 --- !u!50 &6812310997153343440
 Rigidbody2D:
@@ -208,7 +207,7 @@ Rigidbody2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -228,7 +227,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

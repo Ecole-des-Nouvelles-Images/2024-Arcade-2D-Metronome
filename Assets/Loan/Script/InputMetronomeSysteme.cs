@@ -2,13 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputSysteme : MonoBehaviour
+public class InputMetronomeSysteme : MonoBehaviour
 {
-    public static event Action<bool> OnInputDeviceChanged;
-
-    public Vector2 Move;
-    public float Jump;
-    public float PowerUp;
+     public static event Action<bool> OnInputDeviceChanged;
+     
     public float Active;
     
 
@@ -26,20 +23,9 @@ public class InputSysteme : MonoBehaviour
         InputSystem.onDeviceChange += OnDeviceChange;
 
         // Bind input actions
-        _playerInput.actions["Mouvement"].performed += OnMove;
-        _playerInput.actions["Mouvement"].canceled += OnMove;
-
-        _playerInput.actions["Jump"].performed += OnJump;
-        _playerInput.actions["Jump"].canceled += OnJump;
-        
-        _playerInput.actions["PowerUp"].performed += OnPowerUp;
-        _playerInput.actions["PowerUP"].canceled += OnPowerUp;
-        
         _playerInput.actions["Active"].performed += OnActive;
         _playerInput.actions["Active"].canceled += OnActive;
         
-        
-
         DetectCurrentInputDevice();
     }
 
@@ -48,15 +34,6 @@ public class InputSysteme : MonoBehaviour
         InputSystem.onDeviceChange -= OnDeviceChange;
 
         // Unbind input actions
-        _playerInput.actions["Mouvement"].performed -= OnMove;
-        _playerInput.actions["Mouvement"].canceled -= OnMove;
-        
-        _playerInput.actions["Jump"].performed -= OnJump;
-        _playerInput.actions["Jump"].canceled -= OnJump;
-        
-        _playerInput.actions["PowerUp"].performed -= OnPowerUp;
-        _playerInput.actions["PowerUP"].canceled -= OnPowerUp;
-        
         _playerInput.actions["Active"].performed -= OnActive;
         _playerInput.actions["Active"].canceled -= OnActive;
     }
@@ -77,22 +54,6 @@ public class InputSysteme : MonoBehaviour
         Debug.Log(_isControllerConnected
             ? "Controller connected: Switching to Gamepad controls."
             : "No controller connected: Switching to Keyboard/Mouse controls.");
-    }
-
-    private void OnMove(InputAction.CallbackContext context)
-    {
-        Move = context.ReadValue<Vector2>();
-
-    }
-
-    private void OnJump(InputAction.CallbackContext context)
-    {
-        Jump = context.ReadValue<float>();
-    }
-    
-    private void OnPowerUp(InputAction.CallbackContext context)
-    {
-        PowerUp = context.ReadValue<float>();
     }
 
     private void OnActive(InputAction.CallbackContext context)

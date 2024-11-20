@@ -38,7 +38,7 @@
                     "name": "",
                     "id": "2278eb29-5070-406c-9aac-aed97b033cb3",
                     "path": "<Gamepad>/buttonSouth",
-                    "interactions": "Press(pressPoint=1)",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
@@ -64,6 +64,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "PowerUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Metronome",
+            "id": "a37dd11d-f67c-4a45-8e35-c06e34d09db6",
+            "actions": [
+                {
+                    "name": "Active",
+                    "type": "Button",
+                    "id": "262bff9e-8e22-4a2e-a958-6d3c1c2067e9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "89ec023e-4243-4a6a-8097-1a7c893fa40a",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Active",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
