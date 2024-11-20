@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PowerUp",
+                    "type": "Button",
+                    "id": "154de404-14f8-4c53-8f84-ca2c41c44079",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -44,6 +53,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mouvement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "448c8a42-30cd-495e-bcf9-620278af12da",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "Press(pressPoint=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PowerUp",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

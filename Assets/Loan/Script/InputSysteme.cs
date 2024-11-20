@@ -8,6 +8,8 @@ public class InputSysteme : MonoBehaviour
 
     public Vector2 Move;
     public float Jump;
+    public float PowerUp;
+    
 
     private PlayerInput _playerInput;
     private bool _isControllerConnected;
@@ -28,6 +30,9 @@ public class InputSysteme : MonoBehaviour
 
         _playerInput.actions["Jump"].performed += OnJump;
         _playerInput.actions["Jump"].canceled += OnJump;
+        
+        _playerInput.actions["PowerUp"].performed += OnPowerUp;
+        _playerInput.actions["PowerUP"].canceled += OnPowerUp;
 
         DetectCurrentInputDevice();
     }
@@ -42,6 +47,9 @@ public class InputSysteme : MonoBehaviour
         
         _playerInput.actions["Jump"].performed -= OnJump;
         _playerInput.actions["Jump"].canceled -= OnJump;
+        
+        _playerInput.actions["PowerUp"].performed -= OnPowerUp;
+        _playerInput.actions["PowerUP"].canceled -= OnPowerUp;
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -71,5 +79,10 @@ public class InputSysteme : MonoBehaviour
     private void OnJump(InputAction.CallbackContext context)
     {
         Jump = context.ReadValue<float>();
+    }
+    
+    private void OnPowerUp(InputAction.CallbackContext context)
+    {
+        PowerUp = context.ReadValue<float>();
     }
 }
