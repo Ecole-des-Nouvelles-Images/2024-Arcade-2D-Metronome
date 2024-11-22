@@ -97,6 +97,7 @@ public class InputSysteme : MonoBehaviour
 
     private void OnActive(InputAction.CallbackContext context)
     {
+        
         Active = context.ReadValue<float>();
     }
 }

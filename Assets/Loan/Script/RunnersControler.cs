@@ -41,7 +41,7 @@ public class RunnersControler : MonoBehaviour
         InvokeRepeating(nameof(ChargePowerUp),0f,_chargeInterval);
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         
        float horizontal = _inputSysteme.Move.x;  
