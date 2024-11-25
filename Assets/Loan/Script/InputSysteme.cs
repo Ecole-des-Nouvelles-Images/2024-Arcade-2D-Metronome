@@ -6,10 +6,18 @@ public class InputSysteme : MonoBehaviour
 {
     public static event Action<bool> OnInputDeviceChanged;
 
+    //Runners
     public Vector2 Move;
     public float Jump;
     public float PowerUp;
+    
+    //Métronome
     public float Active;
+    public Vector2 PiegeMove;
+    public float PiegeUp;
+    public float PiegeRight;
+    public float PiegeDown;
+    public float PiegeLeft;
     
 
     private PlayerInput _playerInput;
@@ -26,6 +34,7 @@ public class InputSysteme : MonoBehaviour
         InputSystem.onDeviceChange += OnDeviceChange;
 
         // Bind input actions
+        //Runners
         _playerInput.actions["Mouvement"].performed += OnMove;
         _playerInput.actions["Mouvement"].canceled += OnMove;
 
@@ -35,8 +44,24 @@ public class InputSysteme : MonoBehaviour
         _playerInput.actions["PowerUp"].performed += OnPowerUp;
         _playerInput.actions["PowerUP"].canceled += OnPowerUp;
         
+        //Métronome
         _playerInput.actions["Active"].performed += OnActive;
         _playerInput.actions["Active"].canceled += OnActive;
+        
+        _playerInput.actions["PiegeMove"].performed += OnPiegeMove;
+        _playerInput.actions["PiegeMove"].canceled += OnPiegeMove;
+        
+        _playerInput.actions["PiegeUp"].performed += OnPiegeUp;
+        _playerInput.actions["PiegeUp"].canceled += OnPiegeUp;
+        
+        _playerInput.actions["PiegeRight"].performed += OnPiegeRight;
+        _playerInput.actions["PiegeRight"].canceled += OnPiegeRight;
+        
+        _playerInput.actions["PiegeDown"].performed += OnPiegeDown;
+        _playerInput.actions["PiegeDown"].canceled += OnPiegeDown;
+        
+        _playerInput.actions["PiegeLeft"].performed += OnPiegeLeft;
+        _playerInput.actions["PiegeLeft"].canceled += OnPiegeLeft;
         
         
 
@@ -48,6 +73,7 @@ public class InputSysteme : MonoBehaviour
         InputSystem.onDeviceChange -= OnDeviceChange;
 
         // Unbind input actions
+        //Runners
         _playerInput.actions["Mouvement"].performed -= OnMove;
         _playerInput.actions["Mouvement"].canceled -= OnMove;
         
@@ -57,8 +83,24 @@ public class InputSysteme : MonoBehaviour
         _playerInput.actions["PowerUp"].performed -= OnPowerUp;
         _playerInput.actions["PowerUP"].canceled -= OnPowerUp;
         
+        //Métronome
         _playerInput.actions["Active"].performed -= OnActive;
         _playerInput.actions["Active"].canceled -= OnActive;
+        
+        _playerInput.actions["PiegeMove"].performed -= OnPiegeMove;
+        _playerInput.actions["PiegeMove"].canceled -= OnPiegeMove;
+        
+        _playerInput.actions["PiegeUp"].performed -= OnPiegeUp;
+        _playerInput.actions["PiegeUp"].canceled -= OnPiegeUp;
+        
+        _playerInput.actions["PiegeRight"].performed -= OnPiegeRight;
+        _playerInput.actions["PiegeRight"].canceled -= OnPiegeRight;
+        
+        _playerInput.actions["PiegeDown"].performed -= OnPiegeDown;
+        _playerInput.actions["PiegeDown"].canceled -= OnPiegeDown;
+        
+        _playerInput.actions["PiegeLeft"].performed -= OnPiegeLeft;
+        _playerInput.actions["PiegeLeft"].canceled -= OnPiegeLeft;
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -79,6 +121,7 @@ public class InputSysteme : MonoBehaviour
             : "No controller connected: Switching to Keyboard/Mouse controls.");
     }
 
+    //Runners
     private void OnMove(InputAction.CallbackContext context)
     {
         Move = context.ReadValue<Vector2>();
@@ -95,9 +138,40 @@ public class InputSysteme : MonoBehaviour
         PowerUp = context.ReadValue<float>();
     }
 
+    //Métronome
     private void OnActive(InputAction.CallbackContext context)
     {
         
         Active = context.ReadValue<float>();
+    }
+    
+    private void OnPiegeMove(InputAction.CallbackContext context)
+    {
+        PiegeMove = context.ReadValue<Vector2>();
+
+    }
+    
+    private void OnPiegeUp(InputAction.CallbackContext context)
+    {
+        
+        PiegeUp = context.ReadValue<float>();
+    }
+    
+    private void OnPiegeRight(InputAction.CallbackContext context)
+    {
+        
+        PiegeRight = context.ReadValue<float>();
+    }
+    
+    private void OnPiegeDown(InputAction.CallbackContext context)
+    {
+        
+        PiegeDown = context.ReadValue<float>();
+    }
+    
+    private void OnPiegeLeft(InputAction.CallbackContext context)
+    {
+        
+        PiegeLeft = context.ReadValue<float>();
     }
 }
