@@ -3,15 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Note
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Sol
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
