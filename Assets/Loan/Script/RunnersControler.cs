@@ -9,7 +9,7 @@ public class RunnersControler : MonoBehaviour
     private MultiplePlayerCamera _cameraScript;
     private int _currentPower = 0;
     private bool _canUsePower = false;
-    private Renderer _characterRenderer;
+    private SpriteRenderer _sR;
 
     [SerializeField] private RunnerData _runnerData;
     [SerializeField]
@@ -19,15 +19,19 @@ public class RunnersControler : MonoBehaviour
     [SerializeField]
     private float _chargeInterval = 1f;
 
-    private float Speed => _runnerData.Speed;
-    private float JumpForce => _runnerData.JumpForce;
-    private int MaxPower => _runnerData.MaxPower;
+    public float Speed =4f;
+    public float JumpForce = 9f;
+    public float OriginalSpeed;
+    private float MaxPower => _runnerData.MaxPower;
+    private Sprite _spriteRenderer => _runnerData.Sprite;
     
     private void Awake()
     {
         _inputSysteme = GetComponent<InputSysteme>();
         _rb = GetComponent<Rigidbody2D>();
         _cameraScript = FindObjectOfType<MultiplePlayerCamera>();
+       _sR = GetComponent<SpriteRenderer>();
+       _sR.sprite = _spriteRenderer;
     }
 
     private void Start()
@@ -36,9 +40,10 @@ public class RunnersControler : MonoBehaviour
         {
             _cameraScript.AddPlayer(transform);
         }
-        _characterRenderer = GetComponent<Renderer>();
       
         InvokeRepeating(nameof(ChargePowerUp),0f,_chargeInterval);
+
+        OriginalSpeed = Speed;
     }
 
     private void Update()
@@ -51,7 +56,16 @@ public class RunnersControler : MonoBehaviour
        _rb.velocity = velocity;
        
        _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundMask);
-       
+
+       if (_inputSysteme.Move.x > 0 )
+       {
+           _sR.flipX = true;
+       }
+
+       if (_inputSysteme.Move.x < 0 )
+       {
+           _sR.flipX = false;
+       }
 
        if (_isGrounded && _inputSysteme.Jump > 0)
        {
@@ -71,11 +85,13 @@ public class RunnersControler : MonoBehaviour
             _currentPower++;
             Debug.Log("Charge actuelle : " + _currentPower);
 
-            if (_currentPower == MaxPower)
-            {
-                _canUsePower = true;
-                Debug.Log("Power Up prêt !");
-            }
+            
+        }
+        
+        if (_currentPower == MaxPower)
+        {
+            _canUsePower = true;
+            Debug.Log("Power Up prêt !");
         }
     }
 
@@ -84,18 +100,17 @@ public class RunnersControler : MonoBehaviour
         if (_canUsePower)
         {
             Debug.Log("Power Up activé !!");
-            _characterRenderer.material.color = Color.red;
+           _runnerData.ApplyPowerUp(this);
             
-            _currentPower = 0;
-            _canUsePower = false;
-            
-            Invoke(nameof(ResetPowerUp),2f);
+            Invoke(nameof(ResetPowerUp),4f);
         }
     }
 
     private void ResetPowerUp()
     {
-        _characterRenderer.material.color = Color.white;
+        _runnerData.RemovePowerUp(this);
+        _currentPower = 0;
+        _canUsePower = false;
     }
 
     private void OnDestroy()
