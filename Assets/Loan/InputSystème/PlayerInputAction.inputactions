@@ -81,6 +81,51 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PiegeUp",
+                    "type": "Value",
+                    "id": "88712e7b-b43d-4818-8e58-b65831e3422a",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PiegeRight",
+                    "type": "Value",
+                    "id": "7977f564-f3b6-4179-9885-d923a924f7cc",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PiegeDown",
+                    "type": "Value",
+                    "id": "ee3709d9-a12e-43a8-b13b-88fe7304019d",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PiegeLeft",
+                    "type": "Value",
+                    "id": "eff89c44-d91b-42b2-8b36-db3a08576bee",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "PiegeMove",
+                    "type": "Value",
+                    "id": "e9f5ddf2-b4ca-4edd-bc2d-a9d06eef359a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -92,6 +137,61 @@
                     "processors": "",
                     "groups": "",
                     "action": "Active",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "032e5fa6-3c17-4216-8114-6d5871fd547c",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PiegeUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3bef7b8-260e-4741-a134-10693f214a26",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PiegeRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4cc2092c-df31-49f3-85cc-0e9328d4d77c",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PiegeDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "590e9b97-11f7-433e-a057-03021b01a024",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PiegeLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3fbec6b5-6589-45cf-b859-895d11022579",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PiegeMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

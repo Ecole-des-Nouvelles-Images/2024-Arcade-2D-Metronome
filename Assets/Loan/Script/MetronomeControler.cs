@@ -22,6 +22,28 @@ public class MetronomeControler : MonoBehaviour
         {
             HandleButtonPress();
         }
+        
+        //test
+        if (_inputSysteme.PiegeLeft == 1)
+        {
+            Debug.Log("Piege gauche activé !");
+        }
+
+        if (_inputSysteme.PiegeUp == 1 && _score >= 5)
+        {
+            Debug.Log("Piege Haut activé !");
+            _score = 0;
+        }
+        
+        if (_inputSysteme.PiegeRight == 1)
+        {
+            Debug.Log("Piege Droit activé !");
+        }
+        
+        if (_inputSysteme.PiegeDown == 1)
+        {
+            Debug.Log("Piege Bas activé !");
+        }
     }
 
     private void HandleButtonPress()
