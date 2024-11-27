@@ -18,6 +18,7 @@ public class InputSysteme : MonoBehaviour
     public float PiegeRight;
     public float PiegeDown;
     public float PiegeLeft;
+    public float PiegeActive;
     
 
     private PlayerInput _playerInput;
@@ -63,6 +64,9 @@ public class InputSysteme : MonoBehaviour
         _playerInput.actions["PiegeLeft"].performed += OnPiegeLeft;
         _playerInput.actions["PiegeLeft"].canceled += OnPiegeLeft;
         
+        _playerInput.actions["PiegeActive"].performed += OnPiegeActive;
+        _playerInput.actions["PiegeActive"].canceled += OnPiegeActive;
+        
         
 
         DetectCurrentInputDevice();
@@ -101,6 +105,9 @@ public class InputSysteme : MonoBehaviour
         
         _playerInput.actions["PiegeLeft"].performed -= OnPiegeLeft;
         _playerInput.actions["PiegeLeft"].canceled -= OnPiegeLeft;
+        
+        _playerInput.actions["PiegeActive"].performed -= OnPiegeActive;
+        _playerInput.actions["PiegeActive"].canceled -= OnPiegeActive;
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -173,5 +180,11 @@ public class InputSysteme : MonoBehaviour
     {
         
         PiegeLeft = context.ReadValue<float>();
+    }
+    
+    private void OnPiegeActive(InputAction.CallbackContext context)
+    {
+        
+        PiegeActive = context.ReadValue<float>();
     }
 }

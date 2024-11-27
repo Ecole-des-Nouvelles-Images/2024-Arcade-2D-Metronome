@@ -4,12 +4,14 @@ public class RunnersControler : MonoBehaviour
 {
     private bool _isGrounded; 
     private float _groundCheckRadius = 0.2f;
+    private float _health = 1f;
     private Rigidbody2D _rb;
     private InputSysteme _inputSysteme;
     private MultiplePlayerCamera _cameraScript;
     private int _currentPower = 0;
     private bool _canUsePower = false;
     private SpriteRenderer _sR;
+    
 
     [SerializeField] private RunnerData _runnerData;
     [SerializeField]
@@ -19,8 +21,8 @@ public class RunnersControler : MonoBehaviour
     [SerializeField]
     private float _chargeInterval = 1f;
 
-    public float Speed =4f;
-    public float JumpForce = 9f;
+    public float Speed =5f;
+    public float JumpForce = 6f;
     public float OriginalSpeed;
     private float MaxPower => _runnerData.MaxPower;
     private Sprite _spriteRenderer => _runnerData.Sprite;
@@ -52,7 +54,7 @@ public class RunnersControler : MonoBehaviour
        float horizontal = _inputSysteme.Move.x;  
        Vector2 velocity = _rb.velocity;
        velocity.x = horizontal * Speed;
-       
+
        _rb.velocity = velocity;
        
        _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundMask);
@@ -119,6 +121,23 @@ public class RunnersControler : MonoBehaviour
         {
             _cameraScript.RemovePlayer(transform);
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        _health -= damage;
+        Debug.Log($"Runner a pris {damage} damage. Vie restantes : {_health}");
+
+        if (_health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("Runner mort.");
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

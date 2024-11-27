@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 905700753213581335}
   m_Layer: 6
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,6 +172,7 @@ MonoBehaviour:
   PiegeRight: 0
   PiegeDown: 0
   PiegeLeft: 0
+  PiegeActive: 0
 --- !u!114 &6813344237376779143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,8 +191,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   _chargeInterval: 1
-  Speed: 4
-  JumpForce: 8
+  Speed: 5
+  JumpForce: 6
   OriginalSpeed: 0
 --- !u!50 &6812310997153343440
 Rigidbody2D:
@@ -209,7 +210,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95ff506a22cee8f4d9599c5def4fe581, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
