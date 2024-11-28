@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d88522b650cabdc419f1267ca4120369, type: 3}
   m_Name: Chasseur
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 1970613906, guid: f8546c4519bac78488ed9b1b1a4406db, type: 3}
+  Sprite: {fileID: 2030808925, guid: f8546c4519bac78488ed9b1b1a4406db, type: 3}
   MaxPower: 5
   SpeedMultiplier: 2

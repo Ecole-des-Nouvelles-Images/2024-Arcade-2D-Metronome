@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class RunnersControler : MonoBehaviour
 {
-    private bool _isGrounded; 
-    private float _groundCheckRadius = 0.2f;
+    private bool _isGrounded;
     private float _health = 1f;
     private Rigidbody2D _rb;
     private InputSysteme _inputSysteme;
@@ -11,6 +10,13 @@ public class RunnersControler : MonoBehaviour
     private int _currentPower = 0;
     private bool _canUsePower = false;
     private SpriteRenderer _sR;
+    private Vector2 _gravity;
+    private bool _isHoldingJump;
+    private float _jumpHolderTime;
+    private float _currentJumpHeight;
+    private float _maxHoldTime = 0.5f;
+    private float _maxJumpHeight = 20f;
+    private float _holdJumpForce = 5f;
     
 
     [SerializeField] private RunnerData _runnerData;
@@ -20,6 +26,7 @@ public class RunnersControler : MonoBehaviour
     private LayerMask _groundMask;
     [SerializeField]
     private float _chargeInterval = 1f;
+    [SerializeField] private float _fallMultiplier;
 
     public float Speed =5f;
     public float JumpForce = 6f;
@@ -46,6 +53,7 @@ public class RunnersControler : MonoBehaviour
         InvokeRepeating(nameof(ChargePowerUp),0f,_chargeInterval);
 
         OriginalSpeed = Speed;
+        _gravity = new Vector2(0,-Physics2D.gravity.y);
     }
 
     private void Update()
@@ -57,7 +65,7 @@ public class RunnersControler : MonoBehaviour
 
        _rb.velocity = velocity;
        
-       _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _groundCheckRadius, _groundMask);
+       _isGrounded = Physics2D.OverlapCapsule(_groundCheck.position, new Vector2(0.8f, 0.13f),CapsuleDirection2D.Horizontal,0, _groundMask);
 
        if (_inputSysteme.Move.x > 0 )
        {
@@ -68,15 +76,48 @@ public class RunnersControler : MonoBehaviour
        {
            _sR.flipX = false;
        }
+       
+       HandleJump();
 
-       if (_isGrounded && _inputSysteme.Jump > 0)
+       // if (_isGrounded && _inputSysteme.Jump > 0)
+       // {
+       //     // _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
+       //     HandleJump();
+       // }
+
+       if (_rb.velocity.y <= 1)
        {
-           _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
+           _rb.velocity -= _gravity * _fallMultiplier * Time.deltaTime;
        }
 
        if (_canUsePower && _inputSysteme.PowerUp == 1)
        {
            ActivatePowerUp();
+       }
+    }
+
+    private void HandleJump()
+    {
+       float jumpForceTime = _inputSysteme.Jump;
+
+       if (jumpForceTime > 0 && _isGrounded && !_isHoldingJump)
+       {
+           _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
+           _isHoldingJump = true;
+           _jumpHolderTime = 0f;
+           _currentJumpHeight = 0f;
+       }
+
+       if (jumpForceTime > 0 && _isHoldingJump && _jumpHolderTime < _maxHoldTime && _currentJumpHeight < _maxJumpHeight )
+       {
+           _jumpHolderTime += Time.deltaTime;
+           _currentJumpHeight += _holdJumpForce * Time.deltaTime;
+           _rb.velocity = new Vector2(_rb.velocity.x, Mathf.Clamp(_rb.velocity.y + _holdJumpForce * Time.deltaTime, 0, _maxJumpHeight));
+       }
+
+       if (jumpForceTime <= 0)
+       {
+           _isHoldingJump = false;
        }
     }
 
@@ -138,15 +179,5 @@ public class RunnersControler : MonoBehaviour
     {
         Debug.Log("Runner mort.");
         Destroy(gameObject);
-    }
-
-    private void OnDrawGizmos()
-    {
-        // Pour visualiser le point de vérification au sol dans l'éditeur
-        if (_groundCheck != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(_groundCheck.position, _groundCheckRadius);
-        }
     }
 }

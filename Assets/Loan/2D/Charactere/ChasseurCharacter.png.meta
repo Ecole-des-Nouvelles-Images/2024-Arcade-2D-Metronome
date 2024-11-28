@@ -110,22 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "MANICAS_Maelys_Chasseuse_Int\xE9gration_test_0"
+      name: ChasseurCharacter_0
       rect:
         serializedVersion: 2
-        x: 1612
-        y: 149
-        width: 193
-        height: 458
-      alignment: 9
-      pivot: {x: 0.48907185, y: 0.502517}
+        x: 1613
+        y: 147
+        width: 192
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed001103c67001746867572a6c65e5d3
-      internalID: 1970613906
+      spriteID: d7fcf5f2ab6126e4497e8277a2ed1fb8
+      internalID: 2030808925
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "MANICAS_Maelys_Chasseuse_Int\xE9gration_test_0": 1970613906
+      ChasseurCharacter_0: 2030808925
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
