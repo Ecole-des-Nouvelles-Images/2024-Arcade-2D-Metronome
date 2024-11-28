@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30246d4f3fb6dfe4bb73370b05297a33
+guid: e07f06bbcf9ba9a4c8ebe5a7d4d9e714
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MANICAS_Maelys_UI_BT_General_0
+      name: MANICAS_Maelys_UI_Rond_Coeur_0
       rect:
         serializedVersion: 2
-        x: 567
-        y: 485
-        width: 786
-        height: 184
+        x: 726
+        y: 629
+        width: 87
+        height: 86
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8de8ecac3a3861542a91fa3d05cb5cda
-      internalID: -474816951
+      spriteID: 9cafbbf71cfa7324ca0dd1e3deb97913
+      internalID: 1265293125
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MANICAS_Maelys_UI_BT_General_0: -474816951
+      MANICAS_Maelys_UI_Rond_Coeur_0: 1265293125
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

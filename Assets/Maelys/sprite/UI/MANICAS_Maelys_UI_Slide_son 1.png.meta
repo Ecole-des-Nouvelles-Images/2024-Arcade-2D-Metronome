@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 30246d4f3fb6dfe4bb73370b05297a33
+guid: 9739d4a95adc1cd42b6f9313f88caca2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MANICAS_Maelys_UI_BT_General_0
+      name: MANICAS_Maelys_UI_Slide_son 1_0
       rect:
         serializedVersion: 2
-        x: 567
-        y: 485
-        width: 786
-        height: 184
+        x: 370
+        y: 562
+        width: 528
+        height: 57
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8de8ecac3a3861542a91fa3d05cb5cda
-      internalID: -474816951
+      spriteID: 0cb3d8ee3d005d8408b1f7a58964571d
+      internalID: -421370989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_Slide_son 1_1
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 561
+        width: 528
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7e4c811b4dbc3249ba844a206357fd5
+      internalID: 86629786
       vertices: []
       indices: 
       edges: []
@@ -141,7 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MANICAS_Maelys_UI_BT_General_0: -474816951
+      MANICAS_Maelys_UI_Slide_son 1_0: -421370989
+      MANICAS_Maelys_UI_Slide_son 1_1: 86629786
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
