@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 7655993144078138148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.878, z: 0}
+  m_LocalPosition: {x: 0, y: -1.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -185,16 +185,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cfc46ea904f80a4d8b2c82191904015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runnerData: {fileID: 11400000, guid: 6e35dae109686314fa53244f7916406b, type: 2}
+  _runnerData: {fileID: 11400000, guid: 727385d9e7ded1345b4cd2855de2bf46, type: 2}
   _groundCheck: {fileID: 8142188939310551304}
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
   _chargeInterval: 1
-  _fallMultiplier: 2.5
-  Speed: 5
-  JumpForce: 6
+  _fallMultiplier: 1.25
+  Speed: 7
+  JumpForce: 13
   OriginalSpeed: 0
+  OriginalJump: 0
 --- !u!50 &6812310997153343440
 Rigidbody2D:
   serializedVersion: 4
@@ -210,7 +211,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 95ff506a22cee8f4d9599c5def4fe581, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -265,5 +266,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1.85}
+  m_Size: {x: 1, y: 2.3}
   m_EdgeRadius: 0

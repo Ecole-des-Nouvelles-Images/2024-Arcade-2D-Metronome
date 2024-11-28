@@ -16,7 +16,7 @@ public class RunnersControler : MonoBehaviour
     private float _currentJumpHeight;
     private float _maxHoldTime = 0.5f;
     private float _maxJumpHeight = 20f;
-    private float _holdJumpForce = 5f;
+    private float _holdJumpForce = 7f;
     
 
     [SerializeField] private RunnerData _runnerData;
@@ -28,9 +28,10 @@ public class RunnersControler : MonoBehaviour
     private float _chargeInterval = 1f;
     [SerializeField] private float _fallMultiplier;
 
-    public float Speed =5f;
-    public float JumpForce = 6f;
+    public float Speed =7f;
+    public float JumpForce = 13f;
     public float OriginalSpeed;
+    public float OriginalJump;
     private float MaxPower => _runnerData.MaxPower;
     private Sprite _spriteRenderer => _runnerData.Sprite;
     
@@ -53,6 +54,7 @@ public class RunnersControler : MonoBehaviour
         InvokeRepeating(nameof(ChargePowerUp),0f,_chargeInterval);
 
         OriginalSpeed = Speed;
+        OriginalJump = JumpForce;
         _gravity = new Vector2(0,-Physics2D.gravity.y);
     }
 
@@ -65,7 +67,7 @@ public class RunnersControler : MonoBehaviour
 
        _rb.velocity = velocity;
        
-       _isGrounded = Physics2D.OverlapCapsule(_groundCheck.position, new Vector2(0.8f, 0.13f),CapsuleDirection2D.Horizontal,0, _groundMask);
+       _isGrounded = Physics2D.OverlapCapsule(_groundCheck.position, new Vector2(1f, 0.13f),CapsuleDirection2D.Horizontal,0, _groundMask);
 
        if (_inputSysteme.Move.x > 0 )
        {

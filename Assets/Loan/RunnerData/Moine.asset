@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8d3d12742944c1895ccdd33157542bd, type: 3}
-  m_Name: Marcel
+  m_Script: {fileID: 11500000, guid: 51ab08905156787418862fa4268244f9, type: 3}
+  m_Name: Moine
   m_EditorClassIdentifier: 
-  sprite: {fileID: 0}
-  Speed: 8
-  JumpForce: 3
-  MaxPower: 9
+  Sprite: {fileID: 2030808925, guid: f8546c4519bac78488ed9b1b1a4406db, type: 3}
+  MaxPower: 5
+  JumpMultiplier: 2

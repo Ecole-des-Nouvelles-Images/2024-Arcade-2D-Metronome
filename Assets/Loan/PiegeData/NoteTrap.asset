@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NoteTrap
   m_EditorClassIdentifier: 
   PiegeSprite: {fileID: -140284870, guid: 249af9ea327e7b44c98a421186e77412, type: 3}
-  Mass: 1
+  Mass: 3
   Damage: 1
   CanFall: 1
   FallSpeed: 4

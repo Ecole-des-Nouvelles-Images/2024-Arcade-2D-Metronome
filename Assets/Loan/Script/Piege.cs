@@ -60,7 +60,7 @@ public class Piege : MonoBehaviour
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.gravityScale = 1;
+                rb.gravityScale = PiegeData.Mass;
             }
         }
 
