@@ -192,6 +192,9 @@ MonoBehaviour:
     m_Bits: 8
   _chargeInterval: 1
   _fallMultiplier: 1.25
+  _winMask:
+    serializedVersion: 2
+    m_Bits: 128
   Speed: 7
   JumpForce: 13
   OriginalSpeed: 0

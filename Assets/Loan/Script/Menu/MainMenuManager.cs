@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
@@ -8,18 +9,16 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject _menuPanel;
     [SerializeField] GameObject _optionsPanel;
     [SerializeField] GameObject _creditPanel;
-    [SerializeField] GameObject _charactersPanel;
 
-    private void Start()
-    {
-        CloseAllPanels();
-        _menuPanel.SetActive(true);
-    }
+    // private void Start()
+    // {
+    //     CloseAllPanels();
+    //     _menuPanel.SetActive(true);
+    // }
 
-    public void OpenCharactersPanel()
+    public void OpenCharactersScene()
     {
-        CloseAllPanels();
-        _charactersPanel.SetActive(true);
+        SceneManager.LoadScene(4);
     }
 
     public void OptionPanel()
@@ -39,6 +38,11 @@ public class MainMenuManager : MonoBehaviour
         CloseAllPanels();
         _menuPanel.SetActive(true);
     }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+    }
     
     public void QuitGame()
     {
@@ -50,7 +54,11 @@ public class MainMenuManager : MonoBehaviour
     {
         _menuPanel.SetActive(false);
         _optionsPanel.SetActive(false);
-        _charactersPanel.SetActive(false);
         _creditPanel.SetActive(false);
+    }
+
+    public void RetrunMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 }

@@ -27,6 +27,7 @@ public class RunnersControler : MonoBehaviour
     [SerializeField]
     private float _chargeInterval = 1f;
     [SerializeField] private float _fallMultiplier;
+    [SerializeField] private LayerMask _winMask;
 
     public float Speed =7f;
     public float JumpForce = 13f;
@@ -50,6 +51,8 @@ public class RunnersControler : MonoBehaviour
         {
             _cameraScript.AddPlayer(transform);
         }
+        
+        GameManager.Instance.RegisterRunner(gameObject);
       
         InvokeRepeating(nameof(ChargePowerUp),0f,_chargeInterval);
 
@@ -80,12 +83,6 @@ public class RunnersControler : MonoBehaviour
        }
        
        HandleJump();
-
-       // if (_isGrounded && _inputSysteme.Jump > 0)
-       // {
-       //     // _rb.velocity = new Vector2(_rb.velocity.x, JumpForce);
-       //     HandleJump();
-       // }
 
        if (_rb.velocity.y <= 1)
        {
@@ -179,7 +176,21 @@ public class RunnersControler : MonoBehaviour
 
     private void Die()
     {
+        GameManager.Instance.UnregisterRunner(gameObject);
         Debug.Log("Runner mort.");
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (IsInWinLayer(collision.gameObject.layer))
+        {
+            GameManager.Instance.LoadWinRunner("RunnerWin");
+        }
+    }
+    
+    private bool IsInWinLayer(int layer)
+    {
+        return ((1 << layer) & _winMask) != 0;
     }
 }
