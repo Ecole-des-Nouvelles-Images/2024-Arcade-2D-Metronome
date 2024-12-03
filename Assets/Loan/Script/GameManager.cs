@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
    public static GameManager Instance;
 
    private List<GameObject> _aliveRunners = new List<GameObject>();
+   private int _metronomePlayerIndex;
+   private Dictionary<int, RunnerData> chosenRunners;
 
    private void Awake()
    {
@@ -46,5 +48,11 @@ public class GameManager : MonoBehaviour
       {
          SceneManager.LoadScene(3);
       }
+   }
+
+   public void SetChoices(int metronomeIndex, Dictionary<int, RunnerData> runners)
+   {
+      _metronomePlayerIndex = metronomeIndex;
+      chosenRunners = runners;
    }
 }

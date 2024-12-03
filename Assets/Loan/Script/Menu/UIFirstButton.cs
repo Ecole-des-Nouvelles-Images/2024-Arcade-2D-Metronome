@@ -1,14 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIFirstButton : MonoBehaviour
+namespace Loan.Script.Menu
 {
-    [SerializeField] private EventSystem eventSystem;
-    [SerializeField] private GameObject Button;
-    private void OnEnable()
+    public class UIFirstButton : MonoBehaviour
     {
-        eventSystem.SetSelectedGameObject(Button.gameObject);
+        [SerializeField] private EventSystem eventSystem;
+        [SerializeField] private GameObject Button;
+        private void OnEnable()
+        {
+            eventSystem.SetSelectedGameObject(Button.gameObject);
+        }
     }
 }
