@@ -364,7 +364,7 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 8740164113339794383}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
-  m_PlayerRoot: {fileID: 9069451944348641530}
+  m_PlayerRoot: {fileID: 5754490933166209561}
 --- !u!114 &5034003746508592765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -756,6 +756,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7225113457772307046}
   - component: {fileID: 8991079612209397130}
+  - component: {fileID: 9084151039790398561}
   m_Layer: 0
   m_Name: PrefabCharacterSelection
   m_TagString: Untagged
@@ -794,7 +795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 0a165534b5336e34a9469b529a224cfa, type: 3}
   m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 5034003746508592765}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -810,6 +811,25 @@ MonoBehaviour:
   m_DefaultActionMap: UIControler
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &9084151039790398561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151840258977465207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1491c5d61ef461447972c3ea8fec2f06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _chasseurButton: {fileID: 6473504531895543765}
+  _moineButton: {fileID: 6492489071355368261}
+  _mageButton: {fileID: 7362206380689116336}
+  _metronomeButton: {fileID: 1423524083264136529}
+  _runnerChasseur: {fileID: 11400000, guid: 6e35dae109686314fa53244f7916406b, type: 2}
+  _runnerMoine: {fileID: 11400000, guid: 727385d9e7ded1345b4cd2855de2bf46, type: 2}
+  _runnerMage: {fileID: 0}
 --- !u!1 &8387302155092898857
 GameObject:
   m_ObjectHideFlags: 0

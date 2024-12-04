@@ -9,12 +9,14 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] GameObject _menuPanel;
     [SerializeField] GameObject _optionsPanel;
     [SerializeField] GameObject _creditPanel;
-
-    // private void Start()
-    // {
-    //     CloseAllPanels();
-    //     _menuPanel.SetActive(true);
-    // }
+    
+    public static RunnerData FirstRunner;
+    public static RunnerData SecondRunner;
+    public static RunnerData ThirdRunner;
+    
+    public static int MetronomeID;
+    
+    public static List<int> DevicesID = new List<int>();
 
     public void OpenCharactersScene()
     {

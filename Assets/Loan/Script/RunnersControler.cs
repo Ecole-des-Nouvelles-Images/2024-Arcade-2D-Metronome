@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RunnersControler : MonoBehaviour
 {
@@ -37,7 +38,28 @@ public class RunnersControler : MonoBehaviour
     public float OriginalJump;
     private float MaxPower => _runnerData.MaxPower;
     private Sprite _spriteRenderer => _runnerData.Sprite;
-    
+
+
+    public void Setup(RunnerData data, int deviceID)
+    {
+        _runnerData = data;
+        _sR.sprite = _runnerData.Sprite;
+
+        if (_runnerData.AnimatorController != null)
+        {
+            _animator.runtimeAnimatorController = _runnerData.AnimatorController;
+        }
+        
+        if (deviceID >= 0 && deviceID < Gamepad.all.Count)
+        {
+            Gamepad device = Gamepad.all[deviceID];
+            _inputSysteme.SwitchCurrentControlScheme(device);
+        }
+        else
+        {
+            Debug.LogError("Device ID invalide ou manette non trouvée.");
+        }
+    }
     private void Awake()
     {
         _inputSysteme = GetComponent<InputSysteme>();
