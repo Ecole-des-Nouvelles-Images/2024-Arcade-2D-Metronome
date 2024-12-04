@@ -17,6 +17,7 @@ public class MainMenuManager : MonoBehaviour
     public static int MetronomeID;
     
     public static List<int> DevicesID = new List<int>();
+    private static Dictionary<int, bool> playerReadyStates = new Dictionary<int, bool>();
 
     public void OpenCharactersScene()
     {
@@ -41,7 +42,7 @@ public class MainMenuManager : MonoBehaviour
         _menuPanel.SetActive(true);
     }
 
-    public void StartGame()
+    private static void StartGame()
     {
         SceneManager.LoadScene(1);
     }
@@ -63,4 +64,29 @@ public class MainMenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+    
+    // public static void SetPlayerReady(int playerID, bool isReady)
+    // {
+    //     if (DevicesID.Contains(playerID))
+    //     {
+    //         playerReadyStates[playerID] = isReady;
+    //         CheckAllPlayersReady();
+    //     }
+    //     else
+    //     {
+    //         Debug.LogWarning($"Player ID {playerID} non trouvé dans la liste des DevicesID.");
+    //     }
+    // }
+    
+    // private static void CheckAllPlayersReady()
+    // {
+    //     foreach (int playerID in DevicesID)
+    //     {
+    //         if (!playerReadyStates.ContainsKey(playerID) || !playerReadyStates[playerID])
+    //         {
+    //             return;
+    //         }
+    //     }
+    //     StartGame();
+    // }
 }

@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ChoixPersoManager : MonoBehaviour
@@ -11,13 +9,14 @@ public class ChoixPersoManager : MonoBehaviour
     [SerializeField] private Button _moineButton;
     [SerializeField] private Button _mageButton;
     [SerializeField] private Button _metronomeButton;
+    [SerializeField] private Button _readyButton;
 
     [SerializeField] private RunnerData _runnerChasseur;
     [SerializeField] private RunnerData _runnerMoine;
     [SerializeField] private RunnerData _runnerMage;
 
     private int _deviceID;
-    // private bool _ready ;
+    private bool _ready ;
 
     private void OnEnable()
     {
@@ -39,6 +38,7 @@ public class ChoixPersoManager : MonoBehaviour
         _moineButton.onClick.AddListener(() => SelectRunner(_runnerMoine, _deviceID,2));
         _mageButton.onClick.AddListener(() => SelectRunner(_runnerMage, _deviceID,3));
         _metronomeButton.onClick.AddListener(() => SelectMetronome(_deviceID));
+        _readyButton.onClick.AddListener(() => SceneManager.LoadScene(1));
     }
 
     private void OnDisable()
@@ -79,9 +79,20 @@ public class ChoixPersoManager : MonoBehaviour
         _moineButton.interactable = false;
         _mageButton.interactable = false;
         _metronomeButton.interactable = false;
-        // _ready = true;
+        // OnReady();
     }
-    
+
+    // private void OnReady()
+    // {
+    //     SetReady(true);
+    // }
+
+    // private void SetReady(bool readyState)
+    // {
+    //     _ready = readyState;
+    //     MainMenuManager.SetPlayerReady(_deviceID, _ready);
+    // }
+
     public void ResetSelection()
     {
         MainMenuManager.FirstRunner = null;
