@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "NewPiegeData", menuName = "ScriptableObjects/PiegeData")]
-public class PiegeData : ScriptableObject
+[CreateAssetMenu(fileName = "NewTrap", menuName = "Traps/New Trap")]
+public abstract class PiegeData : ScriptableObject
 {
-    public Sprite Sprite;
-    public float Damage;
-    public float Mass;
-    public Vector2 ColliderSize;
+    public Sprite PiegeSprite;
+    public float Mass = 1f;
+    public float Damage = 0f;
+    public bool CanFall = false;
+    public float FallSpeed = 4f;
+
 }

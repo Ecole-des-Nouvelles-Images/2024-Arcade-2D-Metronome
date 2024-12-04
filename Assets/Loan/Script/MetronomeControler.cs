@@ -4,10 +4,12 @@ using UnityEngine.UI;
 public class MetronomeControler : MonoBehaviour
 {
     [SerializeField] NoteSpawner _noteSpawner;
+    [SerializeField] PiegeData _notePiegeData;
+    [SerializeField] Transform _piegeSpawnPoint;
     
     private InputSysteme _inputSysteme;
     private Image _image;
-    private int _score = 0;
+    private int _score = 5;
     private bool _canPress = true;
 
     private void Start()
@@ -31,8 +33,9 @@ public class MetronomeControler : MonoBehaviour
 
         if (_inputSysteme.PiegeUp == 1 && _score >= 5)
         {
-            Debug.Log("Piege Haut activé !");
-            _score = 0;
+            // Debug.Log("Piege Haut activé !");
+            SpawnPiege(_notePiegeData);
+            _score = -5;
         }
         
         if (_inputSysteme.PiegeRight == 1)
@@ -86,5 +89,22 @@ public class MetronomeControler : MonoBehaviour
     private void Reset()
     {
         _image.color = Color.white;
+    }
+
+    public void SpawnPiege(PiegeData piegeData)
+    {
+        if (piegeData == null)
+        {
+            Debug.LogError("Piege is null!");
+            return;
+        }
+
+        GameObject trap = new GameObject("Trap");
+        trap.transform.position = _piegeSpawnPoint.position;
+        
+        Piege piegeScript = trap.AddComponent<Piege>();
+        piegeScript.PiegeData = piegeData;
+
+        piegeScript.Initialize(_inputSysteme);
     }
 }

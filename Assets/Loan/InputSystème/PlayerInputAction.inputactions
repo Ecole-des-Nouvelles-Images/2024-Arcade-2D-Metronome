@@ -126,6 +126,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "PiegeActive",
+                    "type": "Button",
+                    "id": "6286e3d7-98b4-487d-b094-18b9705c9a53",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -192,6 +201,85 @@
                     "processors": "",
                     "groups": "",
                     "action": "PiegeMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae767c40-1979-4ddb-964f-26389543b72f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PiegeActive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UIControler",
+            "id": "9c48587b-351c-4aaa-a536-1fec7f57bfdf",
+            "actions": [
+                {
+                    "name": "UIMove",
+                    "type": "Value",
+                    "id": "e739a45e-c2b4-457b-84d0-b26e2e3cdca5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "UIValide",
+                    "type": "Button",
+                    "id": "a3a9ae62-bb61-410a-9f8c-153e60f25220",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "UICancel",
+                    "type": "Button",
+                    "id": "4f59625f-c7d4-492a-9d13-513a3ad28a70",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "04a727d2-f3a0-433d-814b-cca8974df2da",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UIMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee268f51-5594-4183-bba0-ca7bbcd67614",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UIValide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "adeee344-1907-41a1-b6e5-f6739662278c",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UICancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

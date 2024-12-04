@@ -52,7 +52,7 @@ public class MultiplePlayerCamera : MonoBehaviour
       
       Vector3 newPosition = centerPoint + _offset;
       
-      transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, _smoothTime);
+      transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, _smoothTime * Time.deltaTime);
    }
 
    float GetGreatestDistance()
