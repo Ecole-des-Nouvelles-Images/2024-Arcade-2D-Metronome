@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 7655993144078138148}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 905700753213581335}
   m_Layer: 6
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,15 +110,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 30.3, y: 10.800293}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7198383264803127912
@@ -167,6 +167,12 @@ MonoBehaviour:
   Jump: 0
   PowerUp: 0
   Active: 0
+  PiegeMove: {x: 0, y: 0}
+  PiegeUp: 0
+  PiegeRight: 0
+  PiegeDown: 0
+  PiegeLeft: 0
+  PiegeActive: 0
 --- !u!114 &6813344237376779143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,12 +185,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cfc46ea904f80a4d8b2c82191904015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runnerData: {fileID: 11400000, guid: 9b24caa1359e0a54a9126903895ca345, type: 2}
+  _runnerData: {fileID: 11400000, guid: 727385d9e7ded1345b4cd2855de2bf46, type: 2}
   _groundCheck: {fileID: 8142188939310551304}
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
   _chargeInterval: 1
+  _fallMultiplier: 1.25
+  _winMask:
+    serializedVersion: 2
+    m_Bits: 128
+  Speed: 7
+  JumpForce: 13
+  OriginalSpeed: 0
+  OriginalJump: 0
 --- !u!50 &6812310997153343440
 Rigidbody2D:
   serializedVersion: 4
@@ -200,17 +214,17 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 3
+  m_Material: {fileID: 6200000, guid: 95ff506a22cee8f4d9599c5def4fe581, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &905700753213581335
 BoxCollider2D:
@@ -248,12 +262,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 30.3, y: 10.800293}
+    newSize: {x: 30.3, y: 10.800293}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2.3}
   m_EdgeRadius: 0

@@ -1,11 +1,17 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewRunnerData", menuName = "ScriptableObjects/RunnerData")]
-public class RunnerData : ScriptableObject
+public abstract class RunnerData : ScriptableObject
 {
-    public Sprite sprite;
-    public float Speed;
-    public float JumpForce;
-    public int MaxPower;
+    public Sprite Sprite;
+    public float MaxPower;
+    public RuntimeAnimatorController AnimatorController;
+    public string Name;
     
+    public abstract void ApplyPowerUp  (RunnersControler runners);
+
+    public virtual void RemovePowerUp(RunnersControler runners)
+    {
+        Debug.Log("Power Up Removed" + Name);
+    }
+
 }
