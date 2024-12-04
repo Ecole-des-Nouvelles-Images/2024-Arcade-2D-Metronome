@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 2030808925, guid: f8546c4519bac78488ed9b1b1a4406db, type: 3}
   MaxPower: 5
+  AnimatorController: {fileID: 0}
+  Name: Chasseur
   SpeedMultiplier: 2

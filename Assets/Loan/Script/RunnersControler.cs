@@ -17,6 +17,8 @@ public class RunnersControler : MonoBehaviour
     private float _maxHoldTime = 0.5f;
     private float _maxJumpHeight = 20f;
     private float _holdJumpForce = 7f;
+    private RuntimeAnimatorController _animatorController;
+    private Animator _animator;
     
 
     [SerializeField] private RunnerData _runnerData;
@@ -43,6 +45,10 @@ public class RunnersControler : MonoBehaviour
         _cameraScript = FindObjectOfType<MultiplePlayerCamera>();
        _sR = GetComponent<SpriteRenderer>();
        _sR.sprite = _spriteRenderer;
+       _animator = GetComponent<Animator>();
+       _animatorController = _animator.runtimeAnimatorController;
+       _animatorController = _runnerData.AnimatorController;
+       _animator.runtimeAnimatorController = _animatorController;
     }
 
     private void Start()
@@ -75,11 +81,13 @@ public class RunnersControler : MonoBehaviour
        if (_inputSysteme.Move.x > 0 )
        {
            _sR.flipX = true;
+           _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
        }
 
        if (_inputSysteme.Move.x < 0 )
        {
            _sR.flipX = false;
+           _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
        }
        
        HandleJump();
@@ -87,6 +95,7 @@ public class RunnersControler : MonoBehaviour
        if (_rb.velocity.y <= 1)
        {
            _rb.velocity -= _gravity * _fallMultiplier * Time.deltaTime;
+           _animator.SetTrigger("isFalling");
        }
 
        if (_canUsePower && _inputSysteme.PowerUp == 1)
@@ -105,6 +114,7 @@ public class RunnersControler : MonoBehaviour
            _isHoldingJump = true;
            _jumpHolderTime = 0f;
            _currentJumpHeight = 0f;
+           _animator.SetTrigger("isJump");
        }
 
        if (jumpForceTime > 0 && _isHoldingJump && _jumpHolderTime < _maxHoldTime && _currentJumpHeight < _maxJumpHeight )
@@ -143,6 +153,7 @@ public class RunnersControler : MonoBehaviour
         {
             Debug.Log("Power Up activé !!");
            _runnerData.ApplyPowerUp(this);
+           _animator.SetBool("isPowerUP", true);
             
             Invoke(nameof(ResetPowerUp),4f);
         }
@@ -153,6 +164,7 @@ public class RunnersControler : MonoBehaviour
         _runnerData.RemovePowerUp(this);
         _currentPower = 0;
         _canUsePower = false;
+        _animator.SetBool("isPowerUP", false);
     }
 
     private void OnDestroy()
@@ -167,10 +179,16 @@ public class RunnersControler : MonoBehaviour
     {
         _health -= damage;
         Debug.Log($"Runner a pris {damage} damage. Vie restantes : {_health}");
+        
+        if (_health > 0)
+        {
+            _animator.SetTrigger("isHit");
+        }
 
         if (_health <= 0)
         {
-            Die();
+            _animator.SetTrigger("isDead");
+            Invoke(nameof(Die),4f);
         }
     }
 
