@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -31,9 +32,29 @@ public class GameManager : MonoBehaviour
 
    private void Start()
    {
-      ValidateDeviceIDs();
+      StartCoroutine(ValidateDevicesCoroutine());
       SpawnRunners();
       SetupMetronome();
+   }
+   
+   void Update()
+   {
+      if (Gamepad.all.Count == 0)
+      {
+         Debug.LogWarning("Aucune manette connectée.");
+      }
+      else
+      {
+         for (int i = 0; i < Gamepad.all.Count; i++)
+         {
+            Debug.Log($"Manette {i}: {Gamepad.all[i].displayName} (ID: {Gamepad.all[i].deviceId})");
+         }
+      }
+   }
+   private IEnumerator ValidateDevicesCoroutine()
+   {
+      yield return new WaitForSeconds(1f);  
+      ValidateDeviceIDs();
    }
 
    private void SpawnRunners()
@@ -59,21 +80,29 @@ public class GameManager : MonoBehaviour
 
    void SetupRunner(GameObject runner, RunnerData runnerData, int deviceID)
    {
-      if (deviceID >= 0 && deviceID < Gamepad.all.Count)
+      Gamepad gamepad = Gamepad.all.FirstOrDefault(g => g.deviceId == deviceID);
+      if (gamepad != null)
       {
          RunnersControler runnersControler = runner.GetComponent<RunnersControler>();
          if (runnersControler != null)
          {
             runnersControler.Setup(runnerData, deviceID);
+            Debug.Log($"Runner {runnerData.Name} configuré avec la manette {gamepad.displayName} (ID : {deviceID})");
          }
          else
          {
-            Debug.LogWarning("No runner controller found on the GameObject.");
+            Debug.LogError($"Contrôleur pour {runnerData.Name} non trouvé.");
          }
       }
       else
       {
-         Debug.LogError($"Invalid deviceID: {deviceID}. Cannot assign a Gamepad. Runner will use default controls.");
+         Debug.LogError($"Le deviceID {deviceID} est invalide. Impossible d'assigner un Gamepad. Le runner utilisera les contrôles par défaut.");
+         
+         RunnersControler runnersControler = runner.GetComponent<RunnersControler>();
+         if (runnersControler != null)
+         {
+            runnersControler.Setup(runnerData, -1); 
+         }
       }
    }
 
@@ -93,7 +122,7 @@ public class GameManager : MonoBehaviour
             Gamepad metronomeDevice = Gamepad.all.FirstOrDefault(g => g.deviceId == MainMenuManager.MetronomeID);
             if (metronomeDevice != null)
             {
-               metronomeInput.SwitchCurrentControlScheme("Gamepad", metronomeDevice);
+               metronomeInput.SwitchCurrentControlScheme(metronomeDevice);
                Debug.Log($"Le métronome est contrôlé par : {metronomeDevice.displayName} (ID : {MainMenuManager.MetronomeID})");
             }
             else
@@ -141,16 +170,22 @@ public class GameManager : MonoBehaviour
    
    private void ValidateDeviceIDs()
    {
-      for (int i = 0; i < MainMenuManager.DevicesID.Count; i++)
+      for (int i = 0; i < Gamepad.all.Count; i++)
       {
-         int deviceID = MainMenuManager.DevicesID[i];
-         if (!Gamepad.all.Any(g => g.deviceId == deviceID))
+         Debug.Log($"Manette {i}: {Gamepad.all[i].displayName} (ID: {Gamepad.all[i].deviceId})");
+      }
+      
+      foreach (int deviceID in MainMenuManager.DevicesID)
+      {
+         var gamepad = Gamepad.all.FirstOrDefault(g => g.deviceId == deviceID);
+         if (gamepad == null)
          {
-            Debug.LogWarning($"Device ID {deviceID} invalide. Retiré de la liste.");
-            MainMenuManager.DevicesID.RemoveAt(i);
-            i--; 
+            Debug.LogWarning($"Le deviceID {deviceID} est invalide.");
+         }
+         else
+         {
+            Debug.Log($"Le deviceID {deviceID} est valide : {gamepad.displayName}");
          }
       }
-      Debug.Log($"Valid Device IDs: {string.Join(", ", MainMenuManager.DevicesID)}");
    }
 }

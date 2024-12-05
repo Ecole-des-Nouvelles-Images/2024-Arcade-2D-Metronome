@@ -51,23 +51,22 @@ public class RunnersControler : MonoBehaviour
             _animator.runtimeAnimatorController = _runnerData.AnimatorController;
         }
         
-        if (deviceID >= 0 && deviceID < Gamepad.all.Count)
+        foreach (var gamepad in Gamepad.all)
         {
-            Gamepad device = Gamepad.all.FirstOrDefault(g => g.deviceId == deviceID);
-            if (device != null)
-            {
-                Debug.Log($"Manette assignée : {device.displayName} (ID : {deviceID})");
-                _inputSysteme.SwitchCurrentControlScheme(device);
-            }
-            else
-            {
-                Debug.LogError($"Device ID {deviceID} introuvable dans Gamepad.all.");
-            }
+            Debug.Log($"Manette disponible: {gamepad.displayName}, ID: {gamepad.deviceId}");
+        }
+        
+        Gamepad device = Gamepad.all.FirstOrDefault(g => g.deviceId == deviceID);
+        if (device != null)
+        {
+            Debug.Log($"Manette assignée : {device.displayName} (ID : {deviceID})");
+            _inputSysteme.SwitchCurrentControlScheme(device);
         }
         else
         {
-            Debug.LogError($"Device ID invalide ou manette non trouvée : {deviceID}");
+            Debug.LogError($"Device ID {deviceID} introuvable dans Gamepad.all.");
         }
+
     }
     private void Awake()
     {

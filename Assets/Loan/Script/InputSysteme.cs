@@ -187,12 +187,12 @@ public class InputSysteme : MonoBehaviour
         
         PiegeActive = context.ReadValue<float>();
     }
-
+    
     public void SwitchCurrentControlScheme(InputDevice device)
     {
         if (_playerInput != null)
         {
-            _playerInput.SwitchCurrentControlScheme("Gamepad", device);
+            _playerInput.SwitchCurrentControlScheme(device);
             Debug.Log("Contrôleur associé : " + device.displayName);
         }
         else
