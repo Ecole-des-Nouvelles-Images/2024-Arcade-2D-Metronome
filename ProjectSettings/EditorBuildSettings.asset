@@ -23,4 +23,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Loan/Scene_Choix.unity
     guid: 15a08db7fcd18b441ae595d44104a40d
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: d658461bd85a296418a5c4edbd05b078, type: 2}

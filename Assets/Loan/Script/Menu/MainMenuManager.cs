@@ -1,23 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] GameObject _menuPanel;
-    [SerializeField] GameObject _optionsPanel;
-    [SerializeField] GameObject _creditPanel;
-    
+    [SerializeField] private GameObject _menuPanel;
+    [SerializeField] private GameObject _optionsPanel;
+    [SerializeField] private GameObject _creditPanel;
+
+    private ChoixPersoManager _choixPersoManager;
+
     public static RunnerData FirstRunner;
     public static RunnerData SecondRunner;
     public static RunnerData ThirdRunner;
-    
-    public static int MetronomeID;
-    
+
+    public static int MetronomeID = -1;
+
     public static List<int> DevicesID = new List<int>();
-    private static Dictionary<int, bool> playerReadyStates = new Dictionary<int, bool>();
+
+    private void Start()
+    {
+        InitializeDevices();
+        
+        UpdateChoixPersoManager();
+    }
 
     public void OpenCharactersScene()
     {
@@ -42,11 +51,12 @@ public class MainMenuManager : MonoBehaviour
         _menuPanel.SetActive(true);
     }
 
-    private static void StartGame()
+    public void RetrunMenu()
     {
-        SceneManager.LoadScene(1);
+        ResetStaticData();
+        SceneManager.LoadScene(0);
     }
-    
+
     public void QuitGame()
     {
         Debug.Log("Quit Game");
@@ -60,33 +70,50 @@ public class MainMenuManager : MonoBehaviour
         _creditPanel.SetActive(false);
     }
 
-    public void RetrunMenu()
+    
+    private void InitializeDevices()
     {
-        SceneManager.LoadScene(0);
+        DevicesID.Clear(); 
+
+        foreach (Gamepad gamepad in Gamepad.all)
+        {
+            DevicesID.Add(gamepad.deviceId); 
+        }
+
+        Debug.Log($"DevicesID initialized: {string.Join(", ", DevicesID)}");
+        Debug.Log($"Manettes connectées : {Gamepad.all.Count}");
     }
     
-    // public static void SetPlayerReady(int playerID, bool isReady)
-    // {
-    //     if (DevicesID.Contains(playerID))
-    //     {
-    //         playerReadyStates[playerID] = isReady;
-    //         CheckAllPlayersReady();
-    //     }
-    //     else
-    //     {
-    //         Debug.LogWarning($"Player ID {playerID} non trouvé dans la liste des DevicesID.");
-    //     }
-    // }
+    public static bool IsDeviceIDValid(int deviceID)
+    {
+        return Gamepad.all.Any(g => g.deviceId == deviceID);
+    }
     
-    // private static void CheckAllPlayersReady()
-    // {
-    //     foreach (int playerID in DevicesID)
-    //     {
-    //         if (!playerReadyStates.ContainsKey(playerID) || !playerReadyStates[playerID])
-    //         {
-    //             return;
-    //         }
-    //     }
-    //     StartGame();
-    // }
+    private void ResetStaticData()
+    {
+        FirstRunner = null;
+        SecondRunner = null;
+        ThirdRunner = null;
+        MetronomeID = -1;
+        DevicesID.Clear();
+        Debug.Log("Données statiques réinitialisées.");
+    }
+    
+    private void UpdateChoixPersoManager()
+    {
+        _choixPersoManager = FindObjectOfType<ChoixPersoManager>();
+        if (_choixPersoManager == null)
+        {
+            Debug.LogWarning("ChoixPersoManager non encore instancié. Il sera trouvé dynamiquement plus tard.");
+        }
+        else
+        {
+            Debug.Log("ChoixPersoManager trouvé avec succès !");
+        }
+    }
+    
+    public void OnChoixPersoManagerSpawned()
+    {
+        UpdateChoixPersoManager();
+    }
 }

@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -52,12 +53,20 @@ public class RunnersControler : MonoBehaviour
         
         if (deviceID >= 0 && deviceID < Gamepad.all.Count)
         {
-            Gamepad device = Gamepad.all[deviceID];
-            _inputSysteme.SwitchCurrentControlScheme(device);
+            Gamepad device = Gamepad.all.FirstOrDefault(g => g.deviceId == deviceID);
+            if (device != null)
+            {
+                Debug.Log($"Manette assignée : {device.displayName} (ID : {deviceID})");
+                _inputSysteme.SwitchCurrentControlScheme(device);
+            }
+            else
+            {
+                Debug.LogError($"Device ID {deviceID} introuvable dans Gamepad.all.");
+            }
         }
         else
         {
-            Debug.LogError("Device ID invalide ou manette non trouvée.");
+            Debug.LogError($"Device ID invalide ou manette non trouvée : {deviceID}");
         }
     }
     private void Awake()
@@ -103,13 +112,13 @@ public class RunnersControler : MonoBehaviour
        if (_inputSysteme.Move.x > 0 )
        {
            _sR.flipX = true;
-           _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
+           // _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
        }
 
        if (_inputSysteme.Move.x < 0 )
        {
            _sR.flipX = false;
-           _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
+           // _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
        }
        
        HandleJump();
@@ -117,7 +126,7 @@ public class RunnersControler : MonoBehaviour
        if (_rb.velocity.y <= 1)
        {
            _rb.velocity -= _gravity * _fallMultiplier * Time.deltaTime;
-           _animator.SetTrigger("isFalling");
+           // _animator.SetTrigger("isFalling");
        }
 
        if (_canUsePower && _inputSysteme.PowerUp == 1)
@@ -136,7 +145,7 @@ public class RunnersControler : MonoBehaviour
            _isHoldingJump = true;
            _jumpHolderTime = 0f;
            _currentJumpHeight = 0f;
-           _animator.SetTrigger("isJump");
+           // _animator.SetTrigger("isJump");
        }
 
        if (jumpForceTime > 0 && _isHoldingJump && _jumpHolderTime < _maxHoldTime && _currentJumpHeight < _maxJumpHeight )
@@ -175,7 +184,7 @@ public class RunnersControler : MonoBehaviour
         {
             Debug.Log("Power Up activé !!");
            _runnerData.ApplyPowerUp(this);
-           _animator.SetBool("isPowerUP", true);
+           // _animator.SetBool("isPowerUP", true);
             
             Invoke(nameof(ResetPowerUp),4f);
         }
@@ -186,7 +195,7 @@ public class RunnersControler : MonoBehaviour
         _runnerData.RemovePowerUp(this);
         _currentPower = 0;
         _canUsePower = false;
-        _animator.SetBool("isPowerUP", false);
+        // _animator.SetBool("isPowerUP", false);
     }
 
     private void OnDestroy()
@@ -204,12 +213,12 @@ public class RunnersControler : MonoBehaviour
         
         if (_health > 0)
         {
-            _animator.SetTrigger("isHit");
+            // _animator.SetTrigger("isHit");
         }
 
         if (_health <= 0)
         {
-            _animator.SetTrigger("isDead");
+            // _animator.SetTrigger("isDead");
             Invoke(nameof(Die),4f);
         }
     }

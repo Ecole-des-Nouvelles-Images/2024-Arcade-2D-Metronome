@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -15,30 +16,45 @@ public class ChoixPersoManager : MonoBehaviour
     [SerializeField] private RunnerData _runnerMoine;
     [SerializeField] private RunnerData _runnerMage;
 
-    private int _deviceID;
-    private bool _ready ;
+    private Gamepad _assignedGamepad;
+    private static int _playerCount = 0;
 
+    
+    void Start()
+    {
+        MainMenuManager mainMenuManager = FindObjectOfType<MainMenuManager>();
+        if (mainMenuManager != null)
+        {
+            mainMenuManager.OnChoixPersoManagerSpawned();
+        }
+    }
     private void OnEnable()
     {
-        if (Gamepad.current != null)
+        
+        if (Gamepad.all.Count > _playerCount)
         {
-            _deviceID = Gamepad.current.deviceId;
+            _assignedGamepad = Gamepad.all[_playerCount]; 
+            int deviceID = _assignedGamepad.deviceId;
 
-            if (!MainMenuManager.DevicesID.Contains(_deviceID))
+            if (!MainMenuManager.DevicesID.Contains(deviceID))
             {
-                MainMenuManager.DevicesID.Add(_deviceID);
+                MainMenuManager.DevicesID.Add(deviceID);
             }
+
+            Debug.Log($"Manette assignée au joueur {_playerCount + 1} : {_assignedGamepad.displayName}, ID : {deviceID}");
+
+            _chasseurButton.onClick.AddListener(() => SelectRunner(_runnerChasseur, deviceID, 1));
+            _moineButton.onClick.AddListener(() => SelectRunner(_runnerMoine, deviceID, 2));
+            _mageButton.onClick.AddListener(() => SelectRunner(_runnerMage, deviceID, 3));
+            _metronomeButton.onClick.AddListener(() => SelectMetronome(deviceID));
+            _readyButton.onClick.AddListener(() => SceneManager.LoadScene(1));
+
+            _playerCount++;
         }
         else
         {
-            Debug.LogWarning("Aucune manette détectée !");
+            Debug.LogWarning("Pas assez de manettes connectées pour attribuer à ce joueur !");
         }
-        
-        _chasseurButton.onClick.AddListener(() => SelectRunner(_runnerChasseur, _deviceID,1));
-        _moineButton.onClick.AddListener(() => SelectRunner(_runnerMoine, _deviceID,2));
-        _mageButton.onClick.AddListener(() => SelectRunner(_runnerMage, _deviceID,3));
-        _metronomeButton.onClick.AddListener(() => SelectMetronome(_deviceID));
-        _readyButton.onClick.AddListener(() => SceneManager.LoadScene(1));
     }
 
     private void OnDisable()
@@ -53,58 +69,34 @@ public class ChoixPersoManager : MonoBehaviour
     {
         switch (choix)
         {
-           case 1 :
-               MainMenuManager.FirstRunner = runner;
-               break;
-           case 2 :
-               MainMenuManager.SecondRunner = runner;
-               break;
-           case 3 :
-               MainMenuManager.ThirdRunner = runner;
-               break;
+            case 1:
+                MainMenuManager.FirstRunner = runner;
+                break;
+            case 2:
+                MainMenuManager.SecondRunner = runner;
+                break;
+            case 3:
+                MainMenuManager.ThirdRunner = runner;
+                break;
         }
+
         DisableAllButtons();
         Debug.Log($"Runner {runner.Name} sélectionné avec Device ID {deviceID} pour le slot {choix}.");
     }
+
     private void SelectMetronome(int deviceID)
     {
         MainMenuManager.MetronomeID = deviceID;
         Debug.Log($"Métronome instancié avec Device ID {deviceID}.");
         DisableAllButtons();
     }
-    
+
     private void DisableAllButtons()
     {
         _chasseurButton.interactable = false;
         _moineButton.interactable = false;
         _mageButton.interactable = false;
         _metronomeButton.interactable = false;
-        // OnReady();
     }
-
-    // private void OnReady()
-    // {
-    //     SetReady(true);
-    // }
-
-    // private void SetReady(bool readyState)
-    // {
-    //     _ready = readyState;
-    //     MainMenuManager.SetPlayerReady(_deviceID, _ready);
-    // }
-
-    public void ResetSelection()
-    {
-        MainMenuManager.FirstRunner = null;
-        MainMenuManager.SecondRunner = null;
-        MainMenuManager.ThirdRunner = null;
-        MainMenuManager.MetronomeID = -1;
-
-        foreach (int id in MainMenuManager.DevicesID)
-        {
-            Debug.Log($"Reset Device ID : {id}");
-        }
-
-        MainMenuManager.DevicesID.Clear();
-    }
+    
 }
