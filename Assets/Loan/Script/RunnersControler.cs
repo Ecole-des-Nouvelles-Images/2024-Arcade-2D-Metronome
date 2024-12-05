@@ -46,10 +46,10 @@ public class RunnersControler : MonoBehaviour
         _runnerData = data;
         _sR.sprite = _runnerData.Sprite;
 
-        if (_runnerData.AnimatorController != null)
-        {
-            _animator.runtimeAnimatorController = _runnerData.AnimatorController;
-        }
+        // if (_runnerData.AnimatorController != null)
+        // {
+        //     _animator.runtimeAnimatorController = _runnerData.AnimatorController;
+        // }
         
         foreach (var gamepad in Gamepad.all)
         {
@@ -75,10 +75,10 @@ public class RunnersControler : MonoBehaviour
         _cameraScript = FindObjectOfType<MultiplePlayerCamera>();
        _sR = GetComponent<SpriteRenderer>();
        _sR.sprite = _spriteRenderer;
-       _animator = GetComponent<Animator>();
-       _animatorController = _animator.runtimeAnimatorController;
-       _animatorController = _runnerData.AnimatorController;
-       _animator.runtimeAnimatorController = _animatorController;
+       // _animator = GetComponent<Animator>();
+       // _animatorController = _animator.runtimeAnimatorController;
+       // _animatorController = _runnerData.AnimatorController;
+       // _animator.runtimeAnimatorController = _animatorController;
     }
 
     private void Start()

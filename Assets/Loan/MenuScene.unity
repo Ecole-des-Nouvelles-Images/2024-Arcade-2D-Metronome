@@ -3336,7 +3336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26470502e446f24ea4dad3268a24938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 313062752}
   Button: {fileID: 1655227502}
 --- !u!1 &953753154
 GameObject:
@@ -4128,7 +4128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a26470502e446f24ea4dad3268a24938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventSystem: {fileID: 0}
+  eventSystem: {fileID: 313062752}
   Button: {fileID: 692767745}
 --- !u!1 &1525038814
 GameObject:

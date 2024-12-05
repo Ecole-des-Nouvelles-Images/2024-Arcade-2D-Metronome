@@ -43,13 +43,6 @@ public class GameManager : MonoBehaviour
       {
          Debug.LogWarning("Aucune manette connectée.");
       }
-      else
-      {
-         for (int i = 0; i < Gamepad.all.Count; i++)
-         {
-            Debug.Log($"Manette {i}: {Gamepad.all[i].displayName} (ID: {Gamepad.all[i].deviceId})");
-         }
-      }
    }
    private IEnumerator ValidateDevicesCoroutine()
    {
