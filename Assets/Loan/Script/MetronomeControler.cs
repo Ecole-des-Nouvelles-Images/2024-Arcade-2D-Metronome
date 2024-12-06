@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MetronomeControler : MonoBehaviour
@@ -11,41 +12,50 @@ public class MetronomeControler : MonoBehaviour
     private Image _image;
     private int _score = 5;
     private bool _canPress = true;
+    private int _iD;
 
     private void Start()
     {
         _inputSysteme = GetComponent<InputSysteme>();
         _image = GetComponent<Image>();
+        _iD = MainMenuManager.MetronomeID;
     }
 
     private void Update()
     {
-        if (_inputSysteme.Active == 1 && _canPress)
+        if (Gamepad.current.deviceId == _iD)
         {
-            HandleButtonPress();
-        }
+            if (_inputSysteme.Active == 1 && _canPress)
+            {
+                HandleButtonPress();
+            }
         
-        //test
-        if (_inputSysteme.PiegeLeft == 1)
-        {
-            Debug.Log("Piege gauche activé !");
-        }
+            //test
+            if (_inputSysteme.PiegeLeft == 1)
+            {
+                Debug.Log("Piege gauche activé !");
+            }
 
-        if (_inputSysteme.PiegeUp == 1 && _score >= 5)
-        {
-            // Debug.Log("Piege Haut activé !");
-            SpawnPiege(_notePiegeData);
-            _score = 0;
-        }
+            if (_inputSysteme.PiegeUp == 1 && _score >= 5)
+            {
+                // Debug.Log("Piege Haut activé !");
+                SpawnPiege(_notePiegeData);
+                _score = 0;
+            }
         
-        if (_inputSysteme.PiegeRight == 1)
-        {
-            Debug.Log("Piege Droit activé !");
-        }
+            if (_inputSysteme.PiegeRight == 1)
+            {
+                Debug.Log("Piege Droit activé !");
+            }
         
-        if (_inputSysteme.PiegeDown == 1)
+            if (_inputSysteme.PiegeDown == 1)
+            {
+                Debug.Log("Piege Bas activé !");
+            }
+        }
+        else
         {
-            Debug.Log("Piege Bas activé !");
+            Debug.Log("Pas la bonne ID de Manette");
         }
     }
 

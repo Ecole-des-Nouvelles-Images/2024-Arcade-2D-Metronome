@@ -18,6 +18,9 @@ public class MainMenuManager : MonoBehaviour
     public static RunnerData ThirdRunner;
 
     public static int MetronomeID = -1;
+    public static int ChasseurID;
+    public static int MoineID;
+    public static int MageID;
 
     public static List<int> DevicesID = new List<int>();
 

@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
          RunnersControler runnersControler = runner.GetComponent<RunnersControler>();
          if (runnersControler != null)
          {
-            runnersControler.Setup(runnerData, -1); 
+            runnersControler.Setup(runnerData, 1); 
          }
       }
    }
@@ -107,7 +107,9 @@ public class GameManager : MonoBehaviour
          return;
       }
       
-      if (_metronomeControll != null && MainMenuManager.MetronomeID >= 0 && MainMenuManager.DevicesID.Contains(MainMenuManager.MetronomeID))
+      if (_metronomeControll != null && MainMenuManager.MetronomeID >= 0 
+                                     // && MainMenuManager.DevicesID.Contains(MainMenuManager.MetronomeID)
+                                     )
       {
          PlayerInput metronomeInput = _metronomeControll.GetComponent<PlayerInput>();
          if (metronomeInput != null)

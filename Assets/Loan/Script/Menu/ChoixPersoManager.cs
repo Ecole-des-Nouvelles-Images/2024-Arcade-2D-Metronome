@@ -71,12 +71,15 @@ public class ChoixPersoManager : MonoBehaviour
         {
             case 1:
                 MainMenuManager.FirstRunner = runner;
+                MainMenuManager.ChasseurID = deviceID;
                 break;
             case 2:
                 MainMenuManager.SecondRunner = runner;
+                MainMenuManager.MoineID = deviceID;
                 break;
             case 3:
                 MainMenuManager.ThirdRunner = runner;
+                MainMenuManager.MageID = deviceID;
                 break;
         }
 
@@ -87,6 +90,11 @@ public class ChoixPersoManager : MonoBehaviour
     private void SelectMetronome(int deviceID)
     {
         MainMenuManager.MetronomeID = deviceID;
+        if (MainMenuManager.DevicesID.Remove(deviceID))
+        {
+            MainMenuManager.DevicesID.Remove(deviceID);
+            Debug.Log(deviceID + "Remove de la List");
+        }
         Debug.Log($"Métronome instancié avec Device ID {deviceID}.");
         DisableAllButtons();
     }

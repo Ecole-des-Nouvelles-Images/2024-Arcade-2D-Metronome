@@ -22,11 +22,21 @@ public class InputSysteme : MonoBehaviour
     
 
     private PlayerInput _playerInput;
+    private MetronomeControler _metronomeControler;
+    private RunnersControler _runnersControler;
     private bool _isControllerConnected;
 
     private void Awake()
     {
         _playerInput = GetComponent<PlayerInput>();
+        if (_runnersControler)
+        {
+            _runnersControler = GetComponent<RunnersControler>();
+        }
+        else
+        {
+            _metronomeControler = GetComponent<MetronomeControler>();
+        }
         if (_playerInput == null) throw new NullReferenceException("PlayerInputManager is null");
     }
 
@@ -70,6 +80,11 @@ public class InputSysteme : MonoBehaviour
         
 
         DetectCurrentInputDevice();
+    }
+
+    private void Update()
+    {
+        Debug.Log(_playerInput.defaultActionMap);
     }
 
     private void OnDisable()
@@ -132,7 +147,6 @@ public class InputSysteme : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context)
     {
         Move = context.ReadValue<Vector2>();
-
     }
 
     private void OnJump(InputAction.CallbackContext context)
@@ -155,36 +169,30 @@ public class InputSysteme : MonoBehaviour
     private void OnPiegeMove(InputAction.CallbackContext context)
     {
         PiegeMove = context.ReadValue<Vector2>();
-
     }
     
     private void OnPiegeUp(InputAction.CallbackContext context)
     {
-        
         PiegeUp = context.ReadValue<float>();
     }
     
     private void OnPiegeRight(InputAction.CallbackContext context)
     {
-        
         PiegeRight = context.ReadValue<float>();
     }
     
     private void OnPiegeDown(InputAction.CallbackContext context)
     {
-        
         PiegeDown = context.ReadValue<float>();
     }
     
     private void OnPiegeLeft(InputAction.CallbackContext context)
     {
-        
         PiegeLeft = context.ReadValue<float>();
     }
     
     private void OnPiegeActive(InputAction.CallbackContext context)
     {
-        
         PiegeActive = context.ReadValue<float>();
     }
     
