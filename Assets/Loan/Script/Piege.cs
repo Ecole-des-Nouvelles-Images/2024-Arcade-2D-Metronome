@@ -13,6 +13,7 @@ public class Piege : MonoBehaviour
     private float _destroyTime = 5f;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rb;
+    private int _iD;
 
 
     public void Initialize(InputSysteme inputSysteme)
@@ -40,36 +41,40 @@ public class Piege : MonoBehaviour
             _rb.gravityScale = 0f;
         }
         gameObject.AddComponent<BoxCollider2D>();
+        _iD = MainMenuManager.MetronomeID;
     }
 
     private void Update()
     {
-        if (!_isFalling)
+        if (Gamepad.current.deviceId == _iD)
         {
-            float horizontalInput = _inputSysteme.PiegeMove.x;
-            Vector2 position = _rb.velocity;
-            position.x = horizontalInput * Time.deltaTime * 5000f;
-            position.x = Mathf.Clamp(position.x,-Camera.main.orthographicSize, Camera.main.orthographicSize);
-            _rb.velocity = position;
-        }
-
-        if (_inputSysteme.PiegeActive > 0.5f && PiegeData.CanFall)
-        {
-            _isFalling = true;
-            
-            Rigidbody2D rb = GetComponent<Rigidbody2D>();
-            if (rb != null)
+            if (!_isFalling)
             {
-                rb.gravityScale = PiegeData.Mass;
+                float horizontalInput = _inputSysteme.PiegeMove.x;
+                Vector2 position = _rb.velocity;
+                position.x = horizontalInput * Time.deltaTime * 5000f;
+                position.x = Mathf.Clamp(position.x,-Camera.main.orthographicSize, Camera.main.orthographicSize);
+                _rb.velocity = position;
             }
-        }
 
-        if (_isFalling)
-        {
-            _destroyTime -= Time.deltaTime;
-            if (_destroyTime <= 0)
+            if (_inputSysteme.PiegeActive > 0.5f && PiegeData.CanFall)
             {
-                Destroy(gameObject);
+                _isFalling = true;
+            
+                Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                if (rb != null)
+                {
+                    rb.gravityScale = PiegeData.Mass;
+                }
+            }
+
+            if (_isFalling)
+            {
+                _destroyTime -= Time.deltaTime;
+                if (_destroyTime <= 0)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

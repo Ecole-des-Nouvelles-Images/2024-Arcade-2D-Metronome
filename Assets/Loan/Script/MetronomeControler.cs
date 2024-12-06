@@ -53,10 +53,7 @@ public class MetronomeControler : MonoBehaviour
                 Debug.Log("Piege Bas activé !");
             }
         }
-        else
-        {
-            Debug.Log("Pas la bonne ID de Manette");
-        }
+        
     }
 
     private void HandleButtonPress()

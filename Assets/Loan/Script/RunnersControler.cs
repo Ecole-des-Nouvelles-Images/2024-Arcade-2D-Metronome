@@ -26,7 +26,7 @@ public class RunnersControler : MonoBehaviour
     private float _currentJumpHeight;
     private int _currentPower;
     private Vector2 _gravity;
-    private float _health = 1f;
+    private float _health = 3f;
     private readonly float _holdJumpForce = 7f;
     private InputSysteme _inputSysteme;
     private bool _isGrounded;
@@ -37,6 +37,7 @@ public class RunnersControler : MonoBehaviour
     private Rigidbody2D _rb;
     private SpriteRenderer _sR;
     private int _iD;
+    [SerializeField]private string _name;
     private float MaxPower => _runnerData.MaxPower;
     private Sprite _spriteRenderer => _runnerData.Sprite;
 
@@ -61,10 +62,24 @@ public class RunnersControler : MonoBehaviour
 
         InvokeRepeating(nameof(ChargePowerUp), 0f, _chargeInterval);
 
+        _name = _runnerData.Name;
         OriginalSpeed = Speed;
         OriginalJump = JumpForce;
         _gravity = new Vector2(0, -Physics2D.gravity.y);
-        _iD = MainMenuManager.MoineID;
+        if (_name == "Moine")
+        {
+            _iD = MainMenuManager.MoineID;
+        }
+
+        if (_name == "Chasseur")
+        {
+            _iD = MainMenuManager.ChasseurID;
+        }
+
+        if (_name == "Mage")
+        {
+            _iD = MainMenuManager.MageID;
+        }
     }
 
     private void Update()
@@ -89,10 +104,6 @@ public class RunnersControler : MonoBehaviour
             if (_rb.velocity.y <= 1) _rb.velocity -= _gravity * _fallMultiplier * Time.deltaTime;
             // _animator.SetTrigger("isFalling");
             if (_canUsePower && _inputSysteme.PowerUp == 1) ActivatePowerUp();
-        }
-        else
-        {
-            Debug.Log("Pas la bonne ID de Manette");
         }
     }
 
@@ -204,7 +215,7 @@ public class RunnersControler : MonoBehaviour
 
         if (_health <= 0)
             // _animator.SetTrigger("isDead");
-            Invoke(nameof(Die), 4f);
+            Invoke(nameof(Die), 2f);
     }
 
     private void Die()

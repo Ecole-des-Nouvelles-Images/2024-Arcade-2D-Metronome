@@ -82,11 +82,6 @@ public class InputSysteme : MonoBehaviour
         DetectCurrentInputDevice();
     }
 
-    private void Update()
-    {
-        Debug.Log(_playerInput.defaultActionMap);
-    }
-
     private void OnDisable()
     {
         InputSystem.onDeviceChange -= OnDeviceChange;
