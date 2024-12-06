@@ -122,6 +122,7 @@ public class RunnersControler : MonoBehaviour
     {
         _runnerData = data;
         _sR.sprite = _runnerData.Sprite;
+        _iD = deviceID;
 
         // if (_runnerData.AnimatorController != null)
         // {

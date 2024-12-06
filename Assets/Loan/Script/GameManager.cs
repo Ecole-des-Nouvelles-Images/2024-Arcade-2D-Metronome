@@ -54,20 +54,23 @@ public class GameManager : MonoBehaviour
    {
       Debug.Log("DevicesID List: " + string.Join(", ", MainMenuManager.DevicesID));
 
-      if (MainMenuManager.FirstRunner != null && MainMenuManager.DevicesID.Count > 0)
+      if (MainMenuManager.FirstRunner != null //&& MainMenuManager.DevicesID.Count > 0
+          )
       {
          GameObject runner1 = Instantiate(_runnerPrefab, _runnerSpawn1.position, Quaternion.identity);
-         SetupRunner(runner1, MainMenuManager.FirstRunner, MainMenuManager.DevicesID[0]);
+         SetupRunner(runner1, MainMenuManager.FirstRunner, MainMenuManager.ChasseurID);
       }
-      if (MainMenuManager.SecondRunner != null && MainMenuManager.DevicesID.Count > 1)
+      if (MainMenuManager.SecondRunner != null //&& MainMenuManager.DevicesID.Count > 1 
+          )
       {
          GameObject runner2 = Instantiate(_runnerPrefab, _runnerSpawn2.position, Quaternion.identity);
-         SetupRunner(runner2, MainMenuManager.SecondRunner, MainMenuManager.DevicesID[1]);
+         SetupRunner(runner2, MainMenuManager.SecondRunner, MainMenuManager.MoineID);
       }
-      if (MainMenuManager.ThirdRunner != null && MainMenuManager.DevicesID.Count > 2)
+      if (MainMenuManager.ThirdRunner != null //&& MainMenuManager.DevicesID.Count > 2
+          )
       {
          GameObject runner3 = Instantiate(_runnerPrefab, _runnerSpawn3.position, Quaternion.identity);
-         SetupRunner(runner3, MainMenuManager.ThirdRunner, MainMenuManager.DevicesID[2]);
+         SetupRunner(runner3, MainMenuManager.ThirdRunner, MainMenuManager.MageID);
       }
    }
 
@@ -107,8 +110,7 @@ public class GameManager : MonoBehaviour
          return;
       }
       
-      if (_metronomeControll != null && MainMenuManager.MetronomeID >= 0 
-                                     // && MainMenuManager.DevicesID.Contains(MainMenuManager.MetronomeID)
+      if (_metronomeControll != null && MainMenuManager.MetronomeID >= 0 && MainMenuManager.DevicesID.Contains(MainMenuManager.MetronomeID)
                                      )
       {
          PlayerInput metronomeInput = _metronomeControll.GetComponent<PlayerInput>();
