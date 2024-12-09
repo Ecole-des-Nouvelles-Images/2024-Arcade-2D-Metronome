@@ -17,17 +17,17 @@ public class MainMenuManager : MonoBehaviour
     public static RunnerData SecondRunner;
     public static RunnerData ThirdRunner;
 
-    public static int MetronomeID = -1;
-    public static int ChasseurID;
-    public static int MoineID;
-    public static int MageID;
+    public static Gamepad MetronomeID;
+    public static Gamepad ChasseurID;
+    public static Gamepad MoineID;
+    public static Gamepad MageID;
 
-    public static List<int> DevicesID = new List<int>();
+    // public static List<int> DevicesID = new List<int>();
+    public static List<Gamepad> AssignedGamepads = new List<Gamepad>();
 
     private void Start()
     {
         InitializeDevices();
-        
         UpdateChoixPersoManager();
     }
 
@@ -76,14 +76,14 @@ public class MainMenuManager : MonoBehaviour
     
     private void InitializeDevices()
     {
-        DevicesID.Clear(); 
+        AssignedGamepads.Clear(); 
 
         foreach (Gamepad gamepad in Gamepad.all)
         {
-            DevicesID.Add(gamepad.deviceId); 
+            AssignedGamepads.Add(gamepad); 
         }
 
-        Debug.Log($"DevicesID initialized: {string.Join(", ", DevicesID)}");
+        Debug.Log($"DevicesID initialized: {string.Join(", ", AssignedGamepads)}");
         Debug.Log($"Manettes connectées : {Gamepad.all.Count}");
     }
     
@@ -97,8 +97,8 @@ public class MainMenuManager : MonoBehaviour
         FirstRunner = null;
         SecondRunner = null;
         ThirdRunner = null;
-        MetronomeID = -1;
-        DevicesID.Clear();
+        MetronomeID = null;
+        AssignedGamepads.Clear();
         Debug.Log("Données statiques réinitialisées.");
     }
     

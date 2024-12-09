@@ -9,21 +9,23 @@ public class MetronomeControler : MonoBehaviour
     [SerializeField] Transform _piegeSpawnPoint;
     
     private InputSysteme _inputSysteme;
+    private PlayerInput _playerInput;
     private Image _image;
     private int _score = 5;
     private bool _canPress = true;
-    private int _iD;
+    private Gamepad _assignedGamepad;
 
     private void Start()
     {
         _inputSysteme = GetComponent<InputSysteme>();
         _image = GetComponent<Image>();
-        _iD = MainMenuManager.MetronomeID;
+        _assignedGamepad = MainMenuManager.MetronomeID;
+        _playerInput = GetComponent<PlayerInput>();
     }
 
     private void Update()
     {
-        if (Gamepad.current.deviceId == _iD)
+        if (_assignedGamepad != null && _assignedGamepad == Gamepad.current)
         {
             if (_inputSysteme.Active == 1 && _canPress)
             {

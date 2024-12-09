@@ -33,20 +33,19 @@ public class ChoixPersoManager : MonoBehaviour
         
         if (Gamepad.all.Count > _playerCount)
         {
-            _assignedGamepad = Gamepad.all[_playerCount]; 
-            int deviceID = _assignedGamepad.deviceId;
+            _assignedGamepad = Gamepad.all[_playerCount];
 
-            if (!MainMenuManager.DevicesID.Contains(deviceID))
+            if (!MainMenuManager.AssignedGamepads.Contains(_assignedGamepad))
             {
-                MainMenuManager.DevicesID.Add(deviceID);
+                MainMenuManager.AssignedGamepads.Add(_assignedGamepad);
             }
 
-            Debug.Log($"Manette assignée au joueur {_playerCount + 1} : {_assignedGamepad.displayName}, ID : {deviceID}");
+            Debug.Log($"Manette assignée au joueur {_playerCount + 1} : {_assignedGamepad.displayName}");
 
-            _chasseurButton.onClick.AddListener(() => SelectRunner(_runnerChasseur, deviceID, 1));
-            _moineButton.onClick.AddListener(() => SelectRunner(_runnerMoine, deviceID, 2));
-            _mageButton.onClick.AddListener(() => SelectRunner(_runnerMage, deviceID, 3));
-            _metronomeButton.onClick.AddListener(() => SelectMetronome(deviceID));
+            _chasseurButton.onClick.AddListener(() => SelectRunner(_runnerChasseur, _assignedGamepad, 1));
+            _moineButton.onClick.AddListener(() => SelectRunner(_runnerMoine, _assignedGamepad, 2));
+            _mageButton.onClick.AddListener(() => SelectRunner(_runnerMage, _assignedGamepad, 3));
+            _metronomeButton.onClick.AddListener(() => SelectMetronome(_assignedGamepad));
             _readyButton.onClick.AddListener(() => SceneManager.LoadScene(1));
 
             _playerCount++;
@@ -65,37 +64,32 @@ public class ChoixPersoManager : MonoBehaviour
         _metronomeButton.onClick.RemoveAllListeners();
     }
 
-    private void SelectRunner(RunnerData runner, int deviceID, int choix)
+    private void SelectRunner(RunnerData runner, Gamepad gamepad, int choix)
     {
         switch (choix)
         {
             case 1:
                 MainMenuManager.FirstRunner = runner;
-                MainMenuManager.ChasseurID = deviceID;
+                MainMenuManager.ChasseurID = gamepad;
                 break;
             case 2:
                 MainMenuManager.SecondRunner = runner;
-                MainMenuManager.MoineID = deviceID;
+                MainMenuManager.MoineID = gamepad;
                 break;
             case 3:
                 MainMenuManager.ThirdRunner = runner;
-                MainMenuManager.MageID = deviceID;
+                MainMenuManager.MageID = gamepad;
                 break;
         }
 
         DisableAllButtons();
-        Debug.Log($"Runner {runner.Name} sélectionné avec Device ID {deviceID} pour le slot {choix}.");
+        Debug.Log($"Runner {runner.Name} sélectionné avec la manette {gamepad.displayName} pour le slot {choix}.");
     }
 
-    private void SelectMetronome(int deviceID)
+    private void SelectMetronome(Gamepad gamepad)
     {
-        MainMenuManager.MetronomeID = deviceID;
-        // if (MainMenuManager.DevicesID.Remove(deviceID))
-        // {
-        //     MainMenuManager.DevicesID.Remove(deviceID);
-        //     Debug.Log(deviceID + "Remove de la List");
-        // }
-        Debug.Log($"Métronome instancié avec Device ID {deviceID}.");
+        MainMenuManager.MetronomeID = gamepad;
+        Debug.Log($"Métronome instancié avec la manette {gamepad.displayName}.");
         DisableAllButtons();
     }
 

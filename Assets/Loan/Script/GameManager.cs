@@ -33,8 +33,7 @@ public class GameManager : MonoBehaviour
    private void Start()
    {
       StartCoroutine(ValidateDevicesCoroutine());
-      SpawnRunners();
-      SetupMetronome();
+      ValidateDeviceIDs();
    }
    
    void Update()
@@ -47,26 +46,29 @@ public class GameManager : MonoBehaviour
    private IEnumerator ValidateDevicesCoroutine()
    {
       yield return new WaitForSeconds(1f);  
-      ValidateDeviceIDs();
+      SpawnRunners();
+      SetupMetronome();
    }
 
    private void SpawnRunners()
    {
-      Debug.Log("DevicesID List: " + string.Join(", ", MainMenuManager.DevicesID));
+      Debug.Log($"ChasseurID : {MainMenuManager.ChasseurID} ID {MainMenuManager.ChasseurID.deviceId}");
+      // Debug.Log($"MoineID : {MainMenuManager.MoineID} ID {MainMenuManager.MoineID.deviceId}");
+      // Debug.Log($"MageID : {MainMenuManager.MageID} ID {MainMenuManager.MageID.deviceId}");
 
-      if (MainMenuManager.FirstRunner != null //&& MainMenuManager.DevicesID.Count > 0
+      if (MainMenuManager.FirstRunner != null && MainMenuManager.ChasseurID != null
           )
       {
          GameObject runner1 = Instantiate(_runnerPrefab, _runnerSpawn1.position, Quaternion.identity);
          SetupRunner(runner1, MainMenuManager.FirstRunner, MainMenuManager.ChasseurID);
       }
-      if (MainMenuManager.SecondRunner != null //&& MainMenuManager.DevicesID.Count > 1 
+      if (MainMenuManager.SecondRunner != null && MainMenuManager.MoineID != null
           )
       {
          GameObject runner2 = Instantiate(_runnerPrefab, _runnerSpawn2.position, Quaternion.identity);
          SetupRunner(runner2, MainMenuManager.SecondRunner, MainMenuManager.MoineID);
       }
-      if (MainMenuManager.ThirdRunner != null //&& MainMenuManager.DevicesID.Count > 2
+      if (MainMenuManager.ThirdRunner != null && MainMenuManager.MageID != null
           )
       {
          GameObject runner3 = Instantiate(_runnerPrefab, _runnerSpawn3.position, Quaternion.identity);
@@ -74,58 +76,43 @@ public class GameManager : MonoBehaviour
       }
    }
 
-   void SetupRunner(GameObject runner, RunnerData runnerData, int deviceID)
+   void SetupRunner(GameObject runner, RunnerData runnerData, Gamepad gamepad)
    {
-      Gamepad gamepad = Gamepad.all.FirstOrDefault(g => g.deviceId == deviceID);
+      RunnersControler runnersControler = runner.GetComponent<RunnersControler>();
+
+      if (runnersControler == null)
+      {
+         Debug.LogError($"Contrôleur pour {runnerData.Name} non trouvé.");
+         return;
+      }
+
       if (gamepad != null)
       {
-         RunnersControler runnersControler = runner.GetComponent<RunnersControler>();
-         if (runnersControler != null)
-         {
-            runnersControler.Setup(runnerData, deviceID);
-            Debug.Log($"Runner {runnerData.Name} configuré avec la manette {gamepad.displayName} (ID : {deviceID})");
-         }
-         else
-         {
-            Debug.LogError($"Contrôleur pour {runnerData.Name} non trouvé.");
-         }
+         runnersControler.Setup(runnerData, gamepad);
+         Debug.Log($"Runner {runnerData.Name} configuré avec la manette {gamepad.displayName} Id {Gamepad.current.deviceId}");
       }
       else
       {
-         Debug.LogError($"Le deviceID {deviceID} est invalide. Impossible d'assigner un Gamepad. Le runner utilisera les contrôles par défaut.");
-         
-         RunnersControler runnersControler = runner.GetComponent<RunnersControler>();
-         if (runnersControler != null)
-         {
-            runnersControler.Setup(runnerData, 1); 
-         }
+         Debug.LogWarning($"Aucune manette trouvée pour {runnerData.Name}. Assignation au premier Gamepad disponible.");
+         runnersControler.Setup(runnerData, Gamepad.all.Count > 0 ? Gamepad.all[0] : null);
       }
    }
 
    private void SetupMetronome()
    {
-      if (MainMenuManager.MetronomeID == -1)
+      if (MainMenuManager.MetronomeID == null)
       {
          Debug.LogError("Le Métronome n'a pas été configuré avec un Device ID valide.");
          return;
       }
       
-      if (_metronomeControll != null && MainMenuManager.MetronomeID >= 0 && MainMenuManager.DevicesID.Contains(MainMenuManager.MetronomeID)
-                                     )
+      if (_metronomeControll != null)
       {
          PlayerInput metronomeInput = _metronomeControll.GetComponent<PlayerInput>();
          if (metronomeInput != null)
          {
-            Gamepad metronomeDevice = Gamepad.all.FirstOrDefault(g => g.deviceId == MainMenuManager.MetronomeID);
-            if (metronomeDevice != null)
-            {
-               metronomeInput.SwitchCurrentControlScheme(metronomeDevice);
-               Debug.Log($"Le métronome est contrôlé par : {metronomeDevice.displayName} (ID : {MainMenuManager.MetronomeID})");
-            }
-            else
-            {
-               Debug.LogError($"Métronome : Aucune manette trouvée avec l'ID {MainMenuManager.MetronomeID}.");
-            }
+            metronomeInput.SwitchCurrentControlScheme(MainMenuManager.MetronomeID);
+            Debug.Log($"Le métronome est contrôlé par : {MainMenuManager.MetronomeID.displayName} ID{MainMenuManager.MetronomeID.deviceId}");
          }
          else
          {
@@ -134,7 +121,7 @@ public class GameManager : MonoBehaviour
       }
       else
       {
-         Debug.LogError("Métronome non configuré ou ID de manette invalide.");
+         Debug.LogError("Métronome non configuré correctement.");
       }
    }
 
@@ -172,16 +159,15 @@ public class GameManager : MonoBehaviour
          Debug.Log($"Manette {i}: {Gamepad.all[i].displayName} (ID: {Gamepad.all[i].deviceId})");
       }
       
-      foreach (int deviceID in MainMenuManager.DevicesID)
+      foreach (Gamepad assignedGamepad in MainMenuManager.AssignedGamepads)
       {
-         var gamepad = Gamepad.all.FirstOrDefault(g => g.deviceId == deviceID);
-         if (gamepad == null)
+         if (Gamepad.all.Contains(assignedGamepad))
          {
-            Debug.LogWarning($"Le deviceID {deviceID} est invalide.");
+            Debug.Log($"Manette assignée valide : {assignedGamepad.displayName} (ID: {assignedGamepad.deviceId})");
          }
          else
          {
-            Debug.Log($"Le deviceID {deviceID} est valide : {gamepad.displayName}");
+            Debug.LogWarning($"La manette assignée {assignedGamepad.displayName} n'est plus connectée.");
          }
       }
    }

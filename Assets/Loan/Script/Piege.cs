@@ -10,10 +10,10 @@ public class Piege : MonoBehaviour
     public PiegeData PiegeData;
     private InputSysteme _inputSysteme;
     private bool _isFalling = false;
-    private float _destroyTime = 5f;
+    private float _destroyTime = 3f;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rb;
-    private int _iD;
+    private Gamepad _assignedGamepad;
 
 
     public void Initialize(InputSysteme inputSysteme)
@@ -41,12 +41,12 @@ public class Piege : MonoBehaviour
             _rb.gravityScale = 0f;
         }
         gameObject.AddComponent<BoxCollider2D>();
-        _iD = MainMenuManager.MetronomeID;
+        _assignedGamepad = MainMenuManager.MetronomeID;
     }
 
     private void Update()
     {
-        if (Gamepad.current.deviceId == _iD)
+        if (_assignedGamepad != null && _assignedGamepad == Gamepad.current)
         {
             if (!_isFalling)
             {

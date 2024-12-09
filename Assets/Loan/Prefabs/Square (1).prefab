@@ -146,8 +146,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: FirstRunner
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -199,6 +199,7 @@ MonoBehaviour:
   JumpForce: 13
   OriginalSpeed: 0
   OriginalJump: 0
+  _name: 
 --- !u!50 &6812310997153343440
 Rigidbody2D:
   serializedVersion: 4

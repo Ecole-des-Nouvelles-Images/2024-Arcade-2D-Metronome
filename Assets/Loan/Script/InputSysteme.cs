@@ -141,62 +141,92 @@ public class InputSysteme : MonoBehaviour
     //Runners
     private void OnMove(InputAction.CallbackContext context)
     {
-        Move = context.ReadValue<Vector2>();
+        if (!_metronomeControler)
+        {
+            Move = context.ReadValue<Vector2>();   
+        }
     }
 
     private void OnJump(InputAction.CallbackContext context)
     {
-        Jump = context.ReadValue<float>();
+            Jump = context.ReadValue<float>();   
     }
     
     private void OnPowerUp(InputAction.CallbackContext context)
     {
-        PowerUp = context.ReadValue<float>();
+            PowerUp = context.ReadValue<float>();
     }
 
     //Métronome
     private void OnActive(InputAction.CallbackContext context)
     {
-        
-        Active = context.ReadValue<float>();
+        if (_metronomeControler)
+        {
+            Active = context.ReadValue<float>();   
+        }
     }
     
     private void OnPiegeMove(InputAction.CallbackContext context)
     {
-        PiegeMove = context.ReadValue<Vector2>();
+        if (!_runnersControler)
+        {
+            PiegeMove = context.ReadValue<Vector2>();
+        }
     }
     
     private void OnPiegeUp(InputAction.CallbackContext context)
     {
-        PiegeUp = context.ReadValue<float>();
+        if (_metronomeControler)
+        {
+            PiegeUp = context.ReadValue<float>();   
+        }
     }
     
     private void OnPiegeRight(InputAction.CallbackContext context)
     {
-        PiegeRight = context.ReadValue<float>();
+        if (_metronomeControler)
+        {
+            PiegeRight = context.ReadValue<float>();   
+        }
     }
     
     private void OnPiegeDown(InputAction.CallbackContext context)
     {
-        PiegeDown = context.ReadValue<float>();
+        if (_metronomeControler)
+        {
+            PiegeDown = context.ReadValue<float>();   
+        }
     }
     
     private void OnPiegeLeft(InputAction.CallbackContext context)
     {
-        PiegeLeft = context.ReadValue<float>();
+        if (_metronomeControler)
+        {
+            PiegeLeft = context.ReadValue<float>();   
+        }
     }
     
     private void OnPiegeActive(InputAction.CallbackContext context)
     {
-        PiegeActive = context.ReadValue<float>();
+        if (!_runnersControler)
+        {
+            PiegeActive = context.ReadValue<float>();   
+        }
     }
     
-    public void SwitchCurrentControlScheme(InputDevice device)
+    public void SwitchCurrentControlScheme(Gamepad gamepad)
     {
         if (_playerInput != null)
         {
-            _playerInput.SwitchCurrentControlScheme(device);
-            Debug.Log("Contrôleur associé : " + device.displayName);
+            if (gamepad != null)
+            {
+                _playerInput.SwitchCurrentControlScheme(gamepad);
+                Debug.Log("Contrôleur associé : " + gamepad.displayName);
+            }
+            else
+            {
+                Debug.LogError("Le Gamepad fourni est nul. Impossible de changer de schéma de contrôle.");
+            }
         }
         else
         {

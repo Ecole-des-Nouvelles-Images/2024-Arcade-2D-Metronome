@@ -36,7 +36,8 @@ public class RunnersControler : MonoBehaviour
     private readonly float _maxJumpHeight = 20f;
     private Rigidbody2D _rb;
     private SpriteRenderer _sR;
-    private int _iD;
+    private Gamepad _assignedGamepad;
+    private PlayerInput _playerInput;
     [SerializeField]private string _name;
     private float MaxPower => _runnerData.MaxPower;
     private Sprite _spriteRenderer => _runnerData.Sprite;
@@ -48,6 +49,7 @@ public class RunnersControler : MonoBehaviour
         _cameraScript = FindObjectOfType<MultiplePlayerCamera>();
         _sR = GetComponent<SpriteRenderer>();
         _sR.sprite = _spriteRenderer;
+        _playerInput = GetComponent<PlayerInput>();
         // _animator = GetComponent<Animator>();
         // _animatorController = _animator.runtimeAnimatorController;
         // _animatorController = _runnerData.AnimatorController;
@@ -66,25 +68,28 @@ public class RunnersControler : MonoBehaviour
         OriginalSpeed = Speed;
         OriginalJump = JumpForce;
         _gravity = new Vector2(0, -Physics2D.gravity.y);
-        if (_name == "Moine")
+        switch (_name)
         {
-            _iD = MainMenuManager.MoineID;
+            case "Moine":
+                _assignedGamepad = MainMenuManager.MoineID;
+                break;
+            case "Chasseur":
+                _assignedGamepad = MainMenuManager.ChasseurID;
+                break;
+            case "Mage":
+                _assignedGamepad = MainMenuManager.MageID;
+                break;
         }
 
-        if (_name == "Chasseur")
+        if (_assignedGamepad == null)
         {
-            _iD = MainMenuManager.ChasseurID;
-        }
-
-        if (_name == "Mage")
-        {
-            _iD = MainMenuManager.MageID;
+            Debug.LogError($"Aucun Gamepad assigné pour le Runner {_name}.");
         }
     }
 
     private void Update()
     {
-        if (Gamepad.current.deviceId == _iD)
+        if (_assignedGamepad != null && _assignedGamepad == Gamepad.current)
         {
             var horizontal = _inputSysteme.Move.x;
             var velocity = _rb.velocity;
@@ -118,29 +123,25 @@ public class RunnersControler : MonoBehaviour
     }
 
 
-    public void Setup(RunnerData data, int deviceID)
+    public void Setup(RunnerData data, Gamepad gamepad)
     {
         _runnerData = data;
         _sR.sprite = _runnerData.Sprite;
-        _iD = deviceID;
+        _assignedGamepad = gamepad;
 
         // if (_runnerData.AnimatorController != null)
         // {
         //     _animator.runtimeAnimatorController = _runnerData.AnimatorController;
         // }
 
-        foreach (var gamepad in Gamepad.all)
-            Debug.Log($"Manette disponible: {gamepad.displayName}, ID: {gamepad.deviceId}");
-
-        var device = Gamepad.all.FirstOrDefault(g => g.deviceId == deviceID);
-        if (device != null)
+        if (_assignedGamepad != null)
         {
-            Debug.Log($"Manette assignée : {device.displayName} (ID : {deviceID})");
-            _inputSysteme.SwitchCurrentControlScheme(device);
+            Debug.Log($"Gamepad assigné : {_assignedGamepad.displayName}");
+            _inputSysteme.SwitchCurrentControlScheme(_assignedGamepad);
         }
         else
         {
-            Debug.LogError($"Device ID {deviceID} introuvable dans Gamepad.all.");
+            Debug.LogError("Aucun Gamepad assigné lors du Setup.");
         }
     }
 

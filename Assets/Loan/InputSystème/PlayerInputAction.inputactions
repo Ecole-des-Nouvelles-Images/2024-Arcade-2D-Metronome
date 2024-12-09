@@ -36,18 +36,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "2278eb29-5070-406c-9aac-aed97b033cb3",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4010a5dd-0efa-4943-9c42-88f6cf54dfa5",
+                    "id": "228a6078-f604-46a4-a643-0320972fc280",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
@@ -58,9 +47,20 @@
                 },
                 {
                     "name": "",
-                    "id": "448c8a42-30cd-495e-bcf9-620278af12da",
+                    "id": "1a96329b-766e-4ad0-8dfc-842217453854",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a8c7356-feef-49cf-912d-2641eb434ea4",
                     "path": "<Gamepad>/buttonEast",
-                    "interactions": "Press(pressPoint=1)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "PowerUp",
@@ -140,8 +140,8 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "97c2c152-9dd2-41e7-83f1-9adb85ebb41e",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "a2ea1487-27fb-4a65-9aeb-fbd394563c6c",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -151,7 +151,7 @@
                 },
                 {
                     "name": "",
-                    "id": "103096e3-8131-4878-890d-c0d7ef2fbe67",
+                    "id": "fcc6edab-a6d4-46fb-be89-2777b9abad54",
                     "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
@@ -162,7 +162,7 @@
                 },
                 {
                     "name": "",
-                    "id": "1beedd60-45ed-4bd2-8734-0959fa3f0f51",
+                    "id": "6f8d5484-73a0-4045-8d37-19c89f0691c4",
                     "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
@@ -173,18 +173,7 @@
                 },
                 {
                     "name": "",
-                    "id": "1767f022-0835-4f58-9dcc-44da0c8c71bb",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PiegeDown",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4cf0a17c-c198-4c0b-ba5d-65843cd18657",
+                    "id": "5bc2950e-c5b7-4b8c-828b-a038cf9ae8e2",
                     "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
@@ -195,8 +184,8 @@
                 },
                 {
                     "name": "",
-                    "id": "d27a571e-14ee-4a13-8391-29eb9d839b42",
-                    "path": "<Gamepad>/leftStick",
+                    "id": "60b737ba-ba94-44a2-8d32-67422b306956",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -206,12 +195,23 @@
                 },
                 {
                     "name": "",
-                    "id": "b56b2186-fd81-420f-bfd5-92b17146b534",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "0da2d338-307a-480b-b7b0-c2a533572d95",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "PiegeActive",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7aeeec59-2897-4379-b97e-b3c37323cebf",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PiegeDown",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -252,7 +252,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "04a727d2-f3a0-433d-814b-cca8974df2da",
+                    "id": "68b0a52f-ae8a-492e-b0ba-435ed796a917",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
@@ -263,7 +263,7 @@
                 },
                 {
                     "name": "",
-                    "id": "ee268f51-5594-4183-bba0-ca7bbcd67614",
+                    "id": "874dd4c3-fda5-444a-b999-1b9ed21c9f6a",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
@@ -274,7 +274,7 @@
                 },
                 {
                     "name": "",
-                    "id": "adeee344-1907-41a1-b6e5-f6739662278c",
+                    "id": "0f482e23-8aa1-45c4-87b6-adceb0e66f06",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
