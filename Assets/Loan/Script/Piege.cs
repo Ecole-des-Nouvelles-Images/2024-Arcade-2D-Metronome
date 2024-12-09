@@ -81,14 +81,17 @@ public class Piege : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        RunnersControler runner = collision.gameObject.GetComponent<RunnersControler>();
+        Barrier barrier = collision.gameObject.GetComponentInChildren<Barrier>();
+        
+        if (runner != null && barrier == null && PiegeData.Damage > 0)
         {
-            RunnersControler runner = collision.gameObject.GetComponent<RunnersControler>();
-            if (runner != null && PiegeData.Damage > 0)
-            {
-                runner.TakeDamage(PiegeData.Damage);
-            }
-            
+            runner.TakeDamage(PiegeData.Damage);
+            Destroy(gameObject);
+        }
+        
+        if (barrier != null)
+        {
             Destroy(gameObject);
         }
     }

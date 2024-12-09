@@ -192,7 +192,7 @@ public class RunnersControler : MonoBehaviour
             Debug.Log("Power Up activé !!");
             _runnerData.ApplyPowerUp(this);
             // _animator.SetBool("isPowerUP", true);
-
+            _sR.color = Color.red;
             Invoke(nameof(ResetPowerUp), 4f);
         }
     }
@@ -200,6 +200,7 @@ public class RunnersControler : MonoBehaviour
     private void ResetPowerUp()
     {
         _runnerData.RemovePowerUp(this);
+        _sR.color = Color.white;
         _currentPower = 0;
         _canUsePower = false;
         // _animator.SetBool("isPowerUP", false);

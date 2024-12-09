@@ -928,7 +928,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: UI
+  m_DefaultControlScheme: 
   m_DefaultActionMap: UIControler
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -951,7 +951,7 @@ MonoBehaviour:
   _readyButton: {fileID: 6636657435014389735}
   _runnerChasseur: {fileID: 11400000, guid: 6e35dae109686314fa53244f7916406b, type: 2}
   _runnerMoine: {fileID: 11400000, guid: 727385d9e7ded1345b4cd2855de2bf46, type: 2}
-  _runnerMage: {fileID: 0}
+  _runnerMage: {fileID: 11400000, guid: 76a8b20913fce8f408e5cbda7ad4c775, type: 2}
 --- !u!1 &8387302155092898857
 GameObject:
   m_ObjectHideFlags: 0
