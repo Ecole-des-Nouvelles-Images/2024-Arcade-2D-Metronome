@@ -6,6 +6,7 @@ public class MetronomeControler : MonoBehaviour
 {
     [SerializeField] NoteSpawner _noteSpawner;
     [SerializeField] PiegeData _notePiegeData;
+    [SerializeField] PiegeData _clePiegeData;
     [SerializeField] Transform _piegeSpawnPoint;
     
     private InputSysteme _inputSysteme;
@@ -45,9 +46,10 @@ public class MetronomeControler : MonoBehaviour
                 _score = 0;
             }
         
-            if (_inputSysteme.PiegeRight == 1)
+            if (_inputSysteme.PiegeRight == 1 && _score >= 6)
             {
-                Debug.Log("Piege Droit activé !");
+                SpawnPiege(_clePiegeData);
+                _score = 0;
             }
         
             if (_inputSysteme.PiegeDown == 1)

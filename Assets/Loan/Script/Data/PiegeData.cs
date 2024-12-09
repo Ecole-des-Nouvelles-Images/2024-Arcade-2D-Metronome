@@ -8,6 +8,7 @@ public abstract class PiegeData : ScriptableObject
     public float Mass = 1f;
     public float Damage = 0f;
     public bool CanFall = false;
+    public bool HasExploded = false;
     public float FallSpeed = 4f;
 
 }

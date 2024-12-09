@@ -13,6 +13,7 @@ public class Piege : MonoBehaviour
     private float _destroyTime = 3f;
     private SpriteRenderer _spriteRenderer;
     private Rigidbody2D _rb;
+    private Cle _cleTrapp;
     private Gamepad _assignedGamepad;
 
 
@@ -93,6 +94,11 @@ public class Piege : MonoBehaviour
         if (barrier != null)
         {
             Destroy(gameObject);
+        }
+
+        if (PiegeData.HasExploded && collision.gameObject.CompareTag("Sol"))
+        {
+            _cleTrapp.Explode(transform.position);
         }
     }
 }

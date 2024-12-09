@@ -1468,7 +1468,7 @@ GameObject:
   - component: {fileID: 824025507}
   m_Layer: 3
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: Sol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 932567457}
   m_Layer: 3
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: Sol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2028,7 +2028,7 @@ GameObject:
   - component: {fileID: 1035359785}
   m_Layer: 3
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: Sol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3187,7 +3187,7 @@ GameObject:
   - component: {fileID: 1604494854}
   m_Layer: 3
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: Sol
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4165,6 +4165,10 @@ PrefabInstance:
       propertyPath: _noteSpawner
       value: 
       objectReference: {fileID: 1111686936}
+    - target: {fileID: 3097498638395505394, guid: fd75a8d7fb86d9948a25a851b0acb21b, type: 3}
+      propertyPath: _clePiegeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0eab6bdc6999a224c9fa7f3c9d4a8543, type: 2}
     - target: {fileID: 3097498638395505394, guid: fd75a8d7fb86d9948a25a851b0acb21b, type: 3}
       propertyPath: _piegeSpawnPoint
       value: 
