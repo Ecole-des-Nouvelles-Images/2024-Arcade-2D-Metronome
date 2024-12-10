@@ -41,6 +41,11 @@ public class Piege : MonoBehaviour
             _rb.mass = PiegeData.Mass;
             _rb.gravityScale = 0f;
         }
+
+        if (_cleTrapp == null)
+        {
+            _cleTrapp = ScriptableObject.CreateInstance<Cle>();
+        }
         gameObject.AddComponent<BoxCollider2D>();
         _assignedGamepad = MainMenuManager.MetronomeID;
     }
@@ -96,9 +101,15 @@ public class Piege : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (PiegeData.HasExploded && collision.gameObject.CompareTag("Sol"))
+        if (PiegeData.HasExploded && collision.gameObject.CompareTag("Sol") && _cleTrapp != null)
         {
             _cleTrapp.Explode(transform.position);
         }
+    }
+    
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _cleTrapp.ExplosionRadius);
     }
 }

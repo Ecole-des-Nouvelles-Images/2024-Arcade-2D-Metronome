@@ -18,5 +18,4 @@ MonoBehaviour:
   CanFall: 1
   HasExploded: 1
   FallSpeed: 4
-  ExplosionRadius: 5
-  ExplosionForce: 500
+  ExplosionRadius: 6

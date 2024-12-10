@@ -43,13 +43,13 @@ public class MetronomeControler : MonoBehaviour
             {
                 // Debug.Log("Piege Haut activé !");
                 SpawnPiege(_notePiegeData);
-                _score = 0;
+                _score = _score - 5;
             }
         
             if (_inputSysteme.PiegeRight == 1 && _score >= 6)
             {
                 SpawnPiege(_clePiegeData);
-                _score = 0;
+                _score = _score - 6;
             }
         
             if (_inputSysteme.PiegeDown == 1)
