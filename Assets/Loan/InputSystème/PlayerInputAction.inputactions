@@ -142,7 +142,7 @@
                     "name": "",
                     "id": "a2ea1487-27fb-4a65-9aeb-fbd394563c6c",
                     "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Active",
