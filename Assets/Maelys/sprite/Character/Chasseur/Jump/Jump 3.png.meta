@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -115,17 +115,17 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 393
-        height: 627
-      alignment: 9
-      pivot: {x: 0.5, y: 0.4}
+        width: 1024
+        height: 1024
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3b6332ffb1be2bc4eb58a2fd436295ba
-      internalID: -855197426
+      spriteID: 1f38fb72ee6331c4980f0ac71889200b
+      internalID: 630756007
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Jump 3_0: -855197426
+      Jump 3_0: 630756007
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
