@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +11,6 @@ public class ChoixPersoManager : MonoBehaviour
     [SerializeField] private Button _moineButton;
     [SerializeField] private Button _mageButton;
     [SerializeField] private Button _metronomeButton;
-    [SerializeField] private Button _readyButton;
 
     [SerializeField] private RunnerData _runnerChasseur;
     [SerializeField] private RunnerData _runnerMoine;
@@ -46,7 +46,6 @@ public class ChoixPersoManager : MonoBehaviour
             _moineButton.onClick.AddListener(() => SelectRunner(_runnerMoine, _assignedGamepad, 2));
             _mageButton.onClick.AddListener(() => SelectRunner(_runnerMage, _assignedGamepad, 3));
             _metronomeButton.onClick.AddListener(() => SelectMetronome(_assignedGamepad));
-            _readyButton.onClick.AddListener(() => SceneManager.LoadScene(1));
 
             _playerCount++;
         }
@@ -90,6 +89,7 @@ public class ChoixPersoManager : MonoBehaviour
     {
         MainMenuManager.MetronomeID = gamepad;
         Debug.Log($"Métronome instancié avec la manette {gamepad.displayName}.");
+        StartCoroutine(ValidateStartGame());
         DisableAllButtons();
     }
 
@@ -101,4 +101,10 @@ public class ChoixPersoManager : MonoBehaviour
         _metronomeButton.interactable = false;
     }
     
+    private IEnumerator ValidateStartGame()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(1);
+        
+    }
 }

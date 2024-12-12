@@ -45,14 +45,14 @@ public class GameManager : MonoBehaviour
    }
    private IEnumerator ValidateDevicesCoroutine()
    {
-      yield return new WaitForSeconds(1f);  
+      yield return new WaitForSeconds(0.5f);  
       SpawnRunners();
       SetupMetronome();
    }
 
    private void SpawnRunners()
    {
-      // Debug.Log($"ChasseurID : {MainMenuManager.ChasseurID} ID {MainMenuManager.ChasseurID.deviceId}");
+      Debug.Log($"ChasseurID : {MainMenuManager.ChasseurID} ID {MainMenuManager.ChasseurID.deviceId}");
       // Debug.Log($"MoineID : {MainMenuManager.MoineID} ID {MainMenuManager.MoineID.deviceId}");
       Debug.Log($"MageID : {MainMenuManager.MageID} ID {MainMenuManager.MageID.deviceId}");
 
