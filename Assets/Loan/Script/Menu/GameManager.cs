@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
    {
       Debug.Log($"ChasseurID : {MainMenuManager.ChasseurID} ID {MainMenuManager.ChasseurID.deviceId}");
       // Debug.Log($"MoineID : {MainMenuManager.MoineID} ID {MainMenuManager.MoineID.deviceId}");
-      Debug.Log($"MageID : {MainMenuManager.MageID} ID {MainMenuManager.MageID.deviceId}");
+      // Debug.Log($"MageID : {MainMenuManager.MageID} ID {MainMenuManager.MageID.deviceId}");
 
       if (MainMenuManager.FirstRunner != null && MainMenuManager.ChasseurID != null
           )

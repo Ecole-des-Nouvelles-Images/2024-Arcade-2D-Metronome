@@ -827,7 +827,7 @@ MonoBehaviour:
   _moineButton: {fileID: 6492489071355368261}
   _mageButton: {fileID: 7362206380689116336}
   _metronomeButton: {fileID: 1423524083264136529}
-  _runnerChasseur: {fileID: 11400000, guid: 6e35dae109686314fa53244f7916406b, type: 2}
+  _runnerChasseur: {fileID: 11400000, guid: a533798326acdac4fb6c5a0daadd21ef, type: 2}
   _runnerMoine: {fileID: 11400000, guid: 727385d9e7ded1345b4cd2855de2bf46, type: 2}
   _runnerMage: {fileID: 11400000, guid: 76a8b20913fce8f408e5cbda7ad4c775, type: 2}
 --- !u!1 &8387302155092898857

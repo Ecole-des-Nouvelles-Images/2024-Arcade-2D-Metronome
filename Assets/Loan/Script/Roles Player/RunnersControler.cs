@@ -50,17 +50,17 @@ public class RunnersControler : MonoBehaviour
         _sR = GetComponent<SpriteRenderer>();
         _sR.sprite = _spriteRenderer;
         _playerInput = GetComponent<PlayerInput>();
-        //_animator = GetComponent<Animator>();
-        //_animatorController = _animator.runtimeAnimatorController;
-        //_animatorController = _runnerData.AnimatorController;
-        //_animator.runtimeAnimatorController = _animatorController;
+        _animator = GetComponent<Animator>();
+        _animatorController = _animator.runtimeAnimatorController;
+        _animatorController = _runnerData.AnimatorController;
+        _animator.runtimeAnimatorController = _animatorController;
     }
 
     private void Start()
     {
         if (_cameraScript != null) _cameraScript.AddPlayer(transform);
 
-        // GameManager.Instance.RegisterRunner(gameObject);
+        GameManager.Instance.RegisterRunner(gameObject);
 
         InvokeRepeating(nameof(ChargePowerUp), 0f, _chargeInterval);
 
@@ -101,13 +101,13 @@ public class RunnersControler : MonoBehaviour
                 CapsuleDirection2D.Horizontal, 0, _groundMask);
 
             if (_inputSysteme.Move.x > 0) _sR.flipX = true;
-            //_animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
+            _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
             if (_inputSysteme.Move.x < 0) _sR.flipX = false;
-            //_animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
+            _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
             HandleJump();
 
             if (_rb.velocity.y <= 1) _rb.velocity -= _gravity * _fallMultiplier * Time.deltaTime;
-            //_animator.SetTrigger("isFalling");
+            _animator.SetTrigger("isFalling");
             if (_canUsePower && _inputSysteme.PowerUp == 1) ActivatePowerUp();
         }
     }
@@ -129,10 +129,10 @@ public class RunnersControler : MonoBehaviour
         _sR.sprite = _runnerData.Sprite;
         _assignedGamepad = gamepad;
 
-       // if (_runnerData.AnimatorController != null)
-        //{
-            //_animator.runtimeAnimatorController = _runnerData.AnimatorController;
-       // }
+        if (_runnerData.AnimatorController != null)
+        {
+            _animator.runtimeAnimatorController = _runnerData.AnimatorController;
+        }
 
         if (_assignedGamepad != null)
         {
@@ -155,7 +155,7 @@ public class RunnersControler : MonoBehaviour
             _isHoldingJump = true;
             _jumpHolderTime = 0f;
             _currentJumpHeight = 0f;
-            //_animator.SetTrigger("isJump");
+            _animator.SetTrigger("isJump");
         }
 
         if (jumpForceTime > 0 && _isHoldingJump && _jumpHolderTime < _maxHoldTime &&
@@ -191,7 +191,7 @@ public class RunnersControler : MonoBehaviour
         {
             Debug.Log("Power Up activé !!");
             _runnerData.ApplyPowerUp(this);
-            //_animator.SetBool("isPowerUP", true);
+            _animator.SetBool("isPowerUP", true);
             _sR.color = Color.red;
             Invoke(nameof(ResetPowerUp), 4f);
         }
@@ -203,7 +203,7 @@ public class RunnersControler : MonoBehaviour
         _sR.color = Color.white;
         _currentPower = 0;
         _canUsePower = false;
-        //_animator.SetBool("isPowerUP", false);
+        _animator.SetBool("isPowerUP", false);
     }
 
     public void TakeDamage(float damage)
@@ -213,12 +213,14 @@ public class RunnersControler : MonoBehaviour
 
         if (_health > 0)
         {
-            // _animator.SetTrigger("isHit");
+            _animator.SetTrigger("isHit");
         }
 
         if (_health <= 0)
-            // _animator.SetTrigger("isDead");
+        {
+            _animator.SetTrigger("isDead");
             Invoke(nameof(Die), 2f);
+        }
     }
 
     private void Die()
