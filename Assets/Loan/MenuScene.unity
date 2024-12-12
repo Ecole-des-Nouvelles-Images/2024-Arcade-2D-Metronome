@@ -1328,6 +1328,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultMusic: {fileID: 8300000, guid: c873f2b0f48232744bcf5e2621a9c536, type: 3}
   _gameMusic: {fileID: 8300000, guid: 8ad4e1c631fb06446a66fb81d327109a, type: 3}
+  _audioMixer: {fileID: 24100000, guid: d1b02fc88ecab384cb4456fa4e6a8f1f, type: 2}
+  _masterSlider: {fileID: 1776706985}
+  _musiqueSlider: {fileID: 1623876010}
+  _sfxSlider: {fileID: 709155020}
 --- !u!1 &692767745
 GameObject:
   m_ObjectHideFlags: 0
