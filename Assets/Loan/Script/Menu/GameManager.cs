@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
    public static GameManager Instance;
 
    private List<GameObject> _aliveRunners = new List<GameObject>();
+   private MainMenuManager _mainManager;
 
    [SerializeField] private Transform _runnerSpawn1;
    [SerializeField] private Transform _runnerSpawn2;
@@ -128,6 +129,7 @@ public class GameManager : MonoBehaviour
    public void LoadWinRunner(string RunnerWin)
    {
       SceneManager.LoadScene(2);
+      _mainManager.ResetStaticData();
    }
 
    public void RegisterRunner(GameObject Runner)
@@ -149,6 +151,7 @@ public class GameManager : MonoBehaviour
       if (_aliveRunners.Count == 0)
       {
          SceneManager.LoadScene(3);
+         _mainManager.ResetStaticData();
       }
    }
    

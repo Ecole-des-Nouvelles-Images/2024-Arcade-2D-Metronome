@@ -92,7 +92,7 @@ public class MainMenuManager : MonoBehaviour
         return Gamepad.all.Any(g => g.deviceId == deviceID);
     }
     
-    private void ResetStaticData()
+    public void ResetStaticData()
     {
         FirstRunner = null;
         SecondRunner = null;
