@@ -39,14 +39,14 @@ public class MetronomeControler : MonoBehaviour
                 Debug.Log("Piege gauche activé !");
             }
 
-            if (_inputSysteme.PiegeUp == 1 && _score >= 5)
+            if (_inputSysteme.PiegeUp == 1 && _score >= 5 && _canPress)
             {
                 // Debug.Log("Piege Haut activé !");
                 SpawnPiege(_notePiegeData);
                 _score = _score - 5;
             }
         
-            if (_inputSysteme.PiegeRight == 1 && _score >= 6)
+            if (_inputSysteme.PiegeRight == 1 && _score >= 6 && _canPress)
             {
                 _canPress = false;
                 SpawnPiege(_clePiegeData);
