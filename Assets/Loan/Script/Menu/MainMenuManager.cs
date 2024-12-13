@@ -22,13 +22,15 @@ public class MainMenuManager : MonoBehaviour
     public static Gamepad MoineID;
     public static Gamepad MageID;
 
-    // public static List<int> DevicesID = new List<int>();
+    
     public static List<Gamepad> AssignedGamepads = new List<Gamepad>();
 
     private void Start()
     {
+        ResetStaticData();
         InitializeDevices();
         UpdateChoixPersoManager();
+        ChoixPersoManager.PlayerCount = 0;
     }
 
     public void OpenCharactersScene()
@@ -58,6 +60,7 @@ public class MainMenuManager : MonoBehaviour
     {
         ResetStaticData();
         SceneManager.LoadScene(0);
+        Destroy(GameManager.Instance.gameObject);
     }
 
     public void QuitGame()

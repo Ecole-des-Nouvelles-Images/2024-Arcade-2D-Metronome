@@ -56,7 +56,8 @@ public class GameManager : MonoBehaviour
       Debug.Log($"ChasseurID : {MainMenuManager.ChasseurID} ID {MainMenuManager.ChasseurID.deviceId}");
       // Debug.Log($"MoineID : {MainMenuManager.MoineID} ID {MainMenuManager.MoineID.deviceId}");
       // Debug.Log($"MageID : {MainMenuManager.MageID} ID {MainMenuManager.MageID.deviceId}");
-
+      Debug.Log( "Runner data = "+MainMenuManager.FirstRunner  );
+      Debug.Log( "Chasseur ID = "+MainMenuManager.ChasseurID  );
       if (MainMenuManager.FirstRunner != null && MainMenuManager.ChasseurID != null
           )
       {
@@ -129,7 +130,7 @@ public class GameManager : MonoBehaviour
    public void LoadWinRunner(string RunnerWin)
    {
       SceneManager.LoadScene(2);
-      _mainManager.ResetStaticData();
+      // _mainManager.ResetStaticData();
    }
 
    public void RegisterRunner(GameObject Runner)
@@ -151,7 +152,7 @@ public class GameManager : MonoBehaviour
       if (_aliveRunners.Count == 0)
       {
          SceneManager.LoadScene(3);
-         _mainManager.ResetStaticData();
+         // _mainManager.ResetStaticData();
       }
    }
    

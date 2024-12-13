@@ -59,8 +59,15 @@ public class RunnersControler : MonoBehaviour
     private void Start()
     {
         if (_cameraScript != null) _cameraScript.AddPlayer(transform);
-
-        GameManager.Instance.RegisterRunner(gameObject);
+        
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager.Instance est null !");
+        }
+        else
+        {
+            GameManager.Instance.RegisterRunner(gameObject);
+        }
 
         InvokeRepeating(nameof(ChargePowerUp), 0f, _chargeInterval);
 
@@ -136,7 +143,7 @@ public class RunnersControler : MonoBehaviour
 
         if (_assignedGamepad != null)
         {
-            Debug.Log($"Gamepad assigné : {_assignedGamepad.displayName}");
+            Debug.Log($"Gamepad assigné to runner : {_assignedGamepad.deviceId}");
             _inputSysteme.SwitchCurrentControlScheme(_assignedGamepad);
         }
         else
@@ -181,7 +188,7 @@ public class RunnersControler : MonoBehaviour
         if (_currentPower == MaxPower)
         {
             _canUsePower = true;
-            Debug.Log("Power Up prêt !");
+            // Debug.Log("Power Up prêt !");
         }
     }
 
@@ -219,13 +226,21 @@ public class RunnersControler : MonoBehaviour
         if (_health <= 0)
         {
             _animator.SetTrigger("isDead");
-            Invoke(nameof(Die), 2f);
+            Invoke(nameof(Die), 1.5f);
         }
     }
 
     private void Die()
     {
-        GameManager.Instance.UnregisterRunner(gameObject);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.UnregisterRunner(gameObject);
+        }
+        else
+        {
+            Debug.LogError("GameManager.Instance est null dans Die !");
+        }
+
         Debug.Log("Runner mort.");
         Destroy(gameObject);
     }

@@ -12,7 +12,7 @@ public class MetronomeControler : MonoBehaviour
     private InputSysteme _inputSysteme;
     private PlayerInput _playerInput;
     private Image _image;
-    private int _score = 5;
+    private int _score = 20;
     private bool _canPress = true;
     private Gamepad _assignedGamepad;
 
@@ -20,6 +20,8 @@ public class MetronomeControler : MonoBehaviour
     {
         _inputSysteme = GetComponent<InputSysteme>();
         _image = GetComponent<Image>();
+        Debug.Log($"Gamepad assigné to Metronome : {MainMenuManager.MetronomeID}");
+
         _assignedGamepad = MainMenuManager.MetronomeID;
         _playerInput = GetComponent<PlayerInput>();
     }
@@ -41,9 +43,10 @@ public class MetronomeControler : MonoBehaviour
 
             if (_inputSysteme.PiegeUp == 1 && _score >= 5 && _canPress)
             {
-                // Debug.Log("Piege Haut activé !");
+                _canPress = false;
                 SpawnPiege(_notePiegeData);
                 _score = _score - 5;
+                StartCoroutine(ResetCanPress());
             }
         
             if (_inputSysteme.PiegeRight == 1 && _score >= 6 && _canPress)
@@ -69,13 +72,13 @@ public class MetronomeControler : MonoBehaviour
         {
             AddScore(1);
             _image.color = Color.green; 
-            Invoke(nameof(Reset),0.5f);
+            Invoke(nameof(Reset),0.15f);
         }
         else
         {
             SubtractionScore(1);
             _image.color = Color.red;
-            Invoke(nameof(Reset),0.5f);
+            Invoke(nameof(Reset),0.15f);
         }
 
         StartCoroutine(ResetCanPress());
@@ -83,7 +86,7 @@ public class MetronomeControler : MonoBehaviour
 
     private System.Collections.IEnumerator ResetCanPress()
     {
-        yield return new WaitForSeconds(0.18f);
+        yield return new WaitForSeconds(0.15f);
         _canPress = true;
     }
 
