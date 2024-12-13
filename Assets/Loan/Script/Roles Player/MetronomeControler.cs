@@ -48,8 +48,10 @@ public class MetronomeControler : MonoBehaviour
         
             if (_inputSysteme.PiegeRight == 1 && _score >= 6)
             {
+                _canPress = false;
                 SpawnPiege(_clePiegeData);
                 _score = _score - 6;
+                StartCoroutine(ResetCanPress());
             }
         
             if (_inputSysteme.PiegeDown == 1)
