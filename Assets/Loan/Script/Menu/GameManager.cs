@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
    [SerializeField] private Transform _runnerSpawn3;
    [SerializeField] private GameObject _runnerPrefab;
    [SerializeField] private GameObject _metronomeControll;
-   [SerializeField] private HealthHUD[] _healthHuds;
+   [SerializeField] private HealthHUD _healthHudsprefabs;
    [SerializeField] private POwerUPHUD _powerUpHUDPrefabs;
    
 
@@ -68,10 +68,13 @@ public class GameManager : MonoBehaviour
          GameObject runner1 = Instantiate(_runnerPrefab, _runnerSpawn1.position, Quaternion.identity);
          SetupRunner(runner1, MainMenuManager.FirstRunner, MainMenuManager.ChasseurID);
          RunnersControler runnersControler = runner1.GetComponent<RunnersControler>();
-         runnersControler.healthHUD = _healthHuds[0];
+         HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
+         newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newHealthHUD.transform.localPosition = new Vector3(-576, -492, 0);
+         runnersControler.healthHUD = newHealthHUD;
          POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
          newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
-         newPowerUPHUD.transform.localPosition = new Vector3(22, 1, 0);
+         newPowerUPHUD.transform.localPosition = new Vector3(-390, -492, 0);
          runnersControler.PowerUPHUD = newPowerUPHUD;
       }
       if (MainMenuManager.SecondRunner != null && MainMenuManager.MoineID != null
@@ -80,7 +83,14 @@ public class GameManager : MonoBehaviour
          GameObject runner2 = Instantiate(_runnerPrefab, _runnerSpawn2.position, Quaternion.identity);
          SetupRunner(runner2, MainMenuManager.SecondRunner, MainMenuManager.MoineID);
          RunnersControler runnersControler = runner2.GetComponent<RunnersControler>();
-         runnersControler.healthHUD = _healthHuds[1];
+         HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
+         newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newHealthHUD.transform.localPosition = new Vector3(1, -492, 0);
+         runnersControler.healthHUD = newHealthHUD;
+         POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
+         newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newPowerUPHUD.transform.localPosition = new Vector3(185, -492, 0);
+         runnersControler.PowerUPHUD = newPowerUPHUD;
       }
       if (MainMenuManager.ThirdRunner != null && MainMenuManager.MageID != null
           )
@@ -88,7 +98,14 @@ public class GameManager : MonoBehaviour
          GameObject runner3 = Instantiate(_runnerPrefab, _runnerSpawn3.position, Quaternion.identity);
          SetupRunner(runner3, MainMenuManager.ThirdRunner, MainMenuManager.MageID);
          RunnersControler runnersControler = runner3.GetComponent<RunnersControler>();
-         runnersControler.healthHUD = _healthHuds[2];
+         HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
+         newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newHealthHUD.transform.localPosition = new Vector3(575, -492, 0);
+         runnersControler.healthHUD = newHealthHUD;
+         POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
+         newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newPowerUPHUD.transform.localPosition = new Vector3(755, -492, 0);
+         runnersControler.PowerUPHUD = newPowerUPHUD;
       }
    }
 

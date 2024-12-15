@@ -214,10 +214,6 @@ public class RunnersControler : MonoBehaviour
             _runnerData.ApplyPowerUp(this);
             _animator.SetBool("isPowerUP", true);
             _sR.color = Color.red;
-            if (PowerUPHUD != null)
-            {
-                PowerUPHUD.UpdatePowerUpUI(0f);
-            }
             Invoke(nameof(ResetPowerUp), 4f);
         }
     }
