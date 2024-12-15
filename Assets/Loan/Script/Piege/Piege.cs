@@ -15,11 +15,13 @@ public class Piege : MonoBehaviour
     private Rigidbody2D _rb;
     private Cle _cleTrapp;
     private Gamepad _assignedGamepad;
+    private MetronomeControler _metronomeControler;
 
 
-    public void Initialize(InputSysteme inputSysteme)
+    public void Initialize(InputSysteme inputSysteme, MetronomeControler metronomeControler)
     {
         _inputSysteme = inputSysteme;
+        _metronomeControler = metronomeControler;
     }
 
     private void Start()
@@ -72,6 +74,8 @@ public class Piege : MonoBehaviour
                 {
                     rb.gravityScale = PiegeData.Mass;
                 }
+
+                _metronomeControler.PiegeEnCours = false;
             }
 
             if (_isFalling)

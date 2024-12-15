@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MusicManager : MonoBehaviour
 {
-    private static MusicManager _instance;
+    public static MusicManager Instance;
     private AudioSource _audioSource;
 
     [SerializeField] private AudioClip _defaultMusic;
@@ -20,9 +21,9 @@ public class MusicManager : MonoBehaviour
 
     private void Awake()
     {
-        if (_instance == null)
+        if (Instance == null)
         {
-            _instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -50,7 +51,7 @@ public class MusicManager : MonoBehaviour
         _musiqueSlider.onValueChanged.AddListener(SetMusicVolume);
         _sfxSlider.onValueChanged.AddListener(SetSFXVolume);
     }
-    
+
     private void ApplyVolumeSetting()
     {
         SetMasterVolume(_masterSlider.value);

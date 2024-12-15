@@ -1,24 +1,26 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class RunnersControler : MonoBehaviour
 {
     [SerializeField] private RunnerData _runnerData;
-
     [SerializeField] private Transform _groundCheck;
-
     [SerializeField] private LayerMask _groundMask;
-
     [SerializeField] private float _chargeInterval = 1f;
-
     [SerializeField] private float _fallMultiplier;
     [SerializeField] private LayerMask _winMask;
+    [SerializeField]private string _name;
 
     public float Speed = 7f;
     public float JumpForce = 13f;
     public float OriginalSpeed;
     public float OriginalJump;
+    public HealthHUD healthHUD;
+    public POwerUPHUD PowerUPHUD;
+    
     private Animator _animator;
     private RuntimeAnimatorController _animatorController;
     private MultiplePlayerCamera _cameraScript;
@@ -38,7 +40,6 @@ public class RunnersControler : MonoBehaviour
     private SpriteRenderer _sR;
     private Gamepad _assignedGamepad;
     private PlayerInput _playerInput;
-    [SerializeField]private string _name;
     private float MaxPower => _runnerData.MaxPower;
     private Sprite _spriteRenderer => _runnerData.Sprite;
 
@@ -91,6 +92,15 @@ public class RunnersControler : MonoBehaviour
         if (_assignedGamepad == null)
         {
             Debug.LogError($"Aucun Gamepad assigné pour le Runner {_name}.");
+        }
+
+        if (healthHUD != null)
+        {
+            healthHUD.UpdateHealth(_health);
+        }
+        if (PowerUPHUD != null)
+        {
+            PowerUPHUD.UpdatePowerUpUI(0f);
         }
     }
 
@@ -190,6 +200,10 @@ public class RunnersControler : MonoBehaviour
             _canUsePower = true;
             // Debug.Log("Power Up prêt !");
         }
+        if (PowerUPHUD != null)
+        {
+            PowerUPHUD.UpdatePowerUpUI(_currentPower / MaxPower);
+        }
     }
 
     private void ActivatePowerUp()
@@ -200,6 +214,10 @@ public class RunnersControler : MonoBehaviour
             _runnerData.ApplyPowerUp(this);
             _animator.SetBool("isPowerUP", true);
             _sR.color = Color.red;
+            if (PowerUPHUD != null)
+            {
+                PowerUPHUD.UpdatePowerUpUI(0f);
+            }
             Invoke(nameof(ResetPowerUp), 4f);
         }
     }
@@ -216,15 +234,20 @@ public class RunnersControler : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _health -= damage;
-        Debug.Log($"Runner a pris {damage} damage. Vie restantes : {_health}");
 
         if (_health > 0)
         {
             _animator.SetTrigger("isHit");
+            if (healthHUD != null)
+            {
+                healthHUD.UpdateHealth(_health); 
+            }
+            
         }
 
         if (_health <= 0)
         {
+            healthHUD.UpdateHealth(_health);
             _animator.SetTrigger("isDead");
             Invoke(nameof(Die), 1.5f);
         }

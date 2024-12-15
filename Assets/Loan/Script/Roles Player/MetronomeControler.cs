@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -8,6 +9,7 @@ public class MetronomeControler : MonoBehaviour
     [SerializeField] PiegeData _notePiegeData;
     [SerializeField] PiegeData _clePiegeData;
     [SerializeField] Transform _piegeSpawnPoint;
+    [SerializeField] TextMeshProUGUI _scoreText;
     
     private InputSysteme _inputSysteme;
     private PlayerInput _playerInput;
@@ -15,6 +17,8 @@ public class MetronomeControler : MonoBehaviour
     private int _score = 20;
     private bool _canPress = true;
     private Gamepad _assignedGamepad;
+
+    public bool PiegeEnCours;
 
     private void Start()
     {
@@ -24,6 +28,7 @@ public class MetronomeControler : MonoBehaviour
 
         _assignedGamepad = MainMenuManager.MetronomeID;
         _playerInput = GetComponent<PlayerInput>();
+        UpdateScore();
     }
 
     private void Update()
@@ -41,19 +46,23 @@ public class MetronomeControler : MonoBehaviour
                 Debug.Log("Piege gauche activé !");
             }
 
-            if (_inputSysteme.PiegeUp == 1 && _score >= 5 && _canPress)
+            if (_inputSysteme.PiegeUp == 1 && _score >= 5 && _canPress && !PiegeEnCours)
             {
                 _canPress = false;
+                PiegeEnCours = true;
                 SpawnPiege(_notePiegeData);
                 _score = _score - 5;
+                UpdateScore();
                 StartCoroutine(ResetCanPress());
             }
         
-            if (_inputSysteme.PiegeRight == 1 && _score >= 6 && _canPress)
+            if (_inputSysteme.PiegeRight == 1 && _score >= 6 && _canPress && !PiegeEnCours)
             {
                 _canPress = false;
+                PiegeEnCours = true;
                 SpawnPiege(_clePiegeData);
                 _score = _score - 6;
+                UpdateScore();
                 StartCoroutine(ResetCanPress());
             }
         
@@ -93,13 +102,13 @@ public class MetronomeControler : MonoBehaviour
     private void SubtractionScore(int points)
     {
         _score = Mathf.Max(0,_score - points);
-        Debug.Log("Score : " + _score);
+        UpdateScore();
     }
 
     private void AddScore(int points)
     {
         _score += points;
-        Debug.Log("Score : " + _score);
+        UpdateScore();
     }
 
     private void Reset()
@@ -121,6 +130,11 @@ public class MetronomeControler : MonoBehaviour
         Piege piegeScript = trap.AddComponent<Piege>();
         piegeScript.PiegeData = piegeData;
 
-        piegeScript.Initialize(_inputSysteme);
+        piegeScript.Initialize(_inputSysteme, this);
+    }
+
+    private void UpdateScore()
+    {
+        _scoreText.text = "X " + _score.ToString();
     }
 }
