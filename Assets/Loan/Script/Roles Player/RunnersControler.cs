@@ -192,13 +192,11 @@ public class RunnersControler : MonoBehaviour
         if (_currentPower < MaxPower)
         {
             _currentPower++;
-            Debug.Log("Charge actuelle : " + _currentPower);
         }
 
         if (_currentPower == MaxPower)
         {
             _canUsePower = true;
-            // Debug.Log("Power Up prêt !");
         }
         if (PowerUPHUD != null)
         {
@@ -210,7 +208,6 @@ public class RunnersControler : MonoBehaviour
     {
         if (_canUsePower)
         {
-            Debug.Log("Power Up activé !!");
             _runnerData.ApplyPowerUp(this);
             _animator.SetBool("isPowerUP", true);
             _sR.color = Color.red;
@@ -259,8 +256,6 @@ public class RunnersControler : MonoBehaviour
         {
             Debug.LogError("GameManager.Instance est null dans Die !");
         }
-
-        Debug.Log("Runner mort.");
         Destroy(gameObject);
     }
 
