@@ -1439,7 +1439,7 @@ Animator:
   m_GameObject: {fileID: 796533822}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f65d7709c3417b7478402bcddfe52984, type: 2}
+  m_Controller: {fileID: 9100000, guid: 272ce7a813f71064da79ad23ef129ebb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2384,7 +2384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3057410771009061325, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.93
+      value: -3.87
       objectReference: {fileID: 0}
     - target: {fileID: 3057410771009061325, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2421,10 +2421,10 @@ PrefabInstance:
     - target: {fileID: 6813344237376779143, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: _runnerData
       value: 
-      objectReference: {fileID: 11400000, guid: a533798326acdac4fb6c5a0daadd21ef, type: 2}
+      objectReference: {fileID: 11400000, guid: 76a8b20913fce8f408e5cbda7ad4c775, type: 2}
     - target: {fileID: 8500023821880280978, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_Name
-      value: Square (4)
+      value: Chasseur
       objectReference: {fileID: 0}
     - target: {fileID: 9112254346883913607, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_Size.x
@@ -2437,7 +2437,7 @@ PrefabInstance:
     - target: {fileID: 9112254346883913607, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 239365146, guid: 085413bead1df24438ffa97231288367, type: 3}
+      objectReference: {fileID: -1497961651, guid: cdab584094086f84dac3c7d31f638007, type: 3}
     - target: {fileID: 9112254346883913607, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_Color.b
       value: 0.8867924
