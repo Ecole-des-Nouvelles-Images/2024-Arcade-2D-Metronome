@@ -1439,7 +1439,7 @@ Animator:
   m_GameObject: {fileID: 796533822}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 272ce7a813f71064da79ad23ef129ebb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 87fcc76b840190c4aa9e4c8b27a4b557, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2421,7 +2421,7 @@ PrefabInstance:
     - target: {fileID: 6813344237376779143, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: _runnerData
       value: 
-      objectReference: {fileID: 11400000, guid: 76a8b20913fce8f408e5cbda7ad4c775, type: 2}
+      objectReference: {fileID: 11400000, guid: 727385d9e7ded1345b4cd2855de2bf46, type: 2}
     - target: {fileID: 8500023821880280978, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_Name
       value: Chasseur
@@ -2437,7 +2437,7 @@ PrefabInstance:
     - target: {fileID: 9112254346883913607, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1497961651, guid: cdab584094086f84dac3c7d31f638007, type: 3}
+      objectReference: {fileID: -719804215, guid: c0db4b63ba63e5742b4f769111b28cac, type: 3}
     - target: {fileID: 9112254346883913607, guid: 23a15b4114983ec43bb7e5e311b2bd5d, type: 3}
       propertyPath: m_Color.b
       value: 0.8867924
