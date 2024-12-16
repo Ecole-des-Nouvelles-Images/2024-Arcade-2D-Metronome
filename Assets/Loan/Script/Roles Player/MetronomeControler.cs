@@ -81,7 +81,7 @@ public class MetronomeControler : MonoBehaviour
 
     private System.Collections.IEnumerator ResetCanPress()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.18f);
         _canPress = true;
     }
 

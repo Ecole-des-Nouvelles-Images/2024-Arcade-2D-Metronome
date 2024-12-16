@@ -117,7 +117,7 @@ TextureImporter:
         y: 0
         width: 1024
         height: 1024
-      alignment: 7
+      alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -142,6 +142,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Run 7_0: 2120956659
+      Run 7_1: -854317940
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

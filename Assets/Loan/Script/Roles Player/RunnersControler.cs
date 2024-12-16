@@ -60,7 +60,7 @@ public class RunnersControler : MonoBehaviour
     {
         if (_cameraScript != null) _cameraScript.AddPlayer(transform);
 
-        // GameManager.Instance.RegisterRunner(gameObject);
+        GameManager.Instance.RegisterRunner(gameObject);
 
         InvokeRepeating(nameof(ChargePowerUp), 0f, _chargeInterval);
 
@@ -88,7 +88,7 @@ public class RunnersControler : MonoBehaviour
     }
 
     private void Update()
-    {
+    { 
         if (_assignedGamepad != null && _assignedGamepad == Gamepad.current)
         {
             var horizontal = _inputSysteme.Move.x;
@@ -191,7 +191,7 @@ public class RunnersControler : MonoBehaviour
         {
             Debug.Log("Power Up activé !!");
             _runnerData.ApplyPowerUp(this);
-            // _animator.SetBool("isPowerUP", true);
+            _animator.SetBool("isPowerUP", true);
             _sR.color = Color.red;
             Invoke(nameof(ResetPowerUp), 4f);
         }
@@ -217,8 +217,10 @@ public class RunnersControler : MonoBehaviour
         }
 
         if (_health <= 0)
-            // _animator.SetTrigger("isDead");
+        {
+            _animator.SetTrigger("isDead");
             Invoke(nameof(Die), 2f);
+        }
     }
 
     private void Die()

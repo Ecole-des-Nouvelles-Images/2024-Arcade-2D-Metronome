@@ -118,7 +118,7 @@ TextureImporter:
         width: 1024
         height: 1024
       alignment: 9
-      pivot: {x: 0.5056574, y: 0.25}
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,6 +142,10 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Idle 1_0: 239365146
+      Idle 1_1: 1256363655
+      Idle 1_2: -325584891
+      Idle 1_3: -1022503938
+      Idle 1_4: -1499925418
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
