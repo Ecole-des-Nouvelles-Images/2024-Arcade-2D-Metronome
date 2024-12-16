@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "PauseP",
+                    "type": "Button",
+                    "id": "7db4927e-3f5a-4295-b651-dac5f963383e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -64,6 +73,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PowerUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8301e28b-8676-4335-a306-b388b58e5ccd",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseP",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -131,6 +151,15 @@
                     "name": "PiegeActive",
                     "type": "Button",
                     "id": "6286e3d7-98b4-487d-b094-18b9705c9a53",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "PauseM",
+                    "type": "Button",
+                    "id": "cd0b95a2-f46a-4520-b9ab-8884d63029fb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -212,6 +241,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "PiegeDown",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5456dd1-bdbc-4ade-93d1-b44ee4d32a10",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PauseM",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

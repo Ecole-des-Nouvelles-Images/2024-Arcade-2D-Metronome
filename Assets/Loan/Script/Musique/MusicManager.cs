@@ -81,7 +81,15 @@ public class MusicManager : MonoBehaviour
     {
         if (_audioSource.isPlaying)
         {
-            _audioSource.Stop();
+            _audioSource.Pause();
+        }
+    }
+
+    public void ReprendMusic()
+    {
+        if (!_audioSource.isPlaying)
+        {
+            _audioSource.Play();
         }
     }
 

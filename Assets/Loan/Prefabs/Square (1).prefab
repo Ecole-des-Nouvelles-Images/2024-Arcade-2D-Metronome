@@ -167,6 +167,7 @@ MonoBehaviour:
   Move: {x: 0, y: 0}
   Jump: 0
   PowerUp: 0
+  PauseP: 0
   Active: 0
   PiegeMove: {x: 0, y: 0}
   PiegeUp: 0
@@ -174,6 +175,7 @@ MonoBehaviour:
   PiegeDown: 0
   PiegeLeft: 0
   PiegeActive: 0
+  PauseM: 0
 --- !u!114 &6813344237376779143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,11 +198,14 @@ MonoBehaviour:
   _winMask:
     serializedVersion: 2
     m_Bits: 128
+  _name: 
+  _pauseMenu: {fileID: 6613603675890063438, guid: 8adb16400d2878649b49d5ddf88e96af, type: 3}
   Speed: 7
   JumpForce: 13
   OriginalSpeed: 0
   OriginalJump: 0
-  _name: 
+  healthHUD: {fileID: 0}
+  PowerUPHUD: {fileID: 0}
 --- !u!50 &6812310997153343440
 Rigidbody2D:
   serializedVersion: 4

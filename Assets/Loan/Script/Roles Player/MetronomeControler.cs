@@ -10,6 +10,7 @@ public class MetronomeControler : MonoBehaviour
     [SerializeField] PiegeData _clePiegeData;
     [SerializeField] Transform _piegeSpawnPoint;
     [SerializeField] TextMeshProUGUI _scoreText;
+    [SerializeField] GameObject _pauseMenu;
     
     private InputSysteme _inputSysteme;
     private PlayerInput _playerInput;
@@ -29,6 +30,7 @@ public class MetronomeControler : MonoBehaviour
         _assignedGamepad = MainMenuManager.MetronomeID;
         _playerInput = GetComponent<PlayerInput>();
         UpdateScore();
+        _pauseMenu.GetComponent<MenuPause>();
     }
 
     private void Update()
@@ -69,6 +71,13 @@ public class MetronomeControler : MonoBehaviour
             if (_inputSysteme.PiegeDown == 1)
             {
                 Debug.Log("Piege Bas activé !");
+            }
+
+            if (_inputSysteme.PauseM == 1)
+            {
+                _pauseMenu.SetActive(true);
+                Time.timeScale = 0;
+                
             }
         }
         
