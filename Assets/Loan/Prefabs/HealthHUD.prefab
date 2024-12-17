@@ -246,7 +246,7 @@ MonoBehaviour:
   - {fileID: 812909823602356596}
   - {fileID: 1329232743320492863}
   _healthFull: {fileID: 1586364645, guid: ddf7c03c62ced444f9d6783c2eb98a31, type: 3}
-  _healthEmpty: {fileID: 1199828733, guid: 04fce1762322a0347a36dd05913e891e, type: 3}
+  _healthEmpty: {fileID: 1934337644, guid: 5503d473c8ed67d4f9cb07cc8a055959, type: 3}
 --- !u!1 &8730337321983434759
 GameObject:
   m_ObjectHideFlags: 0

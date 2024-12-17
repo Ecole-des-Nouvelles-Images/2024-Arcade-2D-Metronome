@@ -171,6 +171,8 @@ MonoBehaviour:
   _runnerSpawn3: {fileID: 0}
   _runnerPrefab: {fileID: 796533822}
   _metronomeControll: {fileID: 2006742428}
+  _healthHudsprefabs: {fileID: 0}
+  _powerUpHUDPrefabs: {fileID: 0}
 --- !u!1 &44071381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,7 +1441,7 @@ Animator:
   m_GameObject: {fileID: 796533822}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 87fcc76b840190c4aa9e4c8b27a4b557, type: 2}
+  m_Controller: {fileID: 9100000, guid: f65d7709c3417b7478402bcddfe52984, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

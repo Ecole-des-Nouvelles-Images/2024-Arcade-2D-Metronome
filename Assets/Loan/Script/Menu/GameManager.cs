@@ -57,9 +57,6 @@ public class GameManager : MonoBehaviour
 
    private void SpawnRunners()
    {
-      Debug.Log($"ChasseurID : {MainMenuManager.ChasseurID} ID {MainMenuManager.ChasseurID.deviceId}");
-      // Debug.Log($"MoineID : {MainMenuManager.MoineID} ID {MainMenuManager.MoineID.deviceId}");
-      // Debug.Log($"MageID : {MainMenuManager.MageID} ID {MainMenuManager.MageID.deviceId}");
       Debug.Log( "Runner data = "+MainMenuManager.FirstRunner  );
       Debug.Log( "Chasseur ID = "+MainMenuManager.ChasseurID  );
       if (MainMenuManager.FirstRunner != null && MainMenuManager.ChasseurID != null

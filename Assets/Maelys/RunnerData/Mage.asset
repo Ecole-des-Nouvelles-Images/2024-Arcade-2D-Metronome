@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bee95e8406e51a4ab2a7b81e456cea5, type: 3}
   m_Name: Mage
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 0}
+  Sprite: {fileID: 2030808925, guid: f8546c4519bac78488ed9b1b1a4406db, type: 3}
   MaxPower: 0
   AnimatorController: {fileID: 9100000, guid: 272ce7a813f71064da79ad23ef129ebb, type: 2}
   Name: Mage

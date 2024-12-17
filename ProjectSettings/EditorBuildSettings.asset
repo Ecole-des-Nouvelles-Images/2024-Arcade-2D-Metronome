@@ -5,23 +5,23 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/MainMenu.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Loan/MenuScene.unity
-    guid: ea2d478ab58600049b133c86a9081c99
+    path: Assets/Int/INT_General/Scene/ENSI.unity
+    guid: f1090daba40f1f747bb2adadace2efa0
   - enabled: 1
-    path: Assets/Loan/Test_Loan.unity
-    guid: 05fe133ed69c45a459ff3cef719dc0de
+    path: Assets/Int/INT_General/Scene/MenuScene.unity
+    guid: 29bd67635fb2554479bb9fc0a87eda2c
   - enabled: 1
-    path: Assets/Loan/WinRunner.unity
-    guid: 41c76cb1594544b40971897ef0798b3e
+    path: Assets/Int/INT_General/Scene/Scene_Choix.unity
+    guid: b0eaa2c82b1e9574187ee7d4de52f721
   - enabled: 1
-    path: Assets/Loan/WinMetronome.unity
-    guid: f1624d3edde86e846beaddd6c2a63aff
+    path: Assets/Int/INT_General/Scene/Scene_Game.unity
+    guid: b7edd5fb2c78ad9409c8eeb016c022f8
   - enabled: 1
-    path: Assets/Loan/Scene_Choix.unity
-    guid: 15a08db7fcd18b441ae595d44104a40d
+    path: Assets/Int/INT_General/Scene/WinMetronome.unity
+    guid: 79408b521eb66fb428aff4cf81cc815f
+  - enabled: 1
+    path: Assets/Int/INT_General/Scene/WinRunner.unity
+    guid: 686c86299f0627d4db55caedc3ab66a6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d658461bd85a296418a5c4edbd05b078, type: 2}

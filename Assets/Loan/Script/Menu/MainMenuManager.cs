@@ -59,7 +59,7 @@ public class MainMenuManager : MonoBehaviour
     public void RetrunMenu()
     {
         ResetStaticData();
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MenuScene");
         Destroy(GameManager.Instance.gameObject);
     }
 

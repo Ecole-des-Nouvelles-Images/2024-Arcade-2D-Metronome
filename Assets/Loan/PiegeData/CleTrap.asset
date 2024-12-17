@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 862523847213c004faac664a65615e3c, type: 3}
   m_Name: CleTrap
   m_EditorClassIdentifier: 
-  PiegeSprite: {fileID: 1576726157, guid: 249af9ea327e7b44c98a421186e77412, type: 3}
+  PiegeSprite: {fileID: -962355385, guid: 314b6bed3cb6f1d45a27ee6e6845a813, type: 3}
   Mass: 3
   Damage: 0
   CanFall: 1
