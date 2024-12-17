@@ -107,7 +107,7 @@ public class ChoixPersoManager : MonoBehaviour
     private IEnumerator ValidateStartGame()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Test_Loan");
         
     }
 }

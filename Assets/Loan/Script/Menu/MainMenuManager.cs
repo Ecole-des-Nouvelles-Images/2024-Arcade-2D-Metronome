@@ -35,7 +35,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenCharactersScene()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Scene_Choix");
     }
 
     public void OptionPanel()

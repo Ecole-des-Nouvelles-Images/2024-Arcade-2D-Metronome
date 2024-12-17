@@ -160,8 +160,7 @@ public class GameManager : MonoBehaviour
 
    public void LoadWinRunner(string RunnerWin)
    {
-      SceneManager.LoadScene(2);
-      // _mainManager.ResetStaticData();
+      SceneManager.LoadScene("WinRunner");
    }
 
    public void RegisterRunner(GameObject Runner)
@@ -182,8 +181,7 @@ public class GameManager : MonoBehaviour
    {
       if (_aliveRunners.Count == 0)
       {
-         SceneManager.LoadScene(3);
-         // _mainManager.ResetStaticData();
+         SceneManager.LoadScene("WinMetronome");
       }
    }
    

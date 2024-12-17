@@ -11,6 +11,6 @@ public class ENSIScene : MonoBehaviour
     private System.Collections.IEnumerator OpenMainMenu()
     {
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MenuScene");
     }
 }
