@@ -8,7 +8,7 @@ public class NoteSpawner : MonoBehaviour
 {
   [SerializeField] private GameObject _notePrefab;
   [SerializeField] private List<float> _spawnIntervals = new List<float>{0.2f,0.4f,0.6f,0.8f,1f,1.2f,1.4f,1.6f,1.8f,2f};
-  [SerializeField] private List<float> _speedScroll = new List<float>(){10000f};
+  [SerializeField] private List<float> _speedScroll = new List<float>(){1100f};
   [SerializeField] private RectTransform _startNote;
   [SerializeField] private RectTransform _endNote;
   [SerializeField] private RectTransform _rectTransformPanel;
@@ -28,12 +28,12 @@ public class NoteSpawner : MonoBehaviour
 
   private IEnumerator SpawnNoteRandom()
   {
-    while (true)
+    for (int i = 0; i < _spawnIntervals.Count; i++)
     {
-      float randomSpawn = _spawnIntervals[Random.Range(0, _spawnIntervals.Count)];
+      float spawnInterval = _spawnIntervals[i];
       float randomSpeed = _speedScroll[Random.Range(0, _speedScroll.Count)];
-      
-      yield return new WaitForSeconds(randomSpawn);
+
+      yield return new WaitForSeconds(spawnInterval);
 
       SpawnNote(randomSpeed);
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CleTrap", menuName = "Traps/Cle Trap")]
 public class Cle : PiegeData
 {
-    public float ExplosionRadius = 6f;
+    public float ExplosionRadius = 3f;
     private float ExplosionForce = 1200f;
 
     private void OnEnable()

@@ -10,6 +10,7 @@ public class InputSysteme : MonoBehaviour
     public Vector2 Move;
     public float Jump;
     public float PowerUp;
+    public float PauseP;
     
     //Métronome
     public float Active;
@@ -19,6 +20,7 @@ public class InputSysteme : MonoBehaviour
     public float PiegeDown;
     public float PiegeLeft;
     public float PiegeActive;
+    public float PauseM;
     
 
     private PlayerInput _playerInput;
@@ -55,6 +57,9 @@ public class InputSysteme : MonoBehaviour
         _playerInput.actions["PowerUp"].performed += OnPowerUp;
         _playerInput.actions["PowerUP"].canceled += OnPowerUp;
         
+        _playerInput.actions["PauseP"].performed += OnPauseP;
+        _playerInput.actions["PauseP"].canceled += OnPauseP;
+        
         //Métronome
         _playerInput.actions["Active"].performed += OnActive;
         _playerInput.actions["Active"].canceled += OnActive;
@@ -77,7 +82,8 @@ public class InputSysteme : MonoBehaviour
         _playerInput.actions["PiegeActive"].performed += OnPiegeActive;
         _playerInput.actions["PiegeActive"].canceled += OnPiegeActive;
         
-        
+        _playerInput.actions["PauseM"].performed += OnPauseM;
+        _playerInput.actions["PauseM"].canceled += OnPauseM;
 
         DetectCurrentInputDevice();
     }
@@ -96,6 +102,9 @@ public class InputSysteme : MonoBehaviour
         
         _playerInput.actions["PowerUp"].performed -= OnPowerUp;
         _playerInput.actions["PowerUP"].canceled -= OnPowerUp;
+        
+        _playerInput.actions["PauseP"].performed -= OnPauseP;
+        _playerInput.actions["PauseP"].canceled -= OnPauseP;
         
         //Métronome
         _playerInput.actions["Active"].performed -= OnActive;
@@ -118,6 +127,9 @@ public class InputSysteme : MonoBehaviour
         
         _playerInput.actions["PiegeActive"].performed -= OnPiegeActive;
         _playerInput.actions["PiegeActive"].canceled -= OnPiegeActive;
+        
+        _playerInput.actions["PauseM"].performed -= OnPauseM;
+        _playerInput.actions["PauseM"].canceled -= OnPauseM;
     }
 
     private void OnDeviceChange(InputDevice device, InputDeviceChange change)
@@ -155,6 +167,11 @@ public class InputSysteme : MonoBehaviour
     private void OnPowerUp(InputAction.CallbackContext context)
     {
             PowerUp = context.ReadValue<float>();
+    }
+    
+    private void OnPauseP(InputAction.CallbackContext context)
+    {
+        PauseP = context.ReadValue<float>();
     }
 
     //Métronome
@@ -212,6 +229,12 @@ public class InputSysteme : MonoBehaviour
         {
             PiegeActive = context.ReadValue<float>();   
         }
+    }
+    
+    private void OnPauseM(InputAction.CallbackContext context)
+    {
+        PauseM = context.ReadValue<float>();
+        
     }
     
     public void SwitchCurrentControlScheme(Gamepad gamepad)

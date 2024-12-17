@@ -17,7 +17,7 @@ public class ChoixPersoManager : MonoBehaviour
     [SerializeField] private RunnerData _runnerMage;
 
     private Gamepad _assignedGamepad;
-    private static int _playerCount = 0;
+    public static int PlayerCount = 0;
 
     
     void Start()
@@ -31,23 +31,23 @@ public class ChoixPersoManager : MonoBehaviour
     private void OnEnable()
     {
         
-        if (Gamepad.all.Count > _playerCount)
+        if (Gamepad.all.Count > PlayerCount)
         {
-            _assignedGamepad = Gamepad.all[_playerCount];
+            _assignedGamepad = Gamepad.all[PlayerCount];
 
             if (!MainMenuManager.AssignedGamepads.Contains(_assignedGamepad))
             {
                 MainMenuManager.AssignedGamepads.Add(_assignedGamepad);
             }
 
-            Debug.Log($"Manette assignée au joueur {_playerCount + 1} : {_assignedGamepad.displayName}");
+            Debug.Log($"Manette assignée au joueur {PlayerCount + 1} : {_assignedGamepad.displayName}");
 
             _chasseurButton.onClick.AddListener(() => SelectRunner(_runnerChasseur, _assignedGamepad, 1));
             _moineButton.onClick.AddListener(() => SelectRunner(_runnerMoine, _assignedGamepad, 2));
             _mageButton.onClick.AddListener(() => SelectRunner(_runnerMage, _assignedGamepad, 3));
             _metronomeButton.onClick.AddListener(() => SelectMetronome(_assignedGamepad));
 
-            _playerCount++;
+            PlayerCount++;
         }
         else
         {
@@ -65,6 +65,8 @@ public class ChoixPersoManager : MonoBehaviour
 
     private void SelectRunner(RunnerData runner, Gamepad gamepad, int choix)
     {
+        
+        Debug.Log("Runner "+choix+" GamePad =>"+ gamepad.deviceId);
         switch (choix)
         {
             case 1:
@@ -87,6 +89,7 @@ public class ChoixPersoManager : MonoBehaviour
 
     private void SelectMetronome(Gamepad gamepad)
     {
+        Debug.Log("Metronome GramePad =>"+ gamepad.deviceId);
         MainMenuManager.MetronomeID = gamepad;
         Debug.Log($"Métronome instancié avec la manette {gamepad.displayName}.");
         StartCoroutine(ValidateStartGame());
@@ -104,7 +107,7 @@ public class ChoixPersoManager : MonoBehaviour
     private IEnumerator ValidateStartGame()
     {
         yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Test_Loan");
         
     }
 }

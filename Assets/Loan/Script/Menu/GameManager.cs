@@ -4,18 +4,23 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
    public static GameManager Instance;
 
    private List<GameObject> _aliveRunners = new List<GameObject>();
+   private MainMenuManager _mainManager;
 
    [SerializeField] private Transform _runnerSpawn1;
    [SerializeField] private Transform _runnerSpawn2;
    [SerializeField] private Transform _runnerSpawn3;
    [SerializeField] private GameObject _runnerPrefab;
    [SerializeField] private GameObject _metronomeControll;
+   [SerializeField] private HealthHUD _healthHudsprefabs;
+   [SerializeField] private POwerUPHUD _powerUpHUDPrefabs;
+   
 
    private void Awake()
    {
@@ -55,24 +60,52 @@ public class GameManager : MonoBehaviour
       Debug.Log($"ChasseurID : {MainMenuManager.ChasseurID} ID {MainMenuManager.ChasseurID.deviceId}");
       // Debug.Log($"MoineID : {MainMenuManager.MoineID} ID {MainMenuManager.MoineID.deviceId}");
       // Debug.Log($"MageID : {MainMenuManager.MageID} ID {MainMenuManager.MageID.deviceId}");
-
+      Debug.Log( "Runner data = "+MainMenuManager.FirstRunner  );
+      Debug.Log( "Chasseur ID = "+MainMenuManager.ChasseurID  );
       if (MainMenuManager.FirstRunner != null && MainMenuManager.ChasseurID != null
           )
       {
          GameObject runner1 = Instantiate(_runnerPrefab, _runnerSpawn1.position, Quaternion.identity);
          SetupRunner(runner1, MainMenuManager.FirstRunner, MainMenuManager.ChasseurID);
+         RunnersControler runnersControler = runner1.GetComponent<RunnersControler>();
+         HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
+         newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newHealthHUD.transform.localPosition = new Vector3(-576, -492, 0);
+         runnersControler.healthHUD = newHealthHUD;
+         POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
+         newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newPowerUPHUD.transform.localPosition = new Vector3(-390, -492, 0);
+         runnersControler.PowerUPHUD = newPowerUPHUD;
       }
       if (MainMenuManager.SecondRunner != null && MainMenuManager.MoineID != null
           )
       {
          GameObject runner2 = Instantiate(_runnerPrefab, _runnerSpawn2.position, Quaternion.identity);
          SetupRunner(runner2, MainMenuManager.SecondRunner, MainMenuManager.MoineID);
+         RunnersControler runnersControler = runner2.GetComponent<RunnersControler>();
+         HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
+         newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newHealthHUD.transform.localPosition = new Vector3(1, -492, 0);
+         runnersControler.healthHUD = newHealthHUD;
+         POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
+         newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newPowerUPHUD.transform.localPosition = new Vector3(185, -492, 0);
+         runnersControler.PowerUPHUD = newPowerUPHUD;
       }
       if (MainMenuManager.ThirdRunner != null && MainMenuManager.MageID != null
           )
       {
          GameObject runner3 = Instantiate(_runnerPrefab, _runnerSpawn3.position, Quaternion.identity);
          SetupRunner(runner3, MainMenuManager.ThirdRunner, MainMenuManager.MageID);
+         RunnersControler runnersControler = runner3.GetComponent<RunnersControler>();
+         HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
+         newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newHealthHUD.transform.localPosition = new Vector3(575, -492, 0);
+         runnersControler.healthHUD = newHealthHUD;
+         POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
+         newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
+         newPowerUPHUD.transform.localPosition = new Vector3(755, -492, 0);
+         runnersControler.PowerUPHUD = newPowerUPHUD;
       }
    }
 
@@ -127,7 +160,7 @@ public class GameManager : MonoBehaviour
 
    public void LoadWinRunner(string RunnerWin)
    {
-      SceneManager.LoadScene(2);
+      SceneManager.LoadScene("WinRunner");
    }
 
    public void RegisterRunner(GameObject Runner)
@@ -148,7 +181,7 @@ public class GameManager : MonoBehaviour
    {
       if (_aliveRunners.Count == 0)
       {
-         SceneManager.LoadScene(3);
+         SceneManager.LoadScene("WinMetronome");
       }
    }
    
