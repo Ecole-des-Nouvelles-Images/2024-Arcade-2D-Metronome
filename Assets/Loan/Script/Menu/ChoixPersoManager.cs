@@ -73,13 +73,16 @@ public class ChoixPersoManager : MonoBehaviour
         switch (choix)
         {
             case 1:
-                GameManager.ScriptableObjectPlayerOne = runner;
+                MainMenuManager.FirstRunner = runner;
+                MainMenuManager.ChasseurID = gamepad;
                 break;
             case 2:
-                GameManager.ScriptableObjectPlayerTwo = runner;
+                MainMenuManager.SecondRunner = runner;
+                MainMenuManager.MoineID = gamepad;
                 break;
             case 3:
-                GameManager.ScriptableObjectPlayerThre = runner;
+                MainMenuManager.ThirdRunner = runner;
+                MainMenuManager.MageID = gamepad;
                 break;
         }
 
