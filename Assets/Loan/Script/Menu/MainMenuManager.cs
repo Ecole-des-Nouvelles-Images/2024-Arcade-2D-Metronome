@@ -24,6 +24,7 @@ public class MainMenuManager : MonoBehaviour
 
     
     public static List<Gamepad> AssignedGamepads = new List<Gamepad>();
+    
 
     private void Start()
     {

@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
 
    private List<GameObject> _aliveRunners = new List<GameObject>();
    private MainMenuManager _mainManager;
+   
+   public static ScriptableObject ScriptableObjectPlayerOne;
+   public static ScriptableObject ScriptableObjectPlayerTwo;
+   public static ScriptableObject ScriptableObjectPlayerThre;
 
    [SerializeField] private Transform _runnerSpawn1;
    [SerializeField] private Transform _runnerSpawn2;
@@ -39,6 +43,13 @@ public class GameManager : MonoBehaviour
    {
       StartCoroutine(ValidateDevicesCoroutine());
       ValidateDeviceIDs();
+   }
+   
+   public void DisplayPlayerAssignments()
+   {
+      Debug.Log($"Joueur 1 : {ScriptableObjectPlayerOne?.name ?? "Aucun"} avec Gamepad {(ChoixPersoManager.PlayerGamepads.ContainsKey(1) ? ChoixPersoManager.PlayerGamepads[1].displayName : "Non assigné")}");
+      Debug.Log($"Joueur 2 : {ScriptableObjectPlayerTwo?.name ?? "Aucun"} avec Gamepad {(ChoixPersoManager.PlayerGamepads.ContainsKey(2) ? ChoixPersoManager.PlayerGamepads[2].displayName : "Non assigné")}");
+      Debug.Log($"Joueur 3 : {ScriptableObjectPlayerThre?.name ?? "Aucun"} avec Gamepad {(ChoixPersoManager.PlayerGamepads.ContainsKey(3) ? ChoixPersoManager.PlayerGamepads[3].displayName : "Non assigné")}");
    }
    
    void Update()

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,6 +19,7 @@ public class ChoixPersoManager : MonoBehaviour
 
     private Gamepad _assignedGamepad;
     public static int PlayerCount = 0;
+    public static Dictionary<int, Gamepad> PlayerGamepads = new Dictionary<int, Gamepad>();
 
     
     void Start()
@@ -65,26 +67,25 @@ public class ChoixPersoManager : MonoBehaviour
 
     private void SelectRunner(RunnerData runner, Gamepad gamepad, int choix)
     {
-        
         Debug.Log("Runner "+choix+" GamePad =>"+ gamepad.deviceId);
+        
+        PlayerGamepads[choix] = gamepad;
         switch (choix)
         {
             case 1:
-                MainMenuManager.FirstRunner = runner;
-                MainMenuManager.ChasseurID = gamepad;
+                GameManager.ScriptableObjectPlayerOne = runner;
                 break;
             case 2:
-                MainMenuManager.SecondRunner = runner;
-                MainMenuManager.MoineID = gamepad;
+                GameManager.ScriptableObjectPlayerTwo = runner;
                 break;
             case 3:
-                MainMenuManager.ThirdRunner = runner;
-                MainMenuManager.MageID = gamepad;
+                GameManager.ScriptableObjectPlayerThre = runner;
                 break;
         }
 
         DisableAllButtons();
         Debug.Log($"Runner {runner.Name} sélectionné avec la manette {gamepad.displayName} pour le slot {choix}.");
+        GameManager.Instance.DisplayPlayerAssignments();
     }
 
     private void SelectMetronome(Gamepad gamepad)

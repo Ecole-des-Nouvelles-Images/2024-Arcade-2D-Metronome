@@ -52,9 +52,9 @@ public class RunnersControler : MonoBehaviour
         _sR.sprite = _spriteRenderer;
         _playerInput = GetComponent<PlayerInput>();
         _animator = GetComponent<Animator>();
-        _animatorController = _animator.runtimeAnimatorController;
-        _animatorController = _runnerData.AnimatorController;
-        _animator.runtimeAnimatorController = _animatorController;
+        // _animatorController = _animator.runtimeAnimatorController;
+        // _animatorController = _runnerData.AnimatorController;
+        // _animator.runtimeAnimatorController = _animatorController;
     }
 
     private void Start()
@@ -106,7 +106,8 @@ public class RunnersControler : MonoBehaviour
 
     private void Update()
     { 
-        if (_assignedGamepad != null && _assignedGamepad == Gamepad.current)
+        if (//_assignedGamepad != null && 
+            _assignedGamepad == Gamepad.current)
         {
             var horizontal = _inputSysteme.Move.x;
             var velocity = _rb.velocity;
