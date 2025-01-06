@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: 13369f5deb84ca9448c611a9a3b54a19
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 962
+        width: 1176
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31893b637ded31b40a8007fcc16b6eb4
+      internalID: -917651556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_1
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 995
+        width: 492
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51042808e9afbf247b14a9b22ef96793
+      internalID: -1258119802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_2
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 917
+        width: 492
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 587bf7ad7ad421b45acb4fbcd2715e1f
+      internalID: -1017806302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_3
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 800
+        width: 1217
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d68b1da47fc9cbc4983f0f767eb81b22
+      internalID: -1524112700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 823
+        width: 439
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68b7ae17b3bcb4848a7bce46ec50f653
+      internalID: 1780112587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_5
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 640
+        width: 1222
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a271fe2bc22f34a4caea9d7e577f33d8
+      internalID: -2069647833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1401
+        y: 559
+        width: 243
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 676748709462c214185c9ffb8e4ffe25
+      internalID: 97601066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1698
+        y: 388
+        width: 216
+        height: 430
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a214da68e8b34cf47b41304cc55a06c9
+      internalID: -874098349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_8
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 478
+        width: 999
+        height: 107
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 010ff73990ee2ed45ace2b5659882352
+      internalID: 1829688117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_9
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 176
+        width: 856
+        height: 249
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 387df83a420dad2478eb7c02e5bcdddc
+      internalID: 1739261694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1302
+        y: 26
+        width: 198
+        height: 449
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6f2a563c10b3e9498b2c69673b876a8
+      internalID: 116611220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 38
+        width: 201
+        height: 427
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2521c4e185f824248b43ff1a3a5192fe
+      internalID: -695990423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MANICAS_Maelys_UI_sprite sheet_12
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 38
+        width: 95
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a22bb1159485242bc68ff206cdc761
+      internalID: 1992501418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MANICAS_Maelys_UI_sprite sheet_0: -917651556
+      MANICAS_Maelys_UI_sprite sheet_1: -1258119802
+      MANICAS_Maelys_UI_sprite sheet_10: 116611220
+      MANICAS_Maelys_UI_sprite sheet_11: -695990423
+      MANICAS_Maelys_UI_sprite sheet_12: 1992501418
+      MANICAS_Maelys_UI_sprite sheet_2: -1017806302
+      MANICAS_Maelys_UI_sprite sheet_3: -1524112700
+      MANICAS_Maelys_UI_sprite sheet_4: 1780112587
+      MANICAS_Maelys_UI_sprite sheet_5: -2069647833
+      MANICAS_Maelys_UI_sprite sheet_6: 97601066
+      MANICAS_Maelys_UI_sprite sheet_7: -874098349
+      MANICAS_Maelys_UI_sprite sheet_8: 1829688117
+      MANICAS_Maelys_UI_sprite sheet_9: 1739261694
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
