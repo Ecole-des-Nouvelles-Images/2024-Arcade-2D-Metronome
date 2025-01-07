@@ -1480,6 +1480,7 @@ GameObject:
   - component: {fileID: 692767749}
   - component: {fileID: 692767748}
   - component: {fileID: 692767747}
+  - component: {fileID: 692767750}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1600,6 +1601,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692767745}
   m_CullTransparentMesh: 1
+--- !u!114 &692767750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 692767745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _animationEndScale: 1.2
 --- !u!1 &709155018
 GameObject:
   m_ObjectHideFlags: 0
@@ -2462,10 +2502,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 899161363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211b6c9e4a057664d95ce959489246f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curve:
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -2489,7 +2531,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationDuration: 0.2
+  _animationEndScale: 1.2
 --- !u!1 &940783779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2729,10 +2771,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1050985198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211b6c9e4a057664d95ce959489246f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curve:
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -2756,7 +2800,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationDuration: 0.2
+  _animationEndScale: 1.2
 --- !u!1 &1131648666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,10 +2944,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131648666}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211b6c9e4a057664d95ce959489246f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curve:
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -2927,7 +2973,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationDuration: 0.2
+  _animationEndScale: 1.2
 --- !u!1 &1378933808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,6 +3742,7 @@ GameObject:
   - component: {fileID: 1655227506}
   - component: {fileID: 1655227505}
   - component: {fileID: 1655227504}
+  - component: {fileID: 1655227507}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3817,6 +3864,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655227502}
   m_CullTransparentMesh: 1
+--- !u!114 &1655227507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655227502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _animationEndScale: 1.2
 --- !u!1 &1669429028
 GameObject:
   m_ObjectHideFlags: 0
@@ -4756,10 +4842,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1912301557}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 211b6c9e4a057664d95ce959489246f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  curve:
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
@@ -4783,7 +4871,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  animationDuration: 0.2
+  _animationEndScale: 1.2
 --- !u!1 &1964749882
 GameObject:
   m_ObjectHideFlags: 0
