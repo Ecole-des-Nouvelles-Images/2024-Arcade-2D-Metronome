@@ -1035,6 +1035,7 @@ GameObject:
   - component: {fileID: 899161367}
   - component: {fileID: 899161366}
   - component: {fileID: 899161365}
+  - component: {fileID: 899161368}
   m_Layer: 5
   m_Name: Button (1)
   m_TagString: Untagged
@@ -1156,6 +1157,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 899161363}
   m_CullTransparentMesh: 1
+--- !u!114 &899161368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899161363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _animationEndScale: 1.2
 --- !u!1 &940783779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,6 +1301,7 @@ GameObject:
   - component: {fileID: 1050985202}
   - component: {fileID: 1050985201}
   - component: {fileID: 1050985200}
+  - component: {fileID: 1050985203}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1382,6 +1423,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050985198}
   m_CullTransparentMesh: 1
+--- !u!114 &1050985203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050985198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _animationEndScale: 1.2
 --- !u!1 &1131648666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1394,6 +1474,7 @@ GameObject:
   - component: {fileID: 1131648670}
   - component: {fileID: 1131648669}
   - component: {fileID: 1131648668}
+  - component: {fileID: 1131648671}
   m_Layer: 5
   m_Name: Button (2)
   m_TagString: Untagged
@@ -1515,6 +1596,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131648666}
   m_CullTransparentMesh: 1
+--- !u!114 &1131648671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131648666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _animationEndScale: 1.2
 --- !u!1 &1511003686 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3609101990306139920, guid: 4a146d1d1eea1aa48be6ebd8d676ff17, type: 3}
@@ -2215,6 +2335,7 @@ GameObject:
   - component: {fileID: 1912301561}
   - component: {fileID: 1912301560}
   - component: {fileID: 1912301559}
+  - component: {fileID: 1912301562}
   m_Layer: 5
   m_Name: Button (3)
   m_TagString: Untagged
@@ -2336,6 +2457,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912301557}
   m_CullTransparentMesh: 1
+--- !u!114 &1912301562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1912301557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f1bfb7923ca024088fe6c897d6ca40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playTweening: 1
+  _animationTime: 0.3
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _animationEndScale: 1.2
 --- !u!1 &1972649089
 GameObject:
   m_ObjectHideFlags: 0
