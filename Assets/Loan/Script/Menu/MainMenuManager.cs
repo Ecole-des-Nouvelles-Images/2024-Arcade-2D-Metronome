@@ -22,6 +22,12 @@ public class MainMenuManager : MonoBehaviour
     public static Gamepad MoineID;
     public static Gamepad MageID;
 
+    public static int ChasseurInt;
+    public static int MoineInt;
+    public static int MageInt;
+    public static int MetronomeInt;
+    
+
     
     public static List<Gamepad> AssignedGamepads = new List<Gamepad>();
     

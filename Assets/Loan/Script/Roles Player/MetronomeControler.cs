@@ -18,6 +18,7 @@ public class MetronomeControler : MonoBehaviour
     private int _score = 20;
     private bool _canPress = true;
     private Gamepad _assignedGamepad;
+    private int _id;
 
     public bool PiegeEnCours;
 
@@ -28,6 +29,7 @@ public class MetronomeControler : MonoBehaviour
         Debug.Log($"Gamepad assigné to Metronome : {MainMenuManager.MetronomeID}");
 
         _assignedGamepad = MainMenuManager.MetronomeID;
+        Debug.Log(_assignedGamepad.deviceId);
         _playerInput = GetComponent<PlayerInput>();
         UpdateScore();
         _pauseMenu.GetComponent<MenuPause>();
@@ -35,19 +37,24 @@ public class MetronomeControler : MonoBehaviour
 
     private void Update()
     {
-        if (_assignedGamepad != null && _assignedGamepad == Gamepad.current)
+        if ( _assignedGamepad.rightShoulder.isPressed)
         {
             if (_inputSysteme.Active == 1 && _canPress)
             {
                 HandleButtonPress();
             }
-        
+        }
             //test
+        if (_assignedGamepad.dpad.left.isPressed)
+        {
             if (_inputSysteme.PiegeLeft == 1)
             {
                 Debug.Log("Piege gauche activé !");
             }
+        }
 
+        if (_assignedGamepad.dpad.up.isPressed)
+        {
             if (_inputSysteme.PiegeUp == 1 && _score >= 5 && _canPress && !PiegeEnCours)
             {
                 _canPress = false;
@@ -57,7 +64,10 @@ public class MetronomeControler : MonoBehaviour
                 UpdateScore();
                 StartCoroutine(ResetCanPress());
             }
-        
+        }
+
+        if (_assignedGamepad.dpad.right.isPressed)
+        {
             if (_inputSysteme.PiegeRight == 1 && _score >= 6 && _canPress && !PiegeEnCours)
             {
                 _canPress = false;
@@ -67,19 +77,23 @@ public class MetronomeControler : MonoBehaviour
                 UpdateScore();
                 StartCoroutine(ResetCanPress());
             }
+        }
         
             if (_inputSysteme.PiegeDown == 1)
             {
                 Debug.Log("Piege Bas activé !");
             }
 
-            if (_inputSysteme.PauseM == 1)
+            if (_assignedGamepad.startButton.isPressed)
             {
-                _pauseMenu.SetActive(true);
-                Time.timeScale = 0;
+                if (_inputSysteme.PauseM == 1)
+                {
+                    _pauseMenu.SetActive(true);
+                    Time.timeScale = 0;
                 
+                }
             }
-        }
+        
         
     }
 
@@ -139,7 +153,7 @@ public class MetronomeControler : MonoBehaviour
         Piege piegeScript = trap.AddComponent<Piege>();
         piegeScript.PiegeData = piegeData;
 
-        piegeScript.Initialize(_inputSysteme, this);
+        piegeScript.Initialize(_inputSysteme, this, _playerInput);
     }
 
     private void UpdateScore()

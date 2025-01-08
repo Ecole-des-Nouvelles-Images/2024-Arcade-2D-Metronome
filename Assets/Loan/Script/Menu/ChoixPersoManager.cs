@@ -18,6 +18,7 @@ public class ChoixPersoManager : MonoBehaviour
     [SerializeField] private RunnerData _runnerMage;
 
     private Gamepad _assignedGamepad;
+    private int _iD;
     public static int PlayerCount = 0;
     public static Dictionary<int, Gamepad> PlayerGamepads = new Dictionary<int, Gamepad>();
 
@@ -29,13 +30,16 @@ public class ChoixPersoManager : MonoBehaviour
         {
             mainMenuManager.OnChoixPersoManagerSpawned();
         }
+            _assignedGamepad = InputSystem.GetDevice<Gamepad>();
+            Debug.Log(_assignedGamepad.deviceId);
     }
     private void OnEnable()
     {
         
         if (Gamepad.all.Count > PlayerCount)
         {
-            _assignedGamepad = Gamepad.all[PlayerCount];
+            _assignedGamepad = Gamepad.current;
+            _iD = _assignedGamepad.deviceId;
 
             if (!MainMenuManager.AssignedGamepads.Contains(_assignedGamepad))
             {

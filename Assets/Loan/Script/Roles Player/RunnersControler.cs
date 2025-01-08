@@ -30,8 +30,8 @@ public class RunnersControler : MonoBehaviour
     private Vector2 _gravity;
     private float _health = 3f;
     private readonly float _holdJumpForce = 7f;
-    private InputSysteme _inputSysteme;
-    private bool _isGrounded;
+    [SerializeField]private InputSysteme _inputSysteme;
+    [SerializeField] private bool _isGrounded;
     private bool _isHoldingJump;
     private float _jumpHolderTime;
     private readonly float _maxHoldTime = 0.5f;
@@ -39,7 +39,7 @@ public class RunnersControler : MonoBehaviour
     private Rigidbody2D _rb;
     private SpriteRenderer _sR;
     private Gamepad _assignedGamepad;
-    private PlayerInput _playerInput;
+    [SerializeField]private PlayerInput _playerInput;
     private float MaxPower => _runnerData.MaxPower;
     private Sprite _spriteRenderer => _runnerData.Sprite;
 
@@ -55,6 +55,7 @@ public class RunnersControler : MonoBehaviour
         // _animatorController = _animator.runtimeAnimatorController;
         // _animatorController = _runnerData.AnimatorController;
         // _animator.runtimeAnimatorController = _animatorController;
+       
     }
 
     private void Start()
@@ -88,6 +89,7 @@ public class RunnersControler : MonoBehaviour
                 _assignedGamepad = MainMenuManager.MageID;
                 break;
         }
+        Debug.Log(_assignedGamepad.deviceId);
 
         if (_assignedGamepad == null)
         {
@@ -105,29 +107,58 @@ public class RunnersControler : MonoBehaviour
     }
 
     private void Update()
-    { 
-        if (//_assignedGamepad != null && 
-            _assignedGamepad == Gamepad.current)
-        {
-            var horizontal = _inputSysteme.Move.x;
-            var velocity = _rb.velocity;
-            velocity.x = horizontal * Speed;
+    {
+        Vector2 leftStickValue = _assignedGamepad.leftStick.ReadValue();
+        var horizontal = leftStickValue.x;
+        var velocity = _rb.velocity;
+        velocity.x = horizontal * Speed;
 
+        _rb.velocity = velocity;
+
+        _isGrounded = Physics2D.OverlapCapsule(_groundCheck.position, new Vector2(1f, 0.13f), 
+            CapsuleDirection2D.Horizontal, 0, _groundMask);
+
+        if (leftStickValue.magnitude > 0.2f) // Lorsque le stick gauche est utilisé
+        {
+            if (leftStickValue.x > 0)
+            {
+                _sR.flipX = true; // Tourner le sprite à droite
+            }
+            else if (leftStickValue.x < 0)
+            {
+                _sR.flipX = false; // Tourner le sprite à gauche
+            }
+
+            // Définir l'animation "isWalking" en fonction de la vitesse
+            _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
+        }
+        else // Lorsque le stick gauche n'est pas utilisé
+        {
+            velocity.x = 0f; // Arrêter le mouvement
             _rb.velocity = velocity;
 
-            _isGrounded = Physics2D.OverlapCapsule(_groundCheck.position, new Vector2(1f, 0.13f),
-                CapsuleDirection2D.Horizontal, 0, _groundMask);
-
-            if (_inputSysteme.Move.x > 0) _sR.flipX = true;
-            _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
-            if (_inputSysteme.Move.x < 0) _sR.flipX = false;
-            _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
+            // Arrêter l'animation
+            _animator.SetFloat("isWalking", 0f);
+        }
+        if (_assignedGamepad.buttonSouth.isPressed)
+        {
             HandleJump();
+            Debug.Log("A presser");
+        }
 
-            if (_rb.velocity.y <= 1) _rb.velocity -= _gravity * _fallMultiplier * Time.deltaTime;
-            _animator.SetTrigger("isFalling");
+        if (!_assignedGamepad.buttonSouth.isPressed)
+        {
+            _isHoldingJump = false;
+        }
+            
+        if (_rb.velocity.y <= 1) _rb.velocity -= _gravity * _fallMultiplier * Time.deltaTime;
+        _animator.SetTrigger("isFalling");
+            
+        if (_assignedGamepad.buttonEast.isPressed)
+        {
             if (_canUsePower && _inputSysteme.PowerUp == 1) ActivatePowerUp();
         }
+        
     }
 
     private void OnDestroy()
@@ -141,11 +172,11 @@ public class RunnersControler : MonoBehaviour
     }
 
 
-    public void Setup(RunnerData data, Gamepad gamepad)
+    public void Setup(RunnerData data)//, Gamepad gamepad)
     {
         _runnerData = data;
         _sR.sprite = _runnerData.Sprite;
-        _assignedGamepad = gamepad;
+        //_assignedGamepad = gamepad;
 
         if (_runnerData.AnimatorController != null)
         {
@@ -155,7 +186,7 @@ public class RunnersControler : MonoBehaviour
         if (_assignedGamepad != null)
         {
             Debug.Log($"Gamepad assigné to runner : {_assignedGamepad.deviceId}");
-            _inputSysteme.SwitchCurrentControlScheme(_assignedGamepad);
+            //_inputSysteme.SwitchCurrentControlScheme(_assignedGamepad);
         }
         else
         {
@@ -174,6 +205,7 @@ public class RunnersControler : MonoBehaviour
             _jumpHolderTime = 0f;
             _currentJumpHeight = 0f;
             _animator.SetTrigger("isJump");
+            _isGrounded = false;
         }
 
         if (jumpForceTime > 0 && _isHoldingJump && _jumpHolderTime < _maxHoldTime &&
@@ -184,8 +216,6 @@ public class RunnersControler : MonoBehaviour
             _rb.velocity = new Vector2(_rb.velocity.x,
                 Mathf.Clamp(_rb.velocity.y + _holdJumpForce * Time.deltaTime, 0, _maxJumpHeight));
         }
-
-        if (jumpForceTime <= 0) _isHoldingJump = false;
     }
 
     private void ChargePowerUp()

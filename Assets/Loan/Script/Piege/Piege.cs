@@ -16,12 +16,14 @@ public class Piege : MonoBehaviour
     private Cle _cleTrapp;
     private Gamepad _assignedGamepad;
     private MetronomeControler _metronomeControler;
+    private PlayerInput _playerInput;
 
 
-    public void Initialize(InputSysteme inputSysteme, MetronomeControler metronomeControler)
+    public void Initialize(InputSysteme inputSysteme, MetronomeControler metronomeControler, PlayerInput playerInput)
     {
         _inputSysteme = inputSysteme;
         _metronomeControler = metronomeControler;
+        _playerInput = playerInput;
     }
 
     private void Start()
@@ -54,28 +56,43 @@ public class Piege : MonoBehaviour
 
     private void Update()
     {
-        if (_assignedGamepad != null && _assignedGamepad == Gamepad.current)
+        Vector2 leftStickValue = _assignedGamepad.leftStick.ReadValue();
+        float horizontalInput = _inputSysteme.PiegeMove.x;
+        Vector2 position = _rb.velocity;
+        if (_assignedGamepad != null )
         {
             if (!_isFalling)
             {
-                float horizontalInput = _inputSysteme.PiegeMove.x;
-                Vector2 position = _rb.velocity;
-                position.x = horizontalInput * Time.deltaTime * 5000f;
-                position.x = Mathf.Clamp(position.x,-Camera.main.orthographicSize, Camera.main.orthographicSize);
+                if (leftStickValue.magnitude > 0.2f)
+                {
+                    if (Mathf.Abs(horizontalInput) > 0.2f) // Si l'entrée est significative
+                    {
+                        position.x = horizontalInput * Time.deltaTime * 5000f;
+                        position.x = Mathf.Clamp(position.x, -Camera.main.orthographicSize, Camera.main.orthographicSize);
+                    }
+                }
+
+                if (leftStickValue.magnitude == 0)
+                {
+                    position.x = 0f;
+                }
                 _rb.velocity = position;
             }
 
-            if (_inputSysteme.PiegeActive > 0.5f && PiegeData.CanFall)
+            if (_assignedGamepad.buttonNorth.isPressed)
             {
-                _isFalling = true;
-            
-                Rigidbody2D rb = GetComponent<Rigidbody2D>();
-                if (rb != null)
+                if (_inputSysteme.PiegeActive > 0.5f && PiegeData.CanFall)
                 {
-                    rb.gravityScale = PiegeData.Mass;
-                }
+                    _isFalling = true;
+            
+                    Rigidbody2D rb = GetComponent<Rigidbody2D>();
+                    if (rb != null)
+                    {
+                        rb.gravityScale = PiegeData.Mass;
+                    }
 
-                _metronomeControler.PiegeEnCours = false;
+                    _metronomeControler.PiegeEnCours = false;
+                }
             }
 
             if (_isFalling)

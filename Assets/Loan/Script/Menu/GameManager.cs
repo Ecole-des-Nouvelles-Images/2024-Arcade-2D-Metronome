@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
    private void Start()
    {
       StartCoroutine(ValidateDevicesCoroutine());
-      ValidateDeviceIDs();
+      //ValidateDeviceIDs();
    }
    
    public void DisplayPlayerAssignments()
@@ -117,7 +117,11 @@ public class GameManager : MonoBehaviour
 
    void SetupRunner(GameObject runner, RunnerData runnerData, Gamepad gamepad)
    {
+      Debug.Log("Setup runner " + gamepad.deviceId);
       RunnersControler runnersControler = runner.GetComponent<RunnersControler>();
+      runnersControler.Setup(runnerData);
+      PlayerInput playerInput = runnersControler.GetComponent<PlayerInput>();
+      //playerInput.SwitchCurrentControlScheme(gamepad);
 
       if (runnersControler == null)
       {
@@ -127,13 +131,13 @@ public class GameManager : MonoBehaviour
 
       if (gamepad != null)
       {
-         runnersControler.Setup(runnerData, gamepad);
+         //runnersControler.Setup(runnerData);//, gamepad);
          Debug.Log($"Runner {runnerData.Name} configuré avec la manette {gamepad.displayName} Id {Gamepad.current.deviceId}");
       }
       else
       {
          Debug.LogWarning($"Aucune manette trouvée pour {runnerData.Name}. Assignation au premier Gamepad disponible.");
-         runnersControler.Setup(runnerData, Gamepad.all.Count > 0 ? Gamepad.all[0] : null);
+         //runnersControler.Setup(runnerData, Gamepad.all.Count > 0 ? Gamepad.all[0] : null);
       }
    }
 
@@ -150,7 +154,7 @@ public class GameManager : MonoBehaviour
          PlayerInput metronomeInput = _metronomeControll.GetComponent<PlayerInput>();
          if (metronomeInput != null)
          {
-            metronomeInput.SwitchCurrentControlScheme(MainMenuManager.MetronomeID);
+            //metronomeInput.SwitchCurrentControlScheme(MainMenuManager.MetronomeID);
             Debug.Log($"Le métronome est contrôlé par : {MainMenuManager.MetronomeID.displayName} ID{MainMenuManager.MetronomeID.deviceId}");
          }
          else
