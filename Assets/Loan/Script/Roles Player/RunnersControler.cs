@@ -118,26 +118,24 @@ public class RunnersControler : MonoBehaviour
         _isGrounded = Physics2D.OverlapCapsule(_groundCheck.position, new Vector2(1f, 0.13f), 
             CapsuleDirection2D.Horizontal, 0, _groundMask);
 
-        if (leftStickValue.magnitude > 0.2f) // Lorsque le stick gauche est utilisé
+        if (leftStickValue.magnitude > 0.2f) 
         {
             if (leftStickValue.x > 0)
             {
-                _sR.flipX = true; // Tourner le sprite à droite
+                _sR.flipX = true; 
             }
             else if (leftStickValue.x < 0)
             {
-                _sR.flipX = false; // Tourner le sprite à gauche
+                _sR.flipX = false; 
             }
-
-            // Définir l'animation "isWalking" en fonction de la vitesse
+            
             _animator.SetFloat("isWalking", Mathf.Abs(_rb.velocity.x));
         }
-        else // Lorsque le stick gauche n'est pas utilisé
+        else 
         {
-            velocity.x = 0f; // Arrêter le mouvement
+            velocity.x = 0f; 
             _rb.velocity = velocity;
-
-            // Arrêter l'animation
+            
             _animator.SetFloat("isWalking", 0f);
         }
         if (_assignedGamepad.buttonSouth.isPressed)
@@ -190,7 +188,7 @@ public class RunnersControler : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Aucun Gamepad assigné lors du Setup.");
+            Debug.Log("Aucun Gamepad assigné lors du Setup.");
         }
     }
 

@@ -57,7 +57,7 @@ public class Piege : MonoBehaviour
     private void Update()
     {
         Vector2 leftStickValue = _assignedGamepad.leftStick.ReadValue();
-        float horizontalInput = _inputSysteme.PiegeMove.x;
+        float horizontalInput = leftStickValue.x;
         Vector2 position = _rb.velocity;
         if (_assignedGamepad != null )
         {

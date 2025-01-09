@@ -92,7 +92,7 @@ public class ChoixPersoManager : MonoBehaviour
 
         DisableAllButtons();
         Debug.Log($"Runner {runner.Name} sélectionné avec la manette {gamepad.displayName} pour le slot {choix}.");
-        GameManager.Instance.DisplayPlayerAssignments();
+        // GameManager.Instance.DisplayPlayerAssignments();
     }
 
     private void SelectMetronome(Gamepad gamepad)
