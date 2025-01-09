@@ -115,11 +115,13 @@ public class Piege : MonoBehaviour
         {
             runner.TakeDamage(PiegeData.Damage);
             Destroy(gameObject);
+            _metronomeControler.PiegeEnCours = false;
         }
         
         if (barrier != null)
         {
             Destroy(gameObject);
+            _metronomeControler.PiegeEnCours = false;
         }
 
         if (PiegeData.HasExploded && collision.gameObject.CompareTag("Sol") && _cleTrapp != null)

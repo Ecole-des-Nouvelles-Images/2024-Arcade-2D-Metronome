@@ -29,6 +29,7 @@ public class MenuPause : MonoBehaviour
     private void ReturnMenu()
     {
         Time.timeScale = 1;
+        Destroy(GameManager.Instance.gameObject);
         SceneManager.LoadScene("MenuScene");
     }
 }

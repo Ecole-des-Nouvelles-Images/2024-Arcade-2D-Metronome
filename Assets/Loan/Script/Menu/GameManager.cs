@@ -74,10 +74,12 @@ public class GameManager : MonoBehaviour
          GameObject runner1 = Instantiate(_runnerPrefab, _runnerSpawn1.position, Quaternion.identity);
          SetupRunner(runner1, MainMenuManager.FirstRunner, MainMenuManager.ChasseurID);
          RunnersControler runnersControler = runner1.GetComponent<RunnersControler>();
+         
          HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
          newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
          newHealthHUD.transform.localPosition = new Vector3(-576, -492, 0);
          runnersControler.healthHUD = newHealthHUD;
+         
          POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
          newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
          newPowerUPHUD.transform.localPosition = new Vector3(-390, -492, 0);
@@ -89,10 +91,12 @@ public class GameManager : MonoBehaviour
          GameObject runner2 = Instantiate(_runnerPrefab, _runnerSpawn2.position, Quaternion.identity);
          SetupRunner(runner2, MainMenuManager.SecondRunner, MainMenuManager.MoineID);
          RunnersControler runnersControler = runner2.GetComponent<RunnersControler>();
+         
          HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
          newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
          newHealthHUD.transform.localPosition = new Vector3(1, -492, 0);
          runnersControler.healthHUD = newHealthHUD;
+         
          POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
          newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
          newPowerUPHUD.transform.localPosition = new Vector3(185, -492, 0);
@@ -104,10 +108,12 @@ public class GameManager : MonoBehaviour
          GameObject runner3 = Instantiate(_runnerPrefab, _runnerSpawn3.position, Quaternion.identity);
          SetupRunner(runner3, MainMenuManager.ThirdRunner, MainMenuManager.MageID);
          RunnersControler runnersControler = runner3.GetComponent<RunnersControler>();
+         
          HealthHUD newHealthHUD = Instantiate(_healthHudsprefabs);
          newHealthHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
          newHealthHUD.transform.localPosition = new Vector3(575, -492, 0);
          runnersControler.healthHUD = newHealthHUD;
+         
          POwerUPHUD newPowerUPHUD = Instantiate(_powerUpHUDPrefabs);
          newPowerUPHUD.transform.SetParent(GameObject.Find("Canvas").transform, false);
          newPowerUPHUD.transform.localPosition = new Vector3(755, -492, 0);
