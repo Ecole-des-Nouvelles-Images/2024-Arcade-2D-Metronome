@@ -540,7 +540,7 @@ GameObject:
   - component: {fileID: 1743492024}
   - component: {fileID: 1743492023}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: SlashScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
