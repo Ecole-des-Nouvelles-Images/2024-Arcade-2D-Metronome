@@ -141,7 +141,6 @@ public class RunnersControler : MonoBehaviour
         if (_assignedGamepad.buttonSouth.isPressed)
         {
             HandleJump();
-            Debug.Log("A presser");
         }
 
         if (!_assignedGamepad.buttonSouth.isPressed)

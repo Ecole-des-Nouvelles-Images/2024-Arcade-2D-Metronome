@@ -45,8 +45,7 @@ public class ChoixPersoManager : MonoBehaviour
             {
                 MainMenuManager.AssignedGamepads.Add(_assignedGamepad);
             }
-
-            Debug.Log($"Manette assignée au joueur {PlayerCount + 1} : {_assignedGamepad.displayName}");
+            
 
             _chasseurButton.onClick.AddListener(() => SelectRunner(_runnerChasseur, _assignedGamepad, 1));
             _moineButton.onClick.AddListener(() => SelectRunner(_runnerMoine, _assignedGamepad, 2));
@@ -71,7 +70,6 @@ public class ChoixPersoManager : MonoBehaviour
 
     private void SelectRunner(RunnerData runner, Gamepad gamepad, int choix)
     {
-        Debug.Log("Runner "+choix+" GamePad =>"+ gamepad.deviceId);
         
         PlayerGamepads[choix] = gamepad;
         switch (choix)
@@ -91,7 +89,7 @@ public class ChoixPersoManager : MonoBehaviour
         }
 
         DisableAllButtons();
-        Debug.Log($"Runner {runner.Name} sélectionné avec la manette {gamepad.displayName} pour le slot {choix}.");
+        Debug.Log($"Runner {runner.Name} sélectionné avec la manette {gamepad.deviceId} pour le slot {choix}.");
         // GameManager.Instance.DisplayPlayerAssignments();
     }
 
@@ -99,7 +97,6 @@ public class ChoixPersoManager : MonoBehaviour
     {
         Debug.Log("Metronome GramePad =>"+ gamepad.deviceId);
         MainMenuManager.MetronomeID = gamepad;
-        Debug.Log($"Métronome instancié avec la manette {gamepad.displayName}.");
         StartCoroutine(ValidateStartGame());
         DisableAllButtons();
     }

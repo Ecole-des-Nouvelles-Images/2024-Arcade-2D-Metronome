@@ -72,7 +72,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quit Game");
         Application.Quit();
     }
 
@@ -92,9 +91,7 @@ public class MainMenuManager : MonoBehaviour
         {
             AssignedGamepads.Add(gamepad); 
         }
-
-        Debug.Log($"DevicesID initialized: {string.Join(", ", AssignedGamepads)}");
-        Debug.Log($"Manettes connectées : {Gamepad.all.Count}");
+        
     }
     
     public static bool IsDeviceIDValid(int deviceID)
@@ -109,7 +106,6 @@ public class MainMenuManager : MonoBehaviour
         ThirdRunner = null;
         MetronomeID = null;
         AssignedGamepads.Clear();
-        Debug.Log("Données statiques réinitialisées.");
     }
     
     private void UpdateChoixPersoManager()
