@@ -45,10 +45,21 @@ This is a game with at least two players and maximum four players.
 What makes it unique is that it mixes a platformer with asymmetry and rhythm.
 
 ### Runners
-[Describe the first phase of gameplay, objectives, and player actions.]
+
+![Idle 1](https://github.com/user-attachments/assets/1e8f9bac-0522-489f-9d0f-054983c5273b)
+<b>The hunter<b>: Once its Power-Up activated it becomes twice faster.
+![Idle1](https://github.com/user-attachments/assets/5aeb77d2-61f4-4b48-a9ff-1a1252e09ddf)
+<b>The Monk<b>: once are Power-up activated it jumps twice as high.
+![Idle1 (1)](https://github.com/user-attachments/assets/f87407e5-b41b-4f16-ace5-a6940a674228)
+<b>The Magician<b>: Once are Power-Up activated, it creates a protective barrier that protects her from traps
+
 
 ### Metronome
-[Describe the second phase, any escalating challenges, and goals.]
+
+![MANICAS_Maelys_Props_métronome](https://github.com/user-attachments/assets/afd186f6-eeb1-49a2-9963-801fe1cbd47d)
+<b>The Metronome<b>: are role is to be in rhythm with the music notes to earn points and summon traps to kill the Runners 
+
+### Video of the game
 
 https://github.com/user-attachments/assets/7e4cdffd-e5d2-4b55-9e05-8240e42962f1
 
