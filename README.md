@@ -81,7 +81,7 @@ This game supports **Windows**.
 ## Development
 This project is currently **in development**. Future updates might include **level design and gameplay**.  
 
-If you encounter any bugs or have suggestions, please open an **[issue ticket](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/issues/new)**.
+If you encounter any bugs or have suggestions, please open an **[issue ticket](https://github.com/Ecole-des-Nouvelles-Images/2024-Arcade-2D-Metronome/issues/new)**.
 
 ---
 
