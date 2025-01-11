@@ -8,7 +8,8 @@ Metronome is a local 2D multiplayer game, it’s an asymmetric platformer with r
 [![License](https://img.shields.io/github/license/Ecole-des-Nouvelles-Images/2024-Arcade-2D-Metronome)](https://github.com/Ecole-des-Nouvelles-Images/2024-Arcade-2D-Metronome/blob/main/LICENSE)
 [![Repo Size](https://img.shields.io/github/repo-size/Ecole-des-Nouvelles-Images/2024-Arcade-2D-Metronome?color=lightgrey)](https://github.com/Ecole-des-Nouvelles-Images/2024-Arcade-2D-Metronome)
 
-![Main Banner]
+![MANICAS_Maelys_illuGénéral](https://github.com/user-attachments/assets/2131a0f5-a6a9-46bd-ad75-81c1ce7c6cf4)
+
 
 ## Table of Contents
 1. [Introduction](#introduction)
