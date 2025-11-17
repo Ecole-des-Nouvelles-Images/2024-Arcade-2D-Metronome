@@ -35,9 +35,7 @@ This game was brought to life by **Nexus**:
 - **Manicas Maelys**: Game Artist.
 - **Lukoyanova Regina**: Game Artist.
 - **Jourdan Loan**: Game Developeur.
-
-![Team](https://github.com/Ecole-des-Nouvelles-Images/Unity-Template/blob/main/MetaData/team-photo.png)
-
+- 
 ---
 
 ## Gameplay
